@@ -8,7 +8,6 @@ gem 'pg'
 gem 'puma'
 gem 'rails', '5.1.1'
 gem 'redis'
-gem 'faker'
 
 gem 'autoprefixer-rails'
 gem 'bootstrap-sass'
@@ -17,6 +16,11 @@ gem 'jquery-rails'
 gem 'sass-rails'
 gem 'simple_form'
 gem 'uglifier'
+
+gem 'faker'
+
+gem 'remotipart', github: 'mshibuya/remotipart'
+gem 'rails_admin', '>= 1.0.0.rc'
 
 group :development, :test do
   gem 'better_errors'

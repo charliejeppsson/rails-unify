@@ -40,7 +40,7 @@ puts 'Creating users...'
   end
   3.times do
     Education.create(
-      school_name: Faker::Educator.university,
+      school_name: Faker::University.name,
       field: Faker::Educator.course,
       start_date: "2014-09-20",
       end_date: "2016-09-7",
@@ -48,6 +48,15 @@ puts 'Creating users...'
     )
   end
 end
+
+# create admin users for the four of us
+# admins = ["charlie.jeppsson1@gmail.com", "wlad@wlad.com", "weronika@weronika.com", "francesca@francesca.com"]
+
+# for i in 0..3 do
+#   User.all[i][email: admins[i]]
+#   User.all[i].admin = true
+# end
+
 
 # events
 puts 'Creating events...'
