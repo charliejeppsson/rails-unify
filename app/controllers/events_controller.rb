@@ -12,7 +12,7 @@ class EventsController < ApplicationController
   end
 
   def show
-    @alert_message = "You are viewing #{@event.name}"
+    @alert_message = "You are viewing #{@event.title}"
   end
 
   def new
