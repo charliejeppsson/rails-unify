@@ -7,13 +7,18 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 puts 'Cleaning database...'
+
+Education.destroy_all
+Experience.destroy_all
+Attendance.destroy_all
+Event.destroy_all
 User.destroy_all
 
 # users
 puts 'Creating users...'
 
 10.times do
-  User.create(
+  user = User.create(
     first_name: Faker::Name.unique.first_name,
     last_name: Faker::Name.unique.last_name,
     headline: Faker::Job.title,
@@ -22,19 +27,51 @@ puts 'Creating users...'
     password: "12345678",
     description:  "I live for tech and innovation. I'm a very entrepreneurial person and currently I'm looking to meet a co-founder for my next startup.",
     location: "Barcelona",
-    my_experiences: {
-      company_name: Faker::Company.unique.name,
-      position: Faker::Job.title,
-      start_time: "2017-01-20 00:00:00",
-      end_time: "2017-06-20 00:00:00",
-    },
-    my_educations: {
-      school_name: Faker::Educator.university,
-      degree: Faker::Educator.course,
-      start_time: "2014-09-20 00:00:00",
-      end_time: "2016-09-7 00:00:00",
-    },
     date_of_birth: "1995-09-23 9:35:35",
+  )
+  3.times do
+    Experience.create(
+      company_name: Faker::Company.unique.name,
+      job_title: Faker::Job.title,
+      start_date: "2017-01-20",
+      end_date: "2017-06-20",
+      user_id: user.id,
+    )
+  end
+  3.times do
+    Education.create(
+      school_name: Faker::Educator.university,
+      field: Faker::Educator.course,
+      start_date: "2014-09-20",
+      end_date: "2016-09-7",
+      user_id: user.id,
+    )
+  end
+end
+
+# events
+puts 'Creating events...'
+
+10.times do
+  Event.create(
+    title: Faker::App.name,
+    description: Faker::Company.bs, # Faker::Matz.quote
+    start_time: "2017-06-24 13:00:00",
+    end_time: "2017-06-24 18:00:00",
+    organization: Faker::Company.unique.name,
+    category: Faker::Job.field,
+    location: Faker::Address.unique.street_address,
+    user_id: User.all.ids.sample,
+  )
+end
+
+# events
+puts 'Creating attendances...'
+
+10.times do
+  Attendance.create(
+    user_id: User.all.ids.sample,
+    event_id: Event.all.ids.sample,
   )
 end
 
