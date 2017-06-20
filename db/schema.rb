@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170620143116) do
+ActiveRecord::Schema.define(version: 20170620145608) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,17 @@ ActiveRecord::Schema.define(version: 20170620143116) do
     t.datetime "updated_at", null: false
     t.index ["event_id"], name: "index_attendances_on_event_id"
     t.index ["user_id"], name: "index_attendances_on_user_id"
+  end
+
+  create_table "educations", force: :cascade do |t|
+    t.string "school_name"
+    t.string "field"
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_educations_on_user_id"
   end
 
   create_table "events", force: :cascade do |t|
@@ -36,6 +47,17 @@ ActiveRecord::Schema.define(version: 20170620143116) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_events_on_user_id"
+  end
+
+  create_table "experiences", force: :cascade do |t|
+    t.string "company_name"
+    t.string "job_title"
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_experiences_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -64,5 +86,7 @@ ActiveRecord::Schema.define(version: 20170620143116) do
 
   add_foreign_key "attendances", "events"
   add_foreign_key "attendances", "users"
+  add_foreign_key "educations", "users"
   add_foreign_key "events", "users"
+  add_foreign_key "experiences", "users"
 end
