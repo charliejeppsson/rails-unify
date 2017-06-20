@@ -1,0 +1,7 @@
+<h1>Attendances#dashboard</h1>
+<p>Find me in app/views/attendances/dashboard.html.erb</p>
+
+<% @user.attendances.each do |attendance| %>
+  <h5> <%= link_to attendance.event.title, event_path(attendance.event) %> </h5>
+  <p style="font-weight: lighter"><%= link_to "Unbook this event", attendance_path(attendance), method: :delete, data: {confirm: "are you sure ?"} %></p>
+<% end %>
