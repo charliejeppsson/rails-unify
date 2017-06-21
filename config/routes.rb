@@ -13,11 +13,12 @@ Rails.application.routes.draw do
     end
   end
 
+  # LinkedIn sign in/sign up
   devise_for :users, controllers: {omniauth_callbacks: 'users/omniauth_callbacks'}
 
-  # get '/auth/:provider/callback', to: 'omniauth_callbacks#callback', as: 'oauth_callback'
-  # get '/auth/failure', to: 'oauth#failure', as: 'oauth_failure'
-
   root to: 'pages#home'
+
+  # Profile page
+  get 'users/:id/profile', to: 'users#show'
 
 end
