@@ -3,12 +3,13 @@ class EventsController < ApplicationController
   before_action :require_login, only: [:new, :create, :attend]
 
   def index
-    if params[:event].nil? || params[:event][:category].nil? || params[:event][:category] == ""
-      @events = Event.all
-    else
-      @category = params[:event][:category]
-      @events = Event.where(category: @category)
-    end
+    @events = Event.all
+    # if params[:event].nil? || params[:event][:category].nil? || params[:event][:category] == ""
+    #   @events = Event.all
+    # else
+    #   @category = params[:event][:category]
+    #   @events = Event.where(category: @category)
+    # end
   end
 
   def show
