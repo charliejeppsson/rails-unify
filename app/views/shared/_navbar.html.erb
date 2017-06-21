@@ -11,7 +11,7 @@
     <div style="margin: 0 20px 0 0;">
       <%= link_to "Create an event", new_event_path, class: "navbar-wagon-item navbar-wagon-button btn" %>
     </div>
-    
+
     <!-- Notification -->
     <%= link_to "#", class: "navbar-wagon-item navbar-wagon-link" do %>
       <div class="badge-container">
@@ -19,7 +19,7 @@
         <div class="badge badge-blue">3</div>
       </div>
     <% end %>
-    
+
     <!-- Different navigation if login or not -->
     <% if user_signed_in? %>
       <%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
@@ -34,14 +34,20 @@
           <% avatar_url = current_user.picture || "http://placehold.it/30x30" %>
           <%= image_tag avatar_url, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
           <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-            <li class="fa fa-sign-out"></li> <%= link_to "Profile", edit_user_registration_path %>
-            <i class="fa fa-home"></i> <%= link_to "Dashboard", dashboard_attendances_path %>
-            <i class="fa fa-sign-out"></i> <%= link_to "Log Out", destroy_user_session_path, method: :delete %>
+            <li>
+              <div class="fa fa-sign-out">  <%= link_to "Profile", user_path(current_user.id) %></div>
+            </li>
+            <li>
+              <div class="fa fa-home">  <%= link_to "Dashboard", dashboard_attendances_path %></div>
+            </li>
+            <li>
+              <div class="fa fa-sign-out">  <%= link_to "Log Out", destroy_user_session_path, method: :delete %></div>
+            </li>
           </ul>
         <% end %>
       </div>
     </div>
-    
+
   </div>
 
   <!-- Dropdown list appearing on mobile only -->

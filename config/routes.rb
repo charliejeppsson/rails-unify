@@ -19,6 +19,6 @@ Rails.application.routes.draw do
   root to: 'pages#home'
 
   # Profile page
-  get 'users/:id/profile', to: 'users#show'
+  resources :users, only: [:show]
 
 end
