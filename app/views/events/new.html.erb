@@ -1,2 +1,29 @@
-<h1>Events#new</h1>
-<p>Find me in app/views/events/new.html.erb</p>
+<div class="container" style="margin-bottom: 30px;">
+  <h2 class="text-center">Create a new event</h2>
+  <div class="row">
+    <div class='col-xs-12 col-sm-10 col-sm-offset-1 col-md-6 col-md-offset-3'>
+      <%= simple_form_for(@event) do |f| %>
+        <%= f.error_notification %>
+
+        <div class="form-inputs">
+          <%= f.input :title, required: true, autofocus: true %>
+          <%= f.input :location, required: true, autofocus: true %>
+          <%= f.input :start_time, required: true, autofocus: true %>
+          <%= f.input :end_time, required: true, autofocus: true %>
+          <%= f.input :description, required: true, autofocus: true %>
+          <%= f.input :organization, required: false, autofocus: true %>
+          <%= f.input :category, required: true, autofocus: true %>
+          <%#= f.input :photo %>
+          <%#= f.input :photo_cache, as: :hidden %>
+          <!-- <p>*Be nice with the css, add an horizontal picture*</p> -->
+          <%= f.hidden_field :user_id, value: current_user.id %>
+        </div>
+
+
+        <div class="form-actions">
+          <%= f.button :submit, "Create event", class: "navbar-wagon-item navbar-wagon-button btn"  %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

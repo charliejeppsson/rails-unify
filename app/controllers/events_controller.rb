@@ -3,12 +3,13 @@ class EventsController < ApplicationController
   before_action :require_login, only: [:new, :create, :attend]
 
   def index
-    if params[:event].nil? || params[:event][:category].nil? || params[:event][:category] == ""
-      @events = Event.all
-    else
-      @category = params[:event][:category]
-      @events = Event.where(category: @category)
-    end
+    @events = Event.all
+    # if params[:event].nil? || params[:event][:category].nil? || params[:event][:category] == ""
+    #   @events = Event.all
+    # else
+    #   @category = params[:event][:category]
+    #   @events = Event.where(category: @category)
+    # end
   end
 
   def show
@@ -47,8 +48,7 @@ class EventsController < ApplicationController
     @event = Event.find(params[:event_id])
     @user = current_user
 
-
-    if Attendance.exists?(user_id: @user.id, event_id: @event.id)
+   if Attendance.exists?(user_id: @user.id, event_id: @event.id)
       redirect_to event_path(@event)
       flash[:alert] = "You have already booked"
     else Attendance.create(user_id: @user.id, event_id: @event.id)
@@ -79,6 +79,7 @@ class EventsController < ApplicationController
     render :index
       # if a parameter doesn't correspond to anything - add a note
   end
+end
 
 
   private
