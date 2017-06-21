@@ -1,2 +1,5 @@
 <h1>Events#show</h1>
+<h1><%= @event.title %></h1>
+ <%= link_to "Attend this event", event_attend_path(@event), method: :get, class: "navbar-wagon-item navbar-wagon-button btn" %>
+
 <p>Find me in app/views/events/show.html.erb</p>

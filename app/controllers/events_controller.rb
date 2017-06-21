@@ -46,10 +46,15 @@ class EventsController < ApplicationController
   def attend
     @event = Event.find(params[:event_id])
     @user = current_user
-    Attendance.create(user_id: @user.id, event_id: @event.id)
+
+   if Attendance.exists?(user_id: @user.id, event_id: @event.id)
+      redirect_to event_path(@event)
+      flash[:alert] = "You have already booked"
+    else Attendance.create(user_id: @user.id, event_id: @event.id)
     redirect_to event_path(@event)
-    flash[:notice] = "You have been added to the guest list of this event."
+    flash[:notice] = "You have successfully booked this event"
   end
+end
 
 
   private
