@@ -50,26 +50,15 @@ class EventsController < ApplicationController
 
    if Attendance.exists?(user_id: @user.id, event_id: @event.id)
       redirect_to event_path(@event)
-      flash[:alert] = "You have already booked"
-    else Attendance.create(user_id: @user.id, event_id: @event.id)
-    redirect_to event_path(@event)
-    flash[:notice] = "You have successfully booked this event"
+      flash[:alert] = "You are already checkin"
+  elsif  #geoloc = true
+        Attendance.create(user_id: @user.id, event_id: @event.id)
+        redirect_to event_path(@event)
+        flash[:notice] = "You have successfully checkin this event"
+  else  redirect_to event_path(@event)
+        flash[:notice] = "You can't check in as you are not in the zone"
+
   end
-
-  def checkin
-    @event = Event.find(params[:event_id])
-    @user = current_user
-
-   if Attendance.exists?(user_id: @user.id, event_id: @event.id)
-      redirect_to event_path(@event)
-      flash[:alert] = "You have already booked"
-    else Attendance.create(user_id: @user.id, event_id: @event.id)
-    redirect_to event_path(@event)
-    flash[:notice] = "You have successfully checkin this event"
-  end
-end
-
-
 
 end
 

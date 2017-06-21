@@ -3,13 +3,11 @@
 
 
 <% if @event.upcomming? %>
- <%= link_to "Attend this event", event_attend_path(@event), method: :get, class: "navbar-wagon-item navbar-wagon-button btn" %>
+ <p>This event is to come. At the event, you will be able to check-in to enable the chat and view the other attendees</p>
 <% end %>
 
-
-
 <% if @event.now? %>
-<%= link_to "Checkin to this event", event_checkin_path(@event), method: :get, class: "navbar-wagon-item navbar-wagon-button btn" %>
+<%= link_to "Checkin to this event", event_attend_path(@event), method: :get, class: "navbar-wagon-item navbar-wagon-button btn" %>
 <% end %>
 
 <% if @event.past? %>
