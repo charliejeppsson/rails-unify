@@ -12,8 +12,12 @@ class User < ApplicationRecord
 
   def self.find_for_linkedin_oauth(auth)
     user_params = auth.slice(:provider, :uid)
-    user_params.merge! auth.info.slice(:email, :first_name, :last_name, :headline, :industry, :location)
-    # user_params[:facebook_picture_url] = auth.info.image   How to change this to LinkedIn photo?
+    user_params.merge! auth.info.slice(:email, :first_name, :last_name)
+    user_params[:location] = auth.info.location.name
+    user_params[:picture] = auth.info.image
+    user_params[:url] = auth.info.urls.public_profile
+    user_params[:headline] = auth.extra.raw_info.headline
+    user_params[:industry] = auth.extra.raw_info.industry
     user_params[:token] = auth.credentials.token
     user_params[:token_expiry] = Time.at(auth.credentials.expires_at)
     user_params = user_params.to_h

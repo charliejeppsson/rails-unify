@@ -3,10 +3,16 @@
 
 <% if user_signed_in? %>
 
-  <%= current_user.first_name %>
-  <%= current_user.last_name %>
-  <%= current_user.email %>
-  <%= current_user.headline %>
-  <%= current_user.industry %>
+  <!-- RETRIEVING SUCCESSFULLY -->
+  <h3> First name: <%= current_user.first_name %> </h3>
+  <h3> Last name: <%= current_user.last_name %> </h3>
+  <h3> Email: <%= current_user.email %> </h3>
+  <h3> Location: <%= current_user.location %> </h3>
+  <h3> Profile picture url: <%= current_user.picture %> </h3> <!-- linkedin image url -->
+
+  <!-- NOT RETRIEVING -->
+  <h3> Headline: <%= current_user.headline %> </h3>
+  <h3> Industry: <%= current_user.industry %> </h3>
+  <h3> Profile url: <%= current_user.url %> </h3>
 
 <% end %>
