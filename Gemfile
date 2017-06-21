@@ -18,6 +18,7 @@ gem 'simple_form'
 gem 'uglifier'
 
 gem 'faker'
+gem 'omniauth-linkedin-oauth2', git: 'https://github.com/Devato/omniauth-linkedin-oauth2.git'
 
 gem 'remotipart', github: 'mshibuya/remotipart'
 gem 'rails_admin', '>= 1.0.0.rc'
