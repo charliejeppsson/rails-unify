@@ -1,5 +1,20 @@
 <h1>Events#show</h1>
 <h1><%= @event.title %></h1>
+
+
+<% if @event.upcomming? %>
  <%= link_to "Attend this event", event_attend_path(@event), method: :get, class: "navbar-wagon-item navbar-wagon-button btn" %>
+<% end %>
+
+
+
+<% if @event.now? %>
+<%= link_to "Checkin to this event", event_checkin_path(@event), method: :get, class: "navbar-wagon-item navbar-wagon-button btn" %>
+<% end %>
+
+<% if @event.past? %>
+<p>This event is past</p>
+<% end %>
+
 
 <p>Find me in app/views/events/show.html.erb</p>
