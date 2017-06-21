@@ -55,6 +55,22 @@ class EventsController < ApplicationController
     redirect_to event_path(@event)
     flash[:notice] = "You have successfully booked this event"
   end
+
+  def checkin
+    @event = Event.find(params[:event_id])
+    @user = current_user
+
+   if Attendance.exists?(user_id: @user.id, event_id: @event.id)
+      redirect_to event_path(@event)
+      flash[:alert] = "You have already booked"
+    else Attendance.create(user_id: @user.id, event_id: @event.id)
+    redirect_to event_path(@event)
+    flash[:notice] = "You have successfully checkin this event"
+  end
+end
+
+
+
 end
 
 
