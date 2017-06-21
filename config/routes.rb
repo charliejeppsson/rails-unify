@@ -3,6 +3,9 @@ Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   resources :events do
     get 'attend', to: "events#attend"
+    collection do
+      get 'search', to: "events#search"
+    end
   end
 
   resources :attendances, only: [:destroy] do
