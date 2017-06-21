@@ -3,12 +3,13 @@ class EventsController < ApplicationController
   before_action :require_login, only: [:new, :create, :attend]
 
   def index
-    if params[:event].nil? || params[:event][:category].nil? || params[:event][:category] == ""
-      @events = Event.all
-    else
-      @category = params[:event][:category]
-      @events = Event.where(category: @category)
-    end
+    @events = Event.all
+    # if params[:event].nil? || params[:event][:category].nil? || params[:event][:category] == ""
+    #   @events = Event.all
+    # else
+    #   @category = params[:event][:category]
+    #   @events = Event.where(category: @category)
+    # end
   end
 
   def show
@@ -46,10 +47,20 @@ class EventsController < ApplicationController
   def attend
     @event = Event.find(params[:event_id])
     @user = current_user
-    Attendance.create(user_id: @user.id, event_id: @event.id)
-    redirect_to event_path(@event)
-    flash[:notice] = "You have been added to the guest list of this event."
+
+   if Attendance.exists?(user_id: @user.id, event_id: @event.id)
+      redirect_to event_path(@event)
+      flash[:alert] = "You are already checkin"
+  elsif  #geoloc = true
+        Attendance.create(user_id: @user.id, event_id: @event.id)
+        redirect_to event_path(@event)
+        flash[:notice] = "You have successfully checkin this event"
+  else  redirect_to event_path(@event)
+        flash[:notice] = "You can't check in as you are not in the zone"
+
   end
+
+end
 
 
   private

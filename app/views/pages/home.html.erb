@@ -1,16 +1,38 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <!-- Title -->
+
+      <h1>Unify</h1>
+      <p>Make networking great again</p>
+
+      <!-- Discover events near you - link with event_path -->
+
+      <h2><%= link_to "Discover events around you", events_path%></h2>
+
+      <!-- Or -->
+      <h3>Or</h3>
+
+      <!-- Log In & Sign Up -->
+      <p><%= link_to "Log in", new_user_session_path %></p>
+      <p><%= link_to "Sign up", new_user_registration_path %></p>
+
+      <!-- Terms and conditions -->
+      <p>Terms and conditions</p>
+    </div>
+  </div>
+
+</div>
 
 <% if user_signed_in? %>
 
-  <!-- RETRIEVING SUCCESSFULLY -->
+  <!-- LinkedIn information view stored below temporarily: -->
   <h3> First name: <%= current_user.first_name %> </h3>
   <h3> Last name: <%= current_user.last_name %> </h3>
   <h3> Email: <%= current_user.email %> </h3>
   <h3> Location: <%= current_user.location %> </h3>
-  <h3> Profile picture url: <%= current_user.picture %> </h3> <!-- linkedin image url -->
-
-  <!-- NOT RETRIEVING -->
+  <h3> Profile picture url: <%= current_user.picture %> </h3>
   <h3> Headline: <%= current_user.headline %> </h3>
   <h3> Industry: <%= current_user.industry %> </h3>
   <h3> Profile url: <%= current_user.url %> </h3>

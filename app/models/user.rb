@@ -9,6 +9,7 @@ class User < ApplicationRecord
   has_many :attendances, dependent: :destroy
   has_many :experiences, dependent: :destroy
   has_many :educations, dependent: :destroy
+  has_many :events_to_attend, through: :attendances, source: :event
 
   def self.find_for_linkedin_oauth(auth)
     user_params = auth.slice(:provider, :uid)
@@ -34,4 +35,5 @@ class User < ApplicationRecord
 
     return user
   end
+
 end

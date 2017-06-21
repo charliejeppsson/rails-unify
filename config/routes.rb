@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   resources :events do
     get 'attend', to: "events#attend"
+    get 'checkin', to: "events#checkin"
   end
 
   resources :attendances, only: [:destroy] do
