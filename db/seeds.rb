@@ -61,18 +61,161 @@ end
 # events
 puts 'Creating events...'
 
-10.times do
-  Event.create(
-    title: Faker::App.name,
-    description: Faker::Company.bs, # Faker::Matz.quote
-    start_time: "2017-06-24 13:00:00",
-    end_time: "2017-06-24 18:00:00",
-    organization: Faker::Company.unique.name,
-    category: Faker::Job.field,
-    location: Faker::Address.unique.street_address,
-    user_id: User.all.ids.sample,
-  )
-end
+Event.create(
+  title: Faker::App.name,
+  description: Faker::Company.bs, # Faker::Matz.quote
+  start_time: "2017-06-24 13:00:00",
+  end_time: "2017-06-24 18:00:00",
+  organization: Faker::Company.unique.name,
+  category: Faker::Job.field,
+  location: Faker::Address.unique.street_address,
+  user_id: User.all.ids.sample,
+)
+
+Event.create(
+  title: Faker::App.name,
+  description: Faker::Company.bs, # Faker::Matz.quote
+  start_time: "2017-07-24 13:00:00",
+  end_time: "2017-07-24 18:00:00",
+  organization: Faker::Company.unique.name,
+  category: Faker::Job.field,
+  location: Faker::Address.unique.street_address,
+  user_id: User.all.ids.sample,
+)
+
+Event.create(
+  title: Faker::App.name,
+  description: Faker::Company.bs, # Faker::Matz.quote
+  start_time: "2017-06-28 13:00:00",
+  end_time: "2017-06-28 18:00:00",
+  organization: Faker::Company.unique.name,
+  category: Faker::Job.field,
+  location: Faker::Address.unique.street_address,
+  user_id: User.all.ids.sample,
+)
+
+Event.create(
+  title: Faker::App.name,
+  description: Faker::Company.bs, # Faker::Matz.quote
+  start_time: "2017-08-24 13:00:00",
+  end_time: "2017-08-24 18:00:00",
+  organization: Faker::Company.unique.name,
+  category: Faker::Job.field,
+  location: Faker::Address.unique.street_address,
+  user_id: User.all.ids.sample,
+)
+
+Event.create(
+  title: Faker::App.name,
+  description: Faker::Company.bs, # Faker::Matz.quote
+  start_time: "2017-06-30 13:00:00",
+  end_time: "2017-06-30 18:00:00",
+  organization: Faker::Company.unique.name,
+  category: Faker::Job.field,
+  location: Faker::Address.unique.street_address,
+  user_id: User.all.ids.sample,
+)
+
+Event.create(
+  title: Faker::App.name,
+  description: Faker::Company.bs, # Faker::Matz.quote
+  start_time: "2017-07-30 13:00:00",
+  end_time: "2017-07-30 18:00:00",
+  organization: Faker::Company.unique.name,
+  category: Faker::Job.field,
+  location: Faker::Address.unique.street_address,
+  user_id: User.all.ids.sample,
+)
+
+Event.create(
+  title: Faker::App.name,
+  description: Faker::Company.bs, # Faker::Matz.quote
+  start_time: "2017-09-24 13:00:00",
+  end_time: "2017-09-24 18:00:00",
+  organization: Faker::Company.unique.name,
+  category: Faker::Job.field,
+  location: Faker::Address.unique.street_address,
+  user_id: User.all.ids.sample,
+)
+
+Event.create(
+  title: Faker::App.name,
+  description: Faker::Company.bs, # Faker::Matz.quote
+  start_time: "2017-11-24 13:00:00",
+  end_time: "2017-11-24 18:00:00",
+  organization: Faker::Company.unique.name,
+  category: Faker::Job.field,
+  location: Faker::Address.unique.street_address,
+  user_id: User.all.ids.sample,
+)
+
+Event.create(
+  title: Faker::App.name,
+  description: Faker::Company.bs, # Faker::Matz.quote
+  start_time: "2017-12-24 13:00:00",
+  end_time: "2017-12-24 18:00:00",
+  organization: Faker::Company.unique.name,
+  category: Faker::Job.field,
+  location: Faker::Address.unique.street_address,
+  user_id: User.all.ids.sample,
+)
+
+Event.create(
+  title: Faker::App.name,
+  description: Faker::Company.bs, # Faker::Matz.quote
+  start_time: "2017-11-24 13:00:00",
+  end_time: "2017-11-24 18:00:00",
+  organization: Faker::Company.unique.name,
+  category: Faker::Job.field,
+  location: Faker::Address.unique.street_address,
+  user_id: User.all.ids.sample,
+)
+
+Event.create(
+  title: Faker::App.name,
+  description: Faker::Company.bs, # Faker::Matz.quote
+  start_time: "2017-10-24 13:00:00",
+  end_time: "2017-10-24 18:00:00",
+  organization: Faker::Company.unique.name,
+  category: Faker::Job.field,
+  location: Faker::Address.unique.street_address,
+  user_id: User.all.ids.sample,
+)
+
+Event.create(
+  title: Faker::App.name,
+  description: Faker::Company.bs, # Faker::Matz.quote
+  start_time: "2017-10-24 13:00:00",
+  end_time: "2017-10-24 18:00:00",
+  organization: Faker::Company.unique.name,
+  category: Faker::Job.field,
+  location: Faker::Address.unique.street_address,
+  user_id: User.all.ids.sample,
+)
+
+Event.create(
+  title: Faker::App.name,
+  description: Faker::Company.bs, # Faker::Matz.quote
+  start_time: "2017-10-24 13:00:00",
+  end_time: "2017-10-26 18:00:00",
+  organization: Faker::Company.unique.name,
+  category: Faker::Job.field,
+  location: Faker::Address.unique.street_address,
+  user_id: User.all.ids.sample,
+)
+
+Event.create(
+  title: Faker::App.name,
+  description: Faker::Company.bs, # Faker::Matz.quote
+  start_time: "2017-08-20 13:00:00",
+  end_time: "2017-08-20 18:00:00",
+  organization: Faker::Company.unique.name,
+  category: Faker::Job.field,
+  location: Faker::Address.unique.street_address,
+  user_id: User.all.ids.sample,
+)
+
+
 
 # events
 puts 'Creating attendances...'

@@ -1,12 +1,12 @@
 <div class="navbar-wagon">
   <!-- Logo -->
-  <%= link_to root_path, class: "navbar-wagon-brand" do %>
-    <!-- <%= image_tag "logo.png" %> -->
-    <h1 style="color: #34113F; text-decoration: none;">Unify</h1>
-  <% end %>
+  <a href="/" style="color: #42264B;">
+    <h1>Unify</h1>
+  </a>
 
   <!-- Right Navigation -->
   <div class="navbar-wagon-right hidden-xs hidden-sm">
+
 
     <!-- Search form -->
 <!--     <form action="" class="navbar-wagon-search">
@@ -16,50 +16,47 @@
       </button>
     </form> -->
 
-    <!-- Different navigation if login or not -->
-    <% if user_signed_in? %>
+    <!-- Button (call-to-action) -->
+    <div style="margin: 0 20px 0 0;">
+      <%= link_to "Create an event", new_event_path, class: "navbar-wagon-item navbar-wagon-button btn" %>
+    </div>
 
-      <!-- Notification -->
-      <%= link_to "#", class: "navbar-wagon-item navbar-wagon-link" do %>
-        <div class="badge-container">
-          <i class="fa fa-envelope-o"></i>
-          <div class="badge badge-blue">3</div>
-        </div>
-      <% end %>
-
-      <!-- Profile picture and dropdown -->
-      <div class="navbar-wagon-item">
-        <div class="dropdown">
-          <%= image_tag "http://placehold.it/30x30", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
-          <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-            <li>
-              <%= link_to "#" do %>
-                <i class="fa fa-user"></i> <%= t(".profile", default: "Profile") %>
-              <% end %>
-            </li>
-            <li>
-              <%= link_to "#" do %>
-                <i class="fa fa-home"></i>  <%= t(".profile", default: "Home") %>
-              <% end %>
-            </li>
-            <li>
-              <%= link_to destroy_user_session_path, method: :delete do %>
-                <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
-              <% end %>
-            </li>
-          </ul>
-        </div>
+    <!-- Notification -->
+    <%= link_to "#", class: "navbar-wagon-item navbar-wagon-link" do %>
+      <div class="badge-container">
+        <i class="fa fa-envelope-o"></i>
+        <div class="badge badge-blue">3</div>
       </div>
-
-    <% else %>
-
-      <!-- Login text link -->
-      <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
-
     <% end %>
 
-    <!-- Button (call-to-action) -->
-    <%= link_to t(".top_call_to_action", default: "Post stuff"), "#", class: "navbar-wagon-item navbar-wagon-button btn" %>
+    <!-- Different navigation if login or not -->
+    <% if user_signed_in? %>
+      <%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
+    <% else %>
+      <%= link_to "Sign In", new_user_session_path %>
+    <% end %>
+
+    <!-- Profile picture and dropdown -->
+    <div class="navbar-wagon-item">
+      <div class="dropdown">
+        <% if user_signed_in? %>
+          <% avatar_url = current_user.picture || "http://placehold.it/30x30" %>
+          <%= image_tag avatar_url, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+          <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
+            <li>
+              <div class="fa fa-sign-out">  <%= link_to "Profile", user_path(current_user.id) %></div>
+            </li>
+            <li>
+              <div class="fa fa-home">  <%= link_to "Dashboard", dashboard_attendances_path %></div>
+            </li>
+            <li>
+              <div class="fa fa-sign-out">  <%= link_to "Log Out", destroy_user_session_path, method: :delete %></div>
+            </li>
+          </ul>
+        <% end %>
+      </div>
+    </div>
+
   </div>
 
   <!-- Dropdown list appearing on mobile only -->

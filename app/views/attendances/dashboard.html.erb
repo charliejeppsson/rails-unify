@@ -7,21 +7,24 @@
       <hr>
       <%= link_to "", new_event_path, class: "fa fa-plus-square-o fa-2x"%>
 
-
-
-
       <h2 class="guest-links">As a guest</h2>
-      <% @user.attendances.each do |attendance| %>
-        <h5> <%= link_to attendance.event.title, event_path(attendance.event) %> </h5>
-        <p><%= attendance.event.start_time %></p>
-        <p style="font-weight: lighter"><%= link_to "Unbook this event", attendance_path(attendance), method: :delete, data: {confirm: "are you sure ?"} %></p>
+      <% @events.each do |event| %>
+        <h5><%= link_to event.title, event_path(event) %></h5>
+
+        <p><%= event.start_time %></p>
+
+        <% @attendance = current_user.attendances.where(event: event).first %>
+
+        <p style="font-weight: lighter"><%= link_to "Unbook this event", attendance_path(@attendance), method: :delete, data: {confirm: "are you sure ?"} %></p>
       <% end %>
+
 
       <h2>User as a host</h2>
 
-      <% @user.events.each do |event| %>
+      <% @organized_events.each do |event| %>
         <h5> <%= link_to event.title, event_path(event) %> </h5>
         <p><%= event.start_time%></p>
+
         <p style="font-weight: lighter"> <%= link_to "Edit event", edit_event_path(event) %> </p>
       <% end %>
     </div>

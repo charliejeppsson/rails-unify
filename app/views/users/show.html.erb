@@ -1,0 +1,55 @@
+<!-- Profile page, still only viewable for current user - must be fixed -->
+<div class="profile-wrapper">
+  <% if user_signed_in? %>
+    <% avatar_url = current_user.picture || "http://placehold.it/30x30" %>
+    <%= image_tag avatar_url, class: "profile_picture" %>
+  <% end %>
+
+  <% if user_signed_in? %>
+    <h3 style="margin-bottom: 30px;"> <%= current_user.first_name %> <%= current_user.last_name %> </h3>
+  <% end %>
+
+  <% if user_signed_in? %>
+    <div id="textbox">
+      <p class="alignleft"> Current occupation: </p>
+      <p class="alignright"> <%= current_user.headline %> </p>
+      <p><br></p>
+    </div>
+  <% end %>
+
+  <% if user_signed_in? %>
+    <div id="textbox">
+      <p class="alignleft"> Based in: </p>
+      <p class="alignright"> <%= current_user.location %> </p>
+      <p><br></p>
+    </div>
+  <% end %>
+
+  <% if user_signed_in? %>
+    <div id="textbox">
+      <p class="alignleft"> Industry sector: </p>
+      <p class="alignright"><%= current_user.industry %> </p>
+      <p><br></p>
+    </div>
+  <% end %>
+
+  <% if user_signed_in? %>
+    <div id="textbox">
+      <p class="alignleft"> Email: </p>
+      <p class="alignright"><%= current_user.email %> </p>
+      <p><br></p>
+    </div>
+  <% end %>
+
+  <% if user_signed_in? %>
+    <div id="textbox">
+      <p class="alignleft"> I'm looking for: </p>
+      <p><br></p>
+      <p class="text-left"> "<%= current_user.description %>" </p>
+    </div>
+  <% end %>
+
+  <% if user_signed_in? %>
+    <p style="margin-top: 30px;"> <%= link_to "See " + current_user.first_name + "'s LinkedIn profile", current_user.url %> </p>
+  <% end %>
+</div>

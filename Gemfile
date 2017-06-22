@@ -16,8 +16,15 @@ gem 'jquery-rails'
 gem 'sass-rails'
 gem 'simple_form'
 gem 'uglifier'
+gem 'geocoder'
+gem "gmaps4rails"
+gem "coffee-rails"
+source 'https://rails-assets.org' do
+  gem "rails-assets-underscore"
+end
 
 gem 'faker'
+gem 'omniauth-linkedin-oauth2', git: 'https://github.com/Devato/omniauth-linkedin-oauth2.git'
 
 gem 'remotipart', github: 'mshibuya/remotipart'
 gem 'rails_admin', '>= 1.0.0.rc'
