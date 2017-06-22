@@ -14,4 +14,7 @@ class Event < ApplicationRecord
   def past?
     self.end_time <= Time.now
   end
+
+  geocoded_by :location
+  after_validation :geocode, if: :location_changed?
 end

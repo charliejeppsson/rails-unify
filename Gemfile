@@ -16,6 +16,12 @@ gem 'jquery-rails'
 gem 'sass-rails'
 gem 'simple_form'
 gem 'uglifier'
+gem 'geocoder'
+gem "gmaps4rails"
+gem "coffee-rails"
+source 'https://rails-assets.org' do
+  gem "rails-assets-underscore"
+end
 
 gem 'faker'
 
