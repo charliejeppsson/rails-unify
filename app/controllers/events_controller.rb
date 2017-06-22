@@ -68,19 +68,25 @@ class EventsController < ApplicationController
   end
 
   def attend
+
     @event = Event.find(params[:event_id])
     @user = current_user
+    # @event_nearby = Event.near([@event.latitude, @event.longitude], 0.1).first
+    current_location_latitude = current_location["latitude"].to_f
+    current_location_longitude = current_location["longitude"].to_f
+    center_point = [current_location_latitude, current_location_longitude]
+    box = Geocoder::Calculations.bounding_box(center_point, 1)
+    #center_point_event = [@event.longitude, @event.latitude]
 
    if Attendance.exists?(user_id: @user.id, event_id: @event.id)
       redirect_to event_path(@event)
       flash[:alert] = "You are already checkin"
-  elsif  #geoloc = true
+  elsif Event.within_bounding_box(box).first
         Attendance.create(user_id: @user.id, event_id: @event.id)
         redirect_to event_path(@event)
         flash[:notice] = "You have successfully checkin this event"
   else  redirect_to event_path(@event)
-        flash[:notice] = "You can't check in as you are not in the zone"
-
+        flash[:alert] = "You can't check in as you are not in the zone"
   end
 
 end

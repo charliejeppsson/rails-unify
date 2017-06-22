@@ -62,158 +62,93 @@ end
 puts 'Creating events...'
 
 Event.create(
-  title: Faker::App.name,
-  description: Faker::Company.bs, # Faker::Matz.quote
+  title: "Chatbot Lover",
+  description: "Come to discover what's behind a chatbot and about machine learning", # Faker::Matz.quote
   start_time: "2017-06-24 13:00:00",
   end_time: "2017-06-24 18:00:00",
-  organization: Faker::Company.unique.name,
-  category: Faker::Job.field,
-  location: Faker::Address.unique.street_address,
+  organization: "Pocket Confident",
+  category: "Tech",
+  location: "Carrer de Rossello, 23 08037 Barcelona",
   user_id: User.all.ids.sample,
 )
 
 Event.create(
-  title: Faker::App.name,
-  description: Faker::Company.bs, # Faker::Matz.quote
+  title: "Create a community",
+  description: "Learn how to create a genuine sense of belonging in a community", # Faker::Matz.quote
   start_time: "2017-07-24 13:00:00",
   end_time: "2017-07-24 18:00:00",
-  organization: Faker::Company.unique.name,
-  category: Faker::Job.field,
-  location: Faker::Address.unique.street_address,
+  organization: "Nova",
+  category: "Human Resources",
+  location: "Carrer d'Arago, 332 08009 Barcelona",
   user_id: User.all.ids.sample,
 )
 
 Event.create(
-  title: Faker::App.name,
-  description: Faker::Company.bs, # Faker::Matz.quote
+  title: "The power of juices",
+  description: "Vitamines, proteins and many more green benefits",
   start_time: "2017-06-28 13:00:00",
   end_time: "2017-06-28 18:00:00",
-  organization: Faker::Company.unique.name,
-  category: Faker::Job.field,
-  location: Faker::Address.unique.street_address,
+  organization: "Yumi",
+  category: "Food",
+  location: "Carrer d'Arago, 202 08009 Barcelona",
   user_id: User.all.ids.sample,
 )
 
 Event.create(
-  title: Faker::App.name,
-  description: Faker::Company.bs, # Faker::Matz.quote
+  title: "Launch your start-up in an hour",
+  description: "Nothing is impossible", # Faker::Matz.quote
   start_time: "2017-08-24 13:00:00",
   end_time: "2017-08-24 18:00:00",
-  organization: Faker::Company.unique.name,
-  category: Faker::Job.field,
-  location: Faker::Address.unique.street_address,
+  organization: "Living in clouds",
+  category: "Innovation",
+  location: "Carrer de Corsega, 103, 08036 Barcelona",
   user_id: User.all.ids.sample,
 )
 
 Event.create(
-  title: Faker::App.name,
-  description: Faker::Company.bs, # Faker::Matz.quote
+  title: "VivaTech",
+  description: "Come to meet 100 start-ups during a day", # Faker::Matz.quote
   start_time: "2017-06-30 13:00:00",
   end_time: "2017-06-30 18:00:00",
-  organization: Faker::Company.unique.name,
-  category: Faker::Job.field,
-  location: Faker::Address.unique.street_address,
+  organization: "VivaTechnology",
+  category: "Tech",
+  location: "Carrer dels Tallers, 79, 08001 Barcelona",
   user_id: User.all.ids.sample,
 )
 
 Event.create(
-  title: Faker::App.name,
-  description: Faker::Company.bs, # Faker::Matz.quote
+  title: "Team Management with Babybell",
+  description: "Learn how to manage a team in an efficient and cheesy way", # Faker::Matz.quote
   start_time: "2017-07-30 13:00:00",
   end_time: "2017-07-30 18:00:00",
-  organization: Faker::Company.unique.name,
-  category: Faker::Job.field,
-  location: Faker::Address.unique.street_address,
+  organization: "Babybell",
+  category: "Psychology",
+  location: "Carrer de Valencia, 23, 08009 Barcelona",
   user_id: User.all.ids.sample,
 )
 
 Event.create(
-  title: Faker::App.name,
-  description: Faker::Company.bs, # Faker::Matz.quote
+  title: "What's design?",
+  description: "Everything is design, so what's everything?", # Faker::Matz.quote
   start_time: "2017-09-24 13:00:00",
   end_time: "2017-09-24 18:00:00",
-  organization: Faker::Company.unique.name,
-  category: Faker::Job.field,
-  location: Faker::Address.unique.street_address,
+  organization: "Sketch",
+  category: 'Design',
+  location: "Carrer de Valencia, 301, 08009 Barcelona",
   user_id: User.all.ids.sample,
 )
 
 Event.create(
-  title: Faker::App.name,
-  description: Faker::Company.bs, # Faker::Matz.quote
+  title: "Learn coding at 4 years old?",
+  description: "Coding is now available for schools, come to discover this new way of learning", # Faker::Matz.quote
   start_time: "2017-11-24 13:00:00",
   end_time: "2017-11-24 18:00:00",
-  organization: Faker::Company.unique.name,
-  category: Faker::Job.field,
-  location: Faker::Address.unique.street_address,
+  organization: "Catalunya Education",
+  category: "Education",
+  location: "Carrer de Valencia, 125, 08009 Barcelona",
   user_id: User.all.ids.sample,
 )
 
-Event.create(
-  title: Faker::App.name,
-  description: Faker::Company.bs, # Faker::Matz.quote
-  start_time: "2017-12-24 13:00:00",
-  end_time: "2017-12-24 18:00:00",
-  organization: Faker::Company.unique.name,
-  category: Faker::Job.field,
-  location: Faker::Address.unique.street_address,
-  user_id: User.all.ids.sample,
-)
-
-Event.create(
-  title: Faker::App.name,
-  description: Faker::Company.bs, # Faker::Matz.quote
-  start_time: "2017-11-24 13:00:00",
-  end_time: "2017-11-24 18:00:00",
-  organization: Faker::Company.unique.name,
-  category: Faker::Job.field,
-  location: Faker::Address.unique.street_address,
-  user_id: User.all.ids.sample,
-)
-
-Event.create(
-  title: Faker::App.name,
-  description: Faker::Company.bs, # Faker::Matz.quote
-  start_time: "2017-10-24 13:00:00",
-  end_time: "2017-10-24 18:00:00",
-  organization: Faker::Company.unique.name,
-  category: Faker::Job.field,
-  location: Faker::Address.unique.street_address,
-  user_id: User.all.ids.sample,
-)
-
-Event.create(
-  title: Faker::App.name,
-  description: Faker::Company.bs, # Faker::Matz.quote
-  start_time: "2017-10-24 13:00:00",
-  end_time: "2017-10-24 18:00:00",
-  organization: Faker::Company.unique.name,
-  category: Faker::Job.field,
-  location: Faker::Address.unique.street_address,
-  user_id: User.all.ids.sample,
-)
-
-Event.create(
-  title: Faker::App.name,
-  description: Faker::Company.bs, # Faker::Matz.quote
-  start_time: "2017-10-24 13:00:00",
-  end_time: "2017-10-26 18:00:00",
-  organization: Faker::Company.unique.name,
-  category: Faker::Job.field,
-  location: Faker::Address.unique.street_address,
-  user_id: User.all.ids.sample,
-)
-
-Event.create(
-  title: Faker::App.name,
-  description: Faker::Company.bs, # Faker::Matz.quote
-  start_time: "2017-08-20 13:00:00",
-  end_time: "2017-08-20 18:00:00",
-  organization: Faker::Company.unique.name,
-  category: Faker::Job.field,
-  location: Faker::Address.unique.street_address,
-  user_id: User.all.ids.sample,
-)
 
 
 
