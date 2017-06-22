@@ -58,16 +58,26 @@ class EventsController < ApplicationController
   end
 
   def search
+    @event = Event.new
     # if there is no search parameter
-    if params[:search].nil?
+    if params[:event].nil?
       @events = Event.all
-    # or a category or a city
+    end
+
+    # if category
+    unless params[:event].nil? || params[:event][:category].blank?
+      tags_list = params[:event][:category].select { |i| i.present? }
+      @events = Event.where("category ILIKE ?",tags_list[0])
+    end
+
+    # if location
+    unless params[:event].nil? || params[:event][:location].blank?
       @category = params[:event][:category]
       @location = params[:event][:location]
-      q1 = "%#{@location}%"
-      q2 = "%#{@category}%"
 
-      @events = Event.where("location ILIKE ? OR category ILIKE ?", q1, q2)
+      q2 = "%#{@location}%"
+
+      @events = Event.where("location ILIKE ?", q2)
 
         # if @location == ""
         #   @events = Event.where(location: @location)
@@ -77,9 +87,9 @@ class EventsController < ApplicationController
     end
 
     render :index
+
       # if a parameter doesn't correspond to anything - add a note
   end
-end
 
 
   private

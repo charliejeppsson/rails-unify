@@ -3,22 +3,33 @@
   <div class="container home-page">
     <div class="row">
 <!-- Search bar -->
-      <div class="col-xs-12">
-        <div class="search events">
-          <%= form_tag search_events_path, method: :get do  %>
-          <input type="text" class="searchTerm" placeholder="Where are you? What type of event are you looking for? " name="search">
 
+        <div class="search events">
+          <%= simple_form_for @event, :url => events_path, method: :get do |f| %>
+          <!-- class for searchTerm -->
+          <div class="col-xs-12">
+            <%=  f.input :location, input_html: { value: @location }, label_html: { class: 'shortTerm'}, placeholder: "Where are you?", label: false %>
+          </div>
+
+          <div class="col-xs-12">
+            <%=  f.input :category, input_html: { value: @category }, label_html: { class: 'shortTerm'}, placeholder: "What type of event are you looking for?", label: false, include_blank: false, as: :check_boxes, collection: Event::CATEGORIES %>
+          </div>
+<!--
           <button type="submit" class="searchButton">
             <i class="fa fa-search"></i>
-          </button>
+          </button> -->
+          <%= f.submit "Search", :class => 'btn btn-default' %>
           <% end %>
         </div>
-      </div>
+
 
 <!-- List of the events -->
       <div class="col-xs-12">
-        <% unless @events.nil? %>
+        <% if @events.blank? %>
+        Pas d'events
+        <% else %>
         <ul class="list-unstyled">
+
           <%  @events.each do |event| %>
             <li>
               <h2><%= link_to event.title, event_path(event) %></h2>
