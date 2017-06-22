@@ -1,0 +1,69 @@
+.user-list {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  border-radius: 3px;
+  transition: all 0.15s ease;
+  width: 500px;
+  margin: 10px auto;
+}
+
+/* Body design */
+.user-list-body {
+  flex: 1 1 auto;
+}
+.user-list-body h3 {
+  font-weight: bold;
+  font-size: 23px;
+  margin-top: 0;
+}
+.user-list-body p {
+  font-weight: lighter;
+  color: #999999;
+  margin-bottom: 0;
+}
+
+// user-list avatar
+.user-list-avatar {
+  width: 40px;
+  border-radius: 50%;
+  margin-right: 30px;
+}
+
+/* Controls design */
+.user-list-controls {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: 0px;
+}
+.user-list-controls a {
+  padding: 0 20px;
+  font-size: 17px;
+  color: #E6E6E6;
+}
+.user-list-controls a:hover {
+  color: #42264B !important
+}
+.user-list-controls-hidden a {
+  color: transparent;
+  font-size: 15px;
+  transition: all 0.15s ease;
+  border-color: transparent;
+}
+
+/* Hover effects */
+.user-list:hover {
+  background: #f7f7fa;
+  cursor: pointer;
+}
+.user-list-upvote:hover, .user-list-upvote.user-list-upvote-upvoted {
+  color: #5898f1;
+  cursor: pointer;
+}
+.user-list-upvote-upvoted .user-list-arrow {
+  border-bottom-color: #5898f1;
+}
+// .user-list:hover .user-list-upvote { transform: scale(1.2) }
+.user-list:hover .user-list-controls-hidden a { color: #E6E6E6 }
+.user-list-upvote:hover .user-list-arrow { border-bottom: 9px solid #5898f1 }
