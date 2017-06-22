@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+
   resources :events do
     get 'attend', to: "events#attend"
     get 'checkin', to: "events#checkin"
@@ -12,7 +13,12 @@ Rails.application.routes.draw do
     end
   end
 
-  devise_for :users
+  # LinkedIn sign in/sign up
+  devise_for :users, controllers: {omniauth_callbacks: 'users/omniauth_callbacks'}
+
   root to: 'pages#home'
+
+  # Profile page
+  resources :users, only: [:show]
 
 end
