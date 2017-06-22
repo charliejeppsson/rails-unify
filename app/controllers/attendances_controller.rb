@@ -1,10 +1,10 @@
 class AttendancesController < ApplicationController
-   before_action :require_login, only: [:dashboard]
+  #  before_action :require_login, only: [:dashboard]
    #add before_action event.save control (user_id: @user.id, event_id: @event.id) doesn't exist
 
   def dashboard
-    @organized_events = current_user.events.order(start_time: :asc).select{|event| event.start_time > Time.now }
-    @events = current_user.events_to_attend.order(start_time: :asc).select{|event| event.start_time > Time.now }
+    @organized_events = current_user.events.order(start_time: :asc).select{|event| event.start_time > (Time.now - (2*7*24*60*60)) }
+    @events = current_user.events_to_attend.order(start_time: :asc).select{|event| event.start_time > (Time.now - (2*7*24*60*60)) }
     @user = current_user
   end
 
@@ -23,5 +23,3 @@ class AttendancesController < ApplicationController
     redirect_to dashboard_attendances_path
   end
 end
-
-

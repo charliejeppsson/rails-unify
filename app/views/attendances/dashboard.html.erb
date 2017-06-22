@@ -24,6 +24,7 @@
       <% @organized_events.each do |event| %>
         <h5> <%= link_to event.title, event_path(event) %> </h5>
         <p><%= event.start_time%></p>
+
         <p style="font-weight: lighter"> <%= link_to "Edit event", edit_event_path(event) %> </p>
       <% end %>
     </div>
