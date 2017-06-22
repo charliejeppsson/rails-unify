@@ -1,3 +1,131 @@
 @import "alert";
 @import "avatars";
 @import "badges";
+
+.wrapper {
+  padding-bottom: 25px;
+  padding-top: 6px;
+  margin-left: 26px;
+  margin-right: 26px;
+  // display: flex;
+  // justify-content: space-between;
+}
+
+.container-pages {
+  padding-left: 20px;
+}
+
+.wrapper h2 {
+  color: #505D73;
+  font-size: 30px;
+  font-size: center;
+  padding: 20px;
+}
+
+.products {
+  padding-left: 30px;
+  padding-top: 30px;
+}
+
+.product {
+  align-items: center;
+  padding: 20px;
+  border-radius: 3px;
+  transition: all 0.15s ease;
+}
+
+/* Body design */
+.product-body {
+  // flex: 1 1 auto;
+}
+.product-body h3 {
+  font-weight: bold;
+  font-size: 23px;
+  margin-top: 0;
+}
+.product-body p {
+  font-weight: lighter;
+  color: #999999;
+  margin-bottom: 0;
+}
+
+/* Product image */
+.product-image {
+  border-radius: 10px;
+  margin-right: 20px;
+  width: 175px;
+}
+
+.product-count {
+  margin: 2px 0 0;
+}
+.product-arrow {
+  transition: all 0.15s ease;
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 6px solid transparent;
+  border-bottom: 9px solid black;
+  border-radius: 2px;
+  margin: auto;
+}
+
+/* Controls design */
+// .product-controls {
+//   // display: flex;
+//   align-items: center;
+//   // text-align: center;
+//   margin: 0px;
+// }
+.product-controls a {
+  padding: 0 20px;
+  font-size: 17px;
+  color: #E6E6E6;
+}
+.product-controls a:hover {
+  color: #D3473C !important
+}
+.product-controls-hidden a {
+  color: transparent;
+  font-size: 15px;
+  transition: all 0.15s ease;
+  border-color: transparent;
+}
+
+/* Hover effects */
+.product:hover {
+  background: #f7f7fa;
+  cursor: pointer;
+}
+.product-upvote:hover, .product-upvote.product-upvote-upvoted {
+  color: #5898f1;
+  cursor: pointer;
+}
+.product-upvote-upvoted .product-arrow {
+  border-bottom-color: #5898f1;
+}
+// .product:hover .product-upvote { transform: scale(1.2) }
+.product:hover .product-controls-hidden a { color: #E6E6E6 }
+.product-upvote:hover .product-arrow { border-bottom: 9px solid #5898f1 }
+
+
+// #map {
+//   position: fixed;
+//   // bottom: 0;
+//   right: 0;
+// }
+
+.wrapper-map {
+  // position: fixed;
+  width: 100%;
+  overflow: hidden;
+  // display: block;
+  // float: right;
+  // z-index: -1;
+
+}
+
+#map {
+  height: 200px;
+}

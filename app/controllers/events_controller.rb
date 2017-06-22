@@ -10,10 +10,33 @@ class EventsController < ApplicationController
     #   @category = params[:event][:category]
     #   @events = Event.where(category: @category)
     # end
+
+    @hash = Gmaps4rails.build_markers(@events) do |event, marker|
+      if event.latitude
+        marker.lat event.latitude
+        marker.lng event.longitude
+      else
+        marker.lat '29.978'
+        marker.lng '31.1320'
+        # CHANGE!
+      end
+    end
   end
 
   def show
+
     @alert_message = "You are viewing #{@event.title}"
+    @event_coordinates = [@event]
+    @hash = Gmaps4rails.build_markers(@event_coordinates) do |event, marker|
+      if event.latitude
+        marker.lat event.latitude
+        marker.lng event.longitude
+      else
+        marker.lat '29.978'
+        marker.lng '31.1320'
+        # CHANGE!
+      end
+    end
   end
 
   def new
