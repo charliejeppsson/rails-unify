@@ -7,6 +7,7 @@
 <% end %>
 
 <% if @event.now? %>
+<p>This event is NOW</p>
 <%= link_to "Checkin to this event", event_attend_path(@event), method: :get, class: "navbar-wagon-item navbar-wagon-button btn" %>
 <% end %>
 
