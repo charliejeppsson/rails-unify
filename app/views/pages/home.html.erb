@@ -1,28 +1,29 @@
+<% content_for :full_page do %>
+  <div class="container text-center">
+    <div class="row">
+      <div class="col-xs-12">
+        <!-- Title -->
 
-<div class="container">
-  <div class="row">
-    <div class="col-xs-12">
-      <!-- Title -->
+        <h1>Unify</h1>
+        <p>Make networking great again</p>
 
-      <h1>Unify</h1>
-      <p>Make networking great again</p>
+        <!-- Discover events near you - link with event_path -->
 
-      <!-- Discover events near you - link with event_path -->
+        <h2><%= link_to "Discover events around you", events_path%></h2>
 
-      <h2><%= link_to "Discover events around you", events_path%></h2>
+        <!-- Or -->
+        <h3>Or</h3>
 
-      <!-- Or -->
-      <h3>Or</h3>
+        <!-- Log In & Sign Up -->
+        <p><%= link_to "Log in", new_user_session_path %></p>
+        <p><%= link_to "Sign up", new_user_registration_path %></p>
 
-      <!-- Log In & Sign Up -->
-      <p><%= link_to "Log in", new_user_session_path %></p>
-      <p><%= link_to "Sign up", new_user_registration_path %></p>
-
-      <!-- Terms and conditions -->
-      <p>Terms and conditions</p>
+        <!-- Terms and conditions -->
+        <p>Terms and conditions</p>
+      </div>
     </div>
-  </div>
 
-</div>
+  </div>
+<% end %>
 
 

@@ -9,10 +9,21 @@
     <%= stylesheet_link_tag 'application', media: 'all' %>
   </head>
   <body>
+
+
+  <% if content_for :full_page %>
+  <%= yield :full_page %>
+
+  <% else %>
+
     <%= render 'shared/navbar' %>
     <%= render 'shared/flashes' %>
     <%= yield %>
     <%= render "shared/footer" %>
     <%= javascript_include_tag 'application' %>
+
+  <% end %>
   </body>
 </html>
+
+
