@@ -1,6 +1,6 @@
 class Event < ApplicationRecord
 
-CATEGORIES = ['Tech', 'Human Resources', 'Education', 'Innovation', 'Healthcare']
+CATEGORIES = ['Tech', 'Human Resources', 'Education', 'Innovation', 'Food', 'Psychology', 'Design']
   belongs_to :user
   has_many :attendances, dependent: :destroy
 
