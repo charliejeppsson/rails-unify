@@ -2,10 +2,13 @@ Rails.application.routes.draw do
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
-  resources :events do
+  resources :events, except: [:index] do
+
     get 'attend', to: "events#attend"
     get 'checkin', to: "events#checkin"
   end
+
+  get 'events', to: "events#search", as: 'search'
 
   resources :attendances, only: [:destroy] do
     collection do
