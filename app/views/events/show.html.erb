@@ -49,9 +49,9 @@
     <!-- List with attendants and links to their profiles -->
     <div class="col-xs-6">
       <div>
-        <h2 class="text-center"> <%= @event.attendances.count %> checked-in attendants</h2>
         <% attended = current_user.attendances.select { |attendance| attendance.event_id == @event.id } %>
-        <% unless attended.empty? %>
+        <% if not attended.empty? %>
+          <h2 class="text-center"> <%= @event.attendances.count %> checked-in attendants</h2>
           <% @event.attendances.each do |attendance| %>
             <% user_id = attendance.user_id %>
             <% user = User.find(user_id) %>
@@ -71,6 +71,11 @@
               </ul>
             </div>
           <% end %>
+        <% else %>
+          <div class="hidden-list">
+            <h2> <%= @event.attendances.count %> checked-in attendants</h2>
+            <p>Head over to the event and check in to see who they are!</p>
+          </div>
         <% end %>
       </div>
     </div>
@@ -78,3 +83,9 @@
   </div>
 </div>
 
+
+<!-- NOTE: Create banner with image, logo, slogan and randomized quotes, including:
+  "You're only as strong as your network." - Barrack Obama
+  "No man is an island." - Ernest Hemingway
+  "My big fat network is so annoying and never helped me with anything." - No one ever
+ -->

@@ -67,3 +67,8 @@
 // .user-list:hover .user-list-upvote { transform: scale(1.2) }
 .user-list:hover .user-list-controls-hidden a { color: #E6E6E6 }
 .user-list-upvote:hover .user-list-arrow { border-bottom: 9px solid #5898f1 }
+
+.hidden-list {
+  text-align: center;
+  margin-top: 125px;
+}
