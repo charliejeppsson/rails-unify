@@ -1,22 +1,25 @@
-<h1>Events#show</h1>
-<h1><%= @event.title %></h1>
+<div class="text-center">
+  <h1><%= @event.title %></h1>
 
 
-<% if @event.upcomming? %>
- <p>This event is to come. At the event, you will be able to check-in to enable the chat and view the other attendees</p>
-<% end %>
+  <% if @event.upcomming? %>
+   <p>This event is to come. At the event, you will be able to check-in to enable the chat and view the other attendees</p>
+  <% end %>
 
-<% if @event.now? %>
-<%= link_to "Checkin to this event", event_attend_path(@event), method: :get, class: "navbar-wagon-item navbar-wagon-button btn" %>
-<% end %>
+  <% if @event.now? %>
+  <%= link_to "Checkin to this event", event_attend_path(@event), method: :get, class: "navbar-wagon-item navbar-wagon-button btn" %>
+  <% end %>
 
-<% if @event.past? %>
-<p>This event is past</p>
-<% end %>
+  <% if @event.past? %>
+  <p>This event is past</p>
+  <% end %>
+</div>
 
-
-<div class="wrapper">
-<div class="wrapper-map">
+<div class="container">
+  <div class="row">
+    <div class="col-xs-6">
+      <div class="wrapper">
+        <div class="wrapper-map">
           <div id="map" style="width: 100%; height: 320px;"></div>
 
           <% content_for(:after_js) do %>
@@ -37,8 +40,39 @@
 
             <% end %>
           <% end %>
+        </div>
       </div>
-       </div>
+    </div>
 
+    <!-- List with attendants and links to their profiles -->
+    <div class="col-xs-6">
+      <div>
+        <h2 class="text-center"> <%= @event.attendances.count %> checked-in attendants</h2>
+        <% attended = current_user.attendances.select { |attendance| attendance.event_id == @event.id } %>
+        <% unless attended.empty? %>
+          <% @event.attendances.each do |attendance| %>
+            <% user_id = attendance.user_id %>
+            <% user = User.find(user_id) %>
+            <div class="user-list">
+              <% avatar_url = user.picture || "https://timeforgeography.co.uk/static/img/avatar-placeholder.png" %>
+              <%= image_tag avatar_url, class: "user-list-avatar" %>
+              <div class='user-list-body'>
+                <a href="<%= user_path(user.id) %>" style="text-decoration: none; color: #333333;"> <h5> <%= user.first_name + " " + user.last_name %> </h5> </a>
+                <p> <%= user.headline %> </p>
+              </div>
+              <ul class="list-inline user-list-controls hidden-sm hidden-xs">
+                <% unless user.url.nil? %>
+                  <li><a href="<%= user.url %>" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+                <% end %>
+                <li><a href="#"><i class="fa fa-comments"></i></a></li>
+                <li><a href="#"><i class="fa fa-address-book"></i></a></li>
+              </ul>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
 
-<p>Find me in app/views/events/show.html.erb</p>
+  </div>
+</div>
+
