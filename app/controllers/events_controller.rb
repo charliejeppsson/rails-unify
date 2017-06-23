@@ -11,7 +11,7 @@ class EventsController < ApplicationController
     #   @events = Event.where(category: @category)
     # end
 
-    @hash = Gmaps4rails.build_markers(@events) do |event, marker|
+    @hash1 = Gmaps4rails.build_markers(@events) do |event, marker|
       if event.latitude
         marker.lat event.latitude
         marker.lng event.longitude
