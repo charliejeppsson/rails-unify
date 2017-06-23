@@ -1,21 +1,34 @@
-<div class="text-center">
-  <h1><%= @event.title %></h1>
 
+<% if @event.photo? %>
+  <div class="banner-event" style="background-image: linear-gradient(135deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.5) 50%), url('<%= cl_image_path @event.photo %>')">
+<% else %>
+  <div class="banner-event" style="background-image: linear-gradient(135deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.5) 50%), url('https://images.unsplash.com/photo-1478812954026-9c750f0e89fc?dpr=1&auto=format&fit=crop&w=1500&h=1000&q=80&cs=tinysrgb&crop=&bg=')">
+<% end %>
+    <div class="banner-event-text">
+      <h1><%= @event.title %></h1>
 
-  <% if @event.upcomming? %>
-   <p>This event is to come. At the event, you will be able to check-in to enable the chat and view the other attendees</p>
-  <% end %>
+      <% if @event.upcomming? %>
+       <h3>This event is to come. At the event, you will be able to check-in to enable the chat and view the other attendees</h3>
+      <% end %>
 
-  <% if @event.now? %>
-    <p>This event is NOW</p>
-    <%= link_to "Checkin to this event", event_attend_path(@event), method: :get, class: "navbar-wagon-item navbar-wagon-button btn" %>
-  <% end %>
+      <% if @event.now? %>
+        <h3>This event is NOW</h3>
+        <% if user_signed_in?%>
+          <% attended = current_user.attendances.select { |attendance| attendance.event_id == @event.id } %>
+          <% if attended.empty? %>
+            <%= link_to "Check-in to this event", event_attend_path(@event), method: :get, class: "navbar-wagon-item navbar-wagon-button btn" %>
+          <% elsif attended.empty? == false %>
+            <h3>You are checked-in.</h3>
+          <% end %>
+        <% end %>
+      <% end %>
 
+      <% if @event.past? %>
+        <h3>This event is no longer open for check-ins.</h3>
+      <% end %>
 
-  <% if @event.past? %>
-    <p>This event is past</p>
-  <% end %>
-</div>
+    </div>
+  </div>
 
 <div class="container">
   <div class="row">
@@ -49,26 +62,33 @@
     <!-- List with attendants and links to their profiles -->
     <div class="col-xs-6">
       <div>
-        <% attended = current_user.attendances.select { |attendance| attendance.event_id == @event.id } %>
-        <% if not attended.empty? %>
-          <h2 class="text-center"> <%= @event.attendances.count %> checked-in attendants</h2>
-          <% @event.attendances.each do |attendance| %>
-            <% user_id = attendance.user_id %>
-            <% user = User.find(user_id) %>
-            <div class="user-list">
-              <% avatar_url = user.picture || "https://timeforgeography.co.uk/static/img/avatar-placeholder.png" %>
-              <%= image_tag avatar_url, class: "user-list-avatar" %>
-              <div class='user-list-body'>
-                <a href="<%= user_path(user.id) %>" style="text-decoration: none; color: #333333;"> <h5> <%= user.first_name + " " + user.last_name %> </h5> </a>
-                <p> <%= user.headline %> </p>
+        <% if user_signed_in? %>
+          <% attended = current_user.attendances.select { |attendance| attendance.event_id == @event.id } %>
+          <% if attended.empty? == false %>
+            <h2 class="text-center"> <%= pluralize @event.attendances.count, "checked-in attendant" %> </h2>
+            <% @event.attendances.each do |attendance| %>
+              <% user_id = attendance.user_id %>
+              <% user = User.find(user_id) %>
+              <div class="user-list">
+                <% avatar_url = user.picture || "https://timeforgeography.co.uk/static/img/avatar-placeholder.png" %>
+                <%= image_tag avatar_url, class: "user-list-avatar" %>
+                <div class='user-list-body'>
+                  <a href="<%= user_path(user.id) %>" style="text-decoration: none; color: #333333;"> <h5> <%= user.first_name + " " + user.last_name %> </h5> </a>
+                  <p> <%= user.headline %> </p>
+                </div>
+                <ul class="list-inline user-list-controls hidden-sm hidden-xs">
+                  <% unless user.url.nil? %>
+                    <li><a href="<%= user.url %>" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+                  <% end %>
+                  <li><a href="#"><i class="fa fa-comments"></i></a></li>
+                  <li><a href="#"><i class="fa fa-address-book"></i></a></li>
+                </ul>
               </div>
-              <ul class="list-inline user-list-controls hidden-sm hidden-xs">
-                <% unless user.url.nil? %>
-                  <li><a href="<%= user.url %>" target="_blank"><i class="fa fa-linkedin"></i></a></li>
-                <% end %>
-                <li><a href="#"><i class="fa fa-comments"></i></a></li>
-                <li><a href="#"><i class="fa fa-address-book"></i></a></li>
-              </ul>
+            <% end %>
+          <% else %>
+            <div class="hidden-list">
+              <h2> <%= pluralize @event.attendances.count, "checked-in attendant" %></h2>
+              <p>Head over to the event and check in to see who they are!</p>
             </div>
           <% end %>
         <% else %>
