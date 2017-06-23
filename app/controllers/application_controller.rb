@@ -17,7 +17,7 @@ class ApplicationController < ActionController::Base
   def current_location
     # request.location.data
     # {"ip"=>"127.0.0.1", "city"=>"", "region_code"=>"", "region_name"=>"", "metrocode"=>"", "zipcode"=>"", "latitude"=>"0", "longitude"=>"0", "country_name"=>"Reserved", "country_code"=>"RD"}
-    {"ip"=>"127.0.0.1", "city"=>"", "region_code"=>"", "region_name"=>"", "metrocode"=>"", "zipcode"=>"", "latitude"=>"29.978", "longitude"=>"31.1320", "country_name"=>"Reserved", "country_code"=>"RD"}
+    {"ip"=>"127.0.0.1", "city"=>"", "region_code"=>"", "region_name"=>"", "metrocode"=>"", "zipcode"=>"", "latitude"=>"41.408955", "longitude"=>"2.152973", "country_name"=>"Reserved", "country_code"=>"RD"}
   end
 
 
