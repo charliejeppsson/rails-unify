@@ -15,7 +15,10 @@ class ApplicationController < ActionController::Base
   end
 
   def current_location
-    request.location.data
+    location = request.location.data
+    Rails.logger.info(location)
+
+    location
     # {"ip"=>"127.0.0.1", "city"=>"", "region_code"=>"", "region_name"=>"", "metrocode"=>"", "zipcode"=>"", "latitude"=>"0", "longitude"=>"0", "country_name"=>"Reserved", "country_code"=>"RD"}
     # {"ip"=>"127.0.0.1", "city"=>"", "region_code"=>"", "region_name"=>"", "metrocode"=>"", "zipcode"=>"", "latitude"=>"41.408955", "longitude"=>"2.152973", "country_name"=>"Reserved", "country_code"=>"RD"}
   end
