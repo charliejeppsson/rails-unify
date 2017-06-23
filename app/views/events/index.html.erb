@@ -58,7 +58,10 @@
 
           <%  @events.each do |event| %>
             <li>
-              <h2><%= link_to event.title, event_path(event) %></h2>
+              <div class="event-index-title-description">
+                <h2><%= link_to event.title, event_path(event) %></h2>
+                <p><%= event.description %></p>
+              </div>
             </li>
           <% end %>
         </ul>
