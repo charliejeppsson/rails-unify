@@ -1,12 +1,8 @@
 class ContactsController < ApplicationController
   def new
-    @contact = Contact.new
   end
 
   def create
-      @user_id = current_user_id
-
-
   end
 
   def index
@@ -16,5 +12,8 @@ class ContactsController < ApplicationController
   end
 
   def destroy
+    @contact = Contact.find(params[:id])
+    @contact.destroy
+    redirect_to contact_attendances_path
   end
 end

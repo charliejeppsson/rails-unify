@@ -99,6 +99,24 @@ class EventsController < ApplicationController
 
 end
 
+  def addcontactbook
+
+    @event = Event.find(params[:event_id])
+    @user_id = current_user_id
+    @user_contact_id = user_id
+
+  if Contact.exists?(user_id: @user.id, user_contact_id: @user_contact_id)
+      redirect_to event_path(@event)
+      flash[:alert] = "You have already this user in your contactbook"
+
+  else  Contact.create(user_id: @user.id, event_id: @event.id)
+        redirect_to event_path(@event)
+        flash[:notice] = "You have successfully added a contact"
+end
+
+
+end
+
   def search
     @event = Event.new
     # if there is no search parameter
