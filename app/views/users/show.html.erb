@@ -1,9 +1,5 @@
 <!-- Profile page, still only viewable for current user - must be fixed -->
 
-<% if current_user == @user %>
-  <%= link_to edit_user_registration_path %>
-<% end %>
-
   <div class="profile-wrapper">
 
     <% avatar_url = @user.picture || "https://timeforgeography.co.uk/static/img/avatar-placeholder.png" %>
@@ -55,5 +51,8 @@
     </div>
 
     <p style="margin-top: 30px;"> <%= link_to "See " + @user.first_name + "'s LinkedIn profile", @user.url %> </p>
+    <% if current_user == @user %>
+      <p style="margin-top: 30px;"> <%= link_to "Edit your profile", edit_user_registration_path %> </p>
+    <% end %>
 
   </div>

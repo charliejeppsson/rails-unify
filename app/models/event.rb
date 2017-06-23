@@ -1,4 +1,10 @@
 class Event < ApplicationRecord
+  validates :title, presence: true
+  validates :location, presence: true
+  validates :start_time, presence: true
+  validates :end_time, presence: true
+  validates :description, presence: true, length: { minimum: 10 }
+  validates :category, presence: true
 
 CATEGORIES = ['Tech', 'Human Resources', 'Education', 'Innovation', 'Food', 'Psychology', 'Design']
 belongs_to :user
