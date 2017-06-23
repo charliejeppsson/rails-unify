@@ -12,7 +12,9 @@
         <h5><%= link_to event.title, event_path(event) %></h5>
 
         <p><%= event.start_time %></p>
-
+        <%# if (event.start_time) < Time.now - 10.minutes %>
+          <!-- <p>10 min until event starts!</p> -->
+        <%# end %>
         <% @attendance = current_user.attendances.where(event: event).first %>
 
         <p style="font-weight: lighter"><%= link_to "Unbook this event", attendance_path(@attendance), method: :delete, data: {confirm: "are you sure ?"} %></p>
@@ -24,7 +26,9 @@
       <% @organized_events.each do |event| %>
         <h5> <%= link_to event.title, event_path(event) %> </h5>
         <p><%= event.start_time%></p>
-
+        <%# if (event.start_time + 2.hours) < Time.now - 10.minutes %>
+          <!-- <p>10 min until event starts!</p> -->
+        <%# end %>
         <p style="font-weight: lighter"> <%= link_to "Edit event", edit_event_path(event) %> </p>
       <% end %>
     </div>

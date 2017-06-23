@@ -8,6 +8,7 @@ class AttendancesController < ApplicationController
     @user = current_user
   end
 
+
   def destroy
     # @user = current_user
     # @events = current_user.events_to_attend.order(start_time: :asc).select{|event| event.start_time > Time.now }

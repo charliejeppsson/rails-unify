@@ -12,6 +12,7 @@
 
 ActiveRecord::Schema.define(version: 20170623091959) do
 
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -99,6 +100,7 @@ ActiveRecord::Schema.define(version: 20170623091959) do
     t.datetime "token_expiry"
     t.string "picture"
     t.string "url"
+    t.boolean "is_public", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

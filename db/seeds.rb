@@ -68,7 +68,7 @@ Event.create(
   end_time: "2017-06-24 18:00:00",
   organization: "Pocket Confident",
   category: "Tech",
-  location: "Carrer de Rossello, 23 08037 Barcelona",
+  location: "Carrer de Corsega, 95, 08036 Barcelona",
   user_id: User.all.ids.sample,
 )
 
@@ -112,7 +112,7 @@ Event.create(
   end_time: "2017-06-30 18:00:00",
   organization: "VivaTechnology",
   category: "Tech",
-  location: "Carrer dels Tallers, 79, 08001 Barcelona",
+  location: "Carrer de Corsega, 120, 08036 Barcelona",
   user_id: User.all.ids.sample,
 )
 

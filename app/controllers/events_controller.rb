@@ -44,7 +44,15 @@ class EventsController < ApplicationController
   end
 
   def create
+    start_t = params[:event][:start_time]
+    end_t = params[:event][:end_time]
+
+    start_p =  DateTime.strptime(start_t, "%m/%d/%Y %H:%M %p")
+    end_p = DateTime.strptime(end_t, "%m/%d/%Y %H:%M %p")
+
     @event = Event.new(event_params)
+    @event.start_time = start_p
+    @event.end_time = end_p
 
     if @event.save
       redirect_to events_path

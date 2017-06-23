@@ -8,8 +8,8 @@
         <div class="form-inputs">
           <%= f.input :title, required: true, autofocus: true %>
           <%= f.input :location, required: true, autofocus: true %>
-          <%= f.input :start_time, required: true, autofocus: true %>
-          <%= f.input :end_time, required: true, autofocus: true %>
+          <%= f.input :start_time,as: :string, required: true, autofocus: true, input_html: {id: "datetimepicker1"} %>
+          <%= f.input :end_time, as: :string, required: true, autofocus: true, input_html: {id: "datetimepicker2"}  %>
           <%= f.input :description, required: true, autofocus: true %>
           <%= f.input :organization, required: false, autofocus: true %>
           <%= f.input :category, required: true, autofocus: true %>
