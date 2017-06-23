@@ -49,10 +49,12 @@
   </div>
 
       <div class="col-xs-12">
-        <% if @events.blank? %>
-        Pas d'events
-        <% else %>
+
         <ul class="list-unstyled">
+        <% if @events.empty? %>
+        No events correspond to your research !
+
+      <% end %>
 
           <%  @events.each do |event| %>
             <li>
@@ -60,10 +62,10 @@
             </li>
           <% end %>
         </ul>
-        <% end %>
+
       </div>
-      
-      
+
+
     </div>
   </div>
 </div>
