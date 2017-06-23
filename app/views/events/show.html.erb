@@ -88,13 +88,17 @@
           <% else %>
             <div class="hidden-list">
               <h2> <%= pluralize @event.attendances.count, "checked-in attendant" %></h2>
-              <p>Head over to the event and check in to see who they are!</p>
+              <% if @event.now? %>
+                <p>Head over to the event and check in to see who they are!</p>
+              <% end %>
             </div>
           <% end %>
         <% else %>
           <div class="hidden-list">
             <h2> <%= pluralize @event.attendances.count, "checked-in attendant" %></h2>
-            <p>Head over to the event and check in to see who they are!</p>
+            <% if @event.now? %>
+              <p>Head over to the event and check in to see who they are!</p>
+            <% end %>
           </div>
         <% end %>
       </div>
