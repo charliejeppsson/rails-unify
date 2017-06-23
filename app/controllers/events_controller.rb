@@ -47,8 +47,10 @@ class EventsController < ApplicationController
     start_t = params[:event][:start_time]
     end_t = params[:event][:end_time]
 
-    start_p =  DateTime.strptime(start_t, "%m/%d/%Y %H:%M %p")
-    end_p = DateTime.strptime(end_t, "%m/%d/%Y %H:%M %p")
+    if start_t != "" && end_t != ""
+      start_p =  DateTime.strptime(start_t, "%m/%d/%Y %H:%M %p")
+      end_p = DateTime.strptime(end_t, "%m/%d/%Y %H:%M %p")
+    end
 
     @event = Event.new(event_params)
     @event.start_time = start_p
@@ -86,18 +88,18 @@ class EventsController < ApplicationController
     box = Geocoder::Calculations.bounding_box(center_point, 1)
     #center_point_event = [@event.longitude, @event.latitude]
 
-   if Attendance.exists?(user_id: @user.id, event_id: @event.id)
+    if Attendance.exists?(user_id: @user.id, event_id: @event.id)
       redirect_to event_path(@event)
       flash[:alert] = "You are already checkin"
-  elsif Event.within_bounding_box(box).first
-        Attendance.create(user_id: @user.id, event_id: @event.id)
-        redirect_to event_path(@event)
-        flash[:notice] = "You have successfully checkin this event"
-  else  redirect_to event_path(@event)
-        flash[:alert] = "You can't check in as you are not in the zone"
-  end
+    elsif Event.within_bounding_box(box).first
+      Attendance.create(user_id: @user.id, event_id: @event.id)
+      redirect_to event_path(@event)
+      flash[:notice] = "You have successfully checkin this event"
+    else  redirect_to event_path(@event)
+      flash[:alert] = "You can't check in as you are not in the zone"
+    end
 
-end
+  end
 
   def addcontactbook
 
@@ -159,7 +161,7 @@ end
   end
 
   def event_params
-    params.require(:event).permit(:title, :description, :start_time, :end_time, :organization, :category, :location, :user_id)
+    params.require(:event).permit(:title, :description, :start_time, :end_time, :organization, :category, :location, :user_id, :photo, :photo_cache)
   end
 
   def require_login
