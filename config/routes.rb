@@ -1,5 +1,15 @@
 Rails.application.routes.draw do
 
+  get 'contacts/new'
+
+  get 'contacts/create'
+
+  get 'contacts/index'
+
+  get 'contacts/show'
+
+  get 'contacts/destroy'
+
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
   resources :events, except: [:index] do
