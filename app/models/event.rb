@@ -5,7 +5,8 @@ CATEGORIES = ['Tech', 'Human Resources', 'Education', 'Innovation', 'Food', 'Psy
   has_many :attendances, dependent: :destroy
 
   def now?
-    self.start_time <= (Time.now - 10.minutes) and self.end_time >= Time.now
+    self.start_time <= Time.now and self.end_time >= Time.now
+    #(- 10.minutes) doesn't work
   end
 
   def upcomming?

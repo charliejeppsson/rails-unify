@@ -1,42 +1,58 @@
 <!-- Profile page, still only viewable for current user - must be fixed -->
-<div class="container">
-  <div class="row">
-    <div class="col-xs-12">
-      <% if current_user == @user %>
-      <% end %>
-        <div class="profile-wrapper">
-          <% avatar_url = current_user.picture || "http://placehold.it/30x30" %>
-          <%= image_tag avatar_url, class: "profile_picture" %>
-          <h3 style="margin-bottom: 30px;"> <%= current_user.first_name %> <%= current_user.last_name %> </h3>
-          <div id="textbox">
-            <p class="alignleft"> Current occupation: </p>
-            <p class="alignright"> <%= current_user.headline %> </p>
-            <p><br></p>
-          </div>
-          <div id="textbox">
-            <p class="alignleft"> Based in: </p>
-            <p class="alignright"> <%= current_user.location %> </p>
-            <p><br></p>
-          </div>
-          <div id="textbox">
-            <p class="alignleft"> Industry sector: </p>
-            <p class="alignright"><%= current_user.industry %> </p>
-            <p><br></p>
-          </div>
-          <div id="textbox">
-            <p class="alignleft"> Email: </p>
-            <p class="alignright"><%= current_user.email %> </p>
-            <p><br></p>
-          </div>
-          <div id="textbox">
-            <p class="alignleft"> I'm looking for: </p>
-            <p><br></p>
-            <p class="text-left"> "<%= current_user.description %>" </p>
-          </div>
-          <p style="margin-top: 30px;"> <%= link_to "See " + current_user.first_name + "'s LinkedIn profile", current_user.url %> </p>
 
-          <%= link_to "Edit your profile", edit_user_registration_path %>
+  <div class="profile-wrapper">
+
+    <% avatar_url = @user.picture || "https://timeforgeography.co.uk/static/img/avatar-placeholder.png" %>
+    <%= image_tag avatar_url, class: "profile_picture" %>
+
+    <h3 style="margin-bottom: 30px;"> <%= @user.first_name %> <%= @user.last_name %> </h3>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-xs-6">
+          <p class="text-left"> Current occupation: </p>
+        </div>
+        <div class="col-xs-6">
+          <p class="text-right"> <%= @user.headline %> </p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-6">
+          <p class="text-left"> Based in: </p>
+        </div>
+        <div class="col-xs-6">
+          <p class="text-right"> <%= @user.location %> </p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-6">
+          <p class="text-left"> Industry sector: </p>
+        </div>
+        <div class="col-xs-6">
+          <p class="text-right"> <%= @user.industry %> </p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-6">
+          <p class="text-left"> Email: </p>
+        </div>
+        <div class="col-xs-6">
+          <p class="text-right"> <%= @user.email %> </p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-6">
+          <p class="text-left"> I'm looking for: </p>
+        </div>
+        <div class="col-xs-6">
+          <p class="text-right"> "<%= @user.description %>" </p>
         </div>
       </div>
     </div>
+
+    <p style="margin-top: 30px;"> <%= link_to "See " + @user.first_name + "'s LinkedIn profile", @user.url %> </p>
+    <% if current_user == @user %>
+      <p style="margin-top: 30px;"> <%= link_to "Edit your profile", edit_user_registration_path %> </p>
+    <% end %>
+
   </div>
