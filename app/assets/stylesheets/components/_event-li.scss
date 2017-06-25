@@ -4,7 +4,12 @@
   margin: 20px 0;
   border-radius: 3px;
   position: relative;
-  height: 150px;
+  height: 170px;
+}
+
+.event-li h3 {
+  margin: 0;
+  max-width: 70%;
 }
 
 .event-li h3 a{
@@ -38,8 +43,10 @@
 
 .event-li-data {
   background-color: rgba(0,0,0,0.1);
-  margin: 0 -15px;
-  padding: 18px 20px 0 20px;
+  position: absolute;
+  bottom: 10px;
+  // margin: 0 -15px;
+  // padding: 18px 20px 0 20px;
   border-radius: 0 0 3px 3px;
 }
 
