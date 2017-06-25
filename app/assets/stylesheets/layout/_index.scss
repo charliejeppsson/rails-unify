@@ -1,3 +1,11 @@
 @import "utilities";
 @import "footer";
 @import "navbar";
+
+a:hover {
+  text-decoration: none;
+}
+
+a {
+  color: inherit;
+}
