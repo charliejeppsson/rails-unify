@@ -2,15 +2,34 @@
 @import "dashboard";
 @import "profile_page";
 
-.wrapper-map {
-  padding-top: 40px;
-  padding-bottom: 40px;
+.home-page {
+  padding-top: 0px;
 }
 
-.event-index-title-description {
-  padding-bottom: 20px;
+.wrapper {
+  margin: 0;
+  // background-color: #1A2930;
+}
+
+.wrapper-map {
+  // padding-top: 10px;
+  // padding-bottom: 40px;
 }
 
 .wrapper h2 {
   padding: 0px;
+}
+
+.search {
+  background-color: #1A2930;
+  margin: 0;
+  padding: 20px;
+}
+
+.event-list-wrapper {
+  background-color: #1A2930;
+}
+
+.radio-inline {
+  color: rgba(255,255,255,0.9);
 }
