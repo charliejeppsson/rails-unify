@@ -13,7 +13,7 @@
 
           <div class="col-xs-12">
             <%#=  f.input :category, input_html: { value: @category }, label_html: { class: 'shortTerm'}, placeholder: "What type of event are you looking for?", label: false, include_blank: false, as: :check_boxes, collection: Event::CATEGORIES %>
-            <%=  f.input :category, input_html: { value: @category }, label_html: { class: 'shortTerm categories'}, placeholder: "What type of event are you looking for?", label: false, include_blank: false, as: :radio_buttons, item_label_class: "radio-inline", item_wrapper_tag: false, collection: Event::CATEGORIES %>
+            <%=  f.input :category, input_html: { value: @category }, label_html: { class: 'shortTerm'}, placeholder: "What type of event are you looking for?", label: false, include_blank: false, as: :check_boxes, item_label_class: "radio-inline", item_wrapper_tag: false, collection: Event::CATEGORIES %>
           </div>
 <!--
           <button type="submit" class="searchButton">
