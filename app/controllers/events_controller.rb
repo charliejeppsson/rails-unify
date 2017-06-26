@@ -184,5 +184,4 @@ end
        flash[:alert] = "You need to sign in to do this action"
       redirect_to new_user_session_path
     end
-  end
 end
