@@ -73,7 +73,8 @@
                 <% avatar_url = user.picture || "https://timeforgeography.co.uk/static/img/avatar-placeholder.png" %>
                 <%= image_tag avatar_url, class: "user-list-avatar" %>
                 <div class='user-list-body'>
-                  <a href="<%= user_path(user.id) %>" style="text-decoration: none; color: #333333;"> <h5> <%= user.first_name + " " + user.last_name %> </h5> </a>
+
+                  <a href="<%= user_path(user.id) %>" style="text-decoration: none; color: #333333;"> <h5> <%= user.first_name %> <%= user.last_name  %> </h5> </a>
                   <p> <%= user.headline %> </p>
                 </div>
                 <ul class="list-inline user-list-controls hidden-sm hidden-xs">
@@ -81,7 +82,7 @@
                     <li><a href="<%= user.url %>" target="_blank"><i class="fa fa-linkedin"></i></a></li>
                   <% end %>
                   <li><a href="#"><i class="fa fa-comments"></i></a></li>
-                  <li><a href="#"><i class="fa fa-address-book"></i></a></li>
+                  <li><%= link_to "", event_addcontactbook_path(@event,:user_id => user_id), :class => "fa fa-address-book" %></li>
                 </ul>
               </div>
             <% end %>

@@ -88,10 +88,7 @@ class EventsController < ApplicationController
     box = Geocoder::Calculations.bounding_box(center_point, 1)
     #center_point_event = [@event.longitude, @event.latitude]
 
-    if Attendance.exists?(user_id: @user.id, event_id: @event.id)
-      redirect_to event_path(@event)
-      flash[:alert] = "You are already checkin"
-    elsif Event.within_bounding_box(box).first
+    if Event.within_bounding_box(box).first
       Attendance.create(user_id: @user.id, event_id: @event.id)
       redirect_to event_path(@event)
       flash[:notice] = "You have successfully checkin this event"
@@ -104,14 +101,13 @@ class EventsController < ApplicationController
   def addcontactbook
 
     @event = Event.find(params[:event_id])
-    @user_id = current_user_id
-    @user_contact_id = user_id
-
-  if Contact.exists?(user_id: @user.id, user_contact_id: @user_contact_id)
+    @user_id = current_user.id
+    @user_contact_id = params[:user_id].to_i
+  if Contact.exists?(user_id: @user_id, user_contact_id: @user_contact_id)
       redirect_to event_path(@event)
       flash[:alert] = "You have already this user in your contactbook"
 
-  else  Contact.create(user_id: @user.id, event_id: @event.id)
+  else  Contact.create(user_id: @user_id, user_contact_id: @user_contact_id, event_id: @event.id)
         redirect_to event_path(@event)
         flash[:notice] = "You have successfully added a contact"
 end
