@@ -1,0 +1,30 @@
+
+.panel {
+  overflow: scroll;
+  height: 400px;
+  padding-top: 10px;
+}
+.panel-body {
+  padding: 0 15px;
+}
+.bubble {
+  background-color: lightgrey;
+  border-radius: 3px;
+  padding-top: 20px;
+  margin: 10px;
+}
+.message {
+
+}
+.content {
+  word-wrap: break-word;
+}
+.name {
+  font-size: 15px;
+  font-weight: bold;
+}
+.created-at {
+  font-size: 12px;
+  font-style: italic;
+  margin-bottom: 30px;
+}

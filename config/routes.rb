@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+  # Real-time chat with ActionCable
+  # Serve websocket cable requests in-process
+  mount ActionCable.server => '/cable'
+  resources :chatrooms
+  resources :messages
+
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
   resources :events, except: [:index] do

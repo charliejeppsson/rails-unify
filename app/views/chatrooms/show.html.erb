@@ -1,0 +1,39 @@
+<div class="container" style="padding-bottom: 50px;">
+  <h1 class="text-center" style="margin: 50px 0;">Inbox</h1>
+  <div class="row">
+    <div class="col-md-6">
+      <% if current_user.chatrooms.any? %>
+        <% current_user.chatrooms.order("created_at DESC").each do |chatroom| %>
+          <div class="panel-body">
+              <div class="container-fluid bubble">
+                <p><%= chatroom.topic %></p>
+              </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="col-md-6">
+
+      <div class="panel panel-default">
+        <% if @chatroom.messages.any? %>
+          <div class="" id="messages">
+          <% @chatroom.messages.order("created_at DESC").each do |message| %>
+              <div class="panel-body">
+                <div class="container-fluid bubble">
+                  <p class="message name"><%= message.user.first_name + " " + message.user.last_name %></p>
+                  <p class="message content">- <%= message.content %></p>
+                  <p class="message created-at"><%= message.created_at %></p>
+                </div>
+              </div>
+          <% end %>
+          </div>
+
+        <%else%>
+          <div class="panel-body hidden" id="messages">
+          </div>
+        <%end%>
+      </div>
+      <%= render partial: 'messages/message_form', locals: {message: @message, chatroom: @chatroom}%>
+    </div>
+  </div>
+</div>

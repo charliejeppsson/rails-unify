@@ -10,6 +10,9 @@ class User < ApplicationRecord
   has_many :experiences, dependent: :destroy
   has_many :educations, dependent: :destroy
   has_many :events_to_attend, through: :attendances, source: :event
+  has_many :messages
+  has_many :chatrooms, through: :messages
+  # validates :username, presence: true, uniqueness: true
 
   def self.find_for_linkedin_oauth(auth)
     user_params = auth.slice(:provider, :uid)
