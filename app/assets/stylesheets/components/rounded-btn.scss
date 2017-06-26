@@ -1,10 +1,12 @@
 .rounded-btn {
-  border: 1px solid #F7CE3E;
+  border: 1px solid rgba(247,206,62,0.1);
   border-radius: 25px;
-  padding: 10px;
+  padding: 6px;
   min-width: 30px;
-  color: rgba(247,206,62, 0.9);
-  font-size: 13px;
+  // color: rgba(247,206,62, 0.9);
+  color: white;
+  font-size: 11px;
+  background-color: rgba(247,206,62,0.7);
 }
 
 .rounded-btn:hover {
