@@ -15,14 +15,13 @@ class ContactsController < ApplicationController
   end
 
   def update
-
+    redirect_to contacts_path
   end
 
   def destroy
-
-    @user_contact_id = params[:user_contact_id]
+    @user_contact_id = params[:id]
     @contact = Contact.find_by(user_contact_id: @user_contact_id)
     @contact.destroy
-    redirect_to contacts_index_path
+    redirect_to contacts_path
   end
 end
