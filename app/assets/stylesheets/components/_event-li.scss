@@ -1,10 +1,11 @@
 .event-li {
-  background-color: #f2f2f2;
+  background-color: white;
   padding: 7px 15px 7px 15px;
-  margin: 20px 0;
-  border-radius: 3px;
+  margin: 15px 0;
+  border-radius: 4px;
   position: relative;
   height: 170px;
+  border: 1px solid rgba(255,255,255,0.7);
 }
 
 .event-li h3 {
@@ -14,12 +15,12 @@
 
 .event-li h3 a{
   font-family: "Raleway";
-  font-size: 20px;
+  font-size: 16px;
   margin: 0;
   text-transform: uppercase;
   letter-spacing: 1.1px;
   text-decoration: none;
-  color: #1A2930;
+  color: #7a726f;
   position: relative;
   left: 5px;
   top: 10px;
@@ -42,9 +43,11 @@
 }
 
 .event-li-data {
-  background-color: rgba(0,0,0,0.1);
+  color: #7a726f;
+  font-size: 15px;
+  font-family: "Raleway";
   position: absolute;
-  bottom: 10px;
+  bottom: 8px;
   // margin: 0 -15px;
   // padding: 18px 20px 0 20px;
   border-radius: 0 0 3px 3px;
@@ -58,4 +61,12 @@
   position: absolute;
   top: 5px;
   right: 10px;
+}
+
+.arrow {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  font-size: 22px;
+  color: rgba(122,114,111, 0.6);
 }
