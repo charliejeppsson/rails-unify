@@ -8,6 +8,19 @@ class EventsController < ApplicationController
 
 
 
+    @hash1 = Gmaps4rails.build_markers(@events) do |event, marker|
+      if event.latitude
+        marker.lat event.latitude
+        marker.lng event.longitude
+      else
+        marker.lat '29.978'
+        marker.lng '31.1320'
+        # CHANGE!
+      end
+    end
+  end
+
+
   def show
 
     @alert_message = "You are viewing #{@event.title}"
@@ -73,10 +86,7 @@ class EventsController < ApplicationController
     box = Geocoder::Calculations.bounding_box(center_point, 1)
     #center_point_event = [@event.longitude, @event.latitude]
 
-    if Attendance.exists?(user_id: @user.id, event_id: @event.id)
-      redirect_to event_path(@event)
-      flash[:alert] = "You are already checkin"
-    elsif Event.within_bounding_box(box).first
+    if Event.within_bounding_box(box).first
       Attendance.create(user_id: @user.id, event_id: @event.id)
       redirect_to event_path(@event)
       flash[:notice] = "You have successfully checkin this event"
@@ -85,6 +95,23 @@ class EventsController < ApplicationController
     end
 
   end
+
+  def addcontactbook
+
+    @event = Event.find(params[:event_id])
+    @user_id = current_user.id
+    @user_contact_id = params[:user_id].to_i
+  if Contact.exists?(user_id: @user_id, user_contact_id: @user_contact_id)
+      redirect_to event_path(@event)
+      flash[:alert] = "You have already this user in your contactbook"
+
+  else  Contact.create(user_id: @user_id, user_contact_id: @user_contact_id, event_id: @event.id)
+        redirect_to event_path(@event)
+        flash[:notice] = "You have successfully added a contact"
+end
+
+
+end
 
   def search
     @event = Event.new
