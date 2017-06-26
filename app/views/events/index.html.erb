@@ -52,7 +52,7 @@
 <div class="event-list-wrapper">
   <div class="container">
     <div class="row">
-      <div class="col-xs-12">
+      <!-- <div class="col-xs-12"> -->
 
         <div class="event-list">
           <ul class="list-unstyled">
@@ -62,10 +62,16 @@
             <% end %>
 
             <%  @events.each do |event| %>
+            <div class="col-xs-12 col-md-6">
               <li>
                 <div class="event-li">
                   <div class="event-category rounded-btn"><%= event.category %></div>
                   <h3><%= link_to event.title, event_path(event) %></h3>
+
+                  <!-- <i class="fa fa-arrow-circle-right arrow" aria-hidden="true"></i> -->
+                  <!-- <i class="fa fa-long-arrow-right arrow" aria-hidden="true"></i> -->
+                  <!-- <img src='app/assets/images/background-image.jpg' class="arrow" /> -->
+                  <p class="arrow"> &#x3e; </p>
 
                   <p class="li-time"></p>
                   <p class="event-li-data">
@@ -76,10 +82,10 @@
                   </p>
                 </div>
               </li>
+              </div>
             <% end %>
           </ul>
         </div>
-      </div>
     </div>
   </div>
 </div>
