@@ -1,6 +1,6 @@
 <div class="navbar-wagon">
   <!-- Logo -->
-  <a href="/" style="color: #42264B;">
+  <a href="/" class="logo">
     <h1>Unify</h1>
   </a>
 
@@ -9,9 +9,14 @@
 
 
     <!-- Button (call-to-action) -->
-    <div style="margin: 0 20px 0 0;">
-      <%= link_to "+", new_event_path, class: "navbar-wagon-item navbar-wagon-button btn" %>
+    <!-- <div style="margin: 0 20px 0 0;">
+      <%#= link_to "+", new_event_path, class: "navbar-wagon-item navbar-wagon-button btn" %>
+    </div> -->
+
+    <div class="add-event-wrapper">
+      <%= link_to "", new_event_path, class: "add-event fa fa-plus-circle fa-lg" %>
     </div>
+
 
     <!-- Different navigation if login or not -->
     <% unless user_signed_in? %>
@@ -40,4 +45,3 @@
     </div>
   </div>
 </div>
-

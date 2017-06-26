@@ -1,3 +1,35 @@
 @import "home";
 @import "dashboard";
 @import "profile_page";
+
+.home-page {
+  padding-top: 0px;
+}
+
+.wrapper {
+  margin: 0;
+  // background-color: #1A2930;
+}
+
+.wrapper-map {
+  // padding-top: 10px;
+  // padding-bottom: 40px;
+}
+
+.wrapper h2 {
+  padding: 0px;
+}
+
+.search {
+  background-color: #1A2930;
+  margin: 0;
+  padding: 20px;
+}
+
+.event-list-wrapper {
+  background-color: #1A2930;
+}
+
+.radio-inline {
+  color: rgba(255,255,255,0.9);
+}

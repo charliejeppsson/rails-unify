@@ -2,14 +2,11 @@ class EventsController < ApplicationController
   before_action :set_event, only:[:show, :edit, :update, :destroy]
   before_action :require_login, only: [:new, :create, :attend]
 
-  def index
-    @events = Event.all
-    # if params[:event].nil? || params[:event][:category].nil? || params[:event][:category] == ""
-    #   @events = Event.all
-    # else
-    #   @category = params[:event][:category]
-    #   @events = Event.where(category: @category)
-    # end
+  # def index
+  #   @events = Event.all
+  #   end
+
+
 
     @hash1 = Gmaps4rails.build_markers(@events) do |event, marker|
       if event.latitude
@@ -22,6 +19,7 @@ class EventsController < ApplicationController
       end
     end
   end
+
 
   def show
 
@@ -118,9 +116,20 @@ end
   def search
     @event = Event.new
     # if there is no search parameter
+    # if params[:event].nil?
+    #   @events = Event.all
+    # end
     if params[:event].nil?
       @events = Event.all
-    end
+    elsif params[:event][:location].blank? && params[:event][:category].reject { |c| c.empty?}.blank?
+      @events = Event.all
+
+    elsif (params[:event][:category].reject { |c| c.empty?}.present? && params[:event][:location].present?)
+        tags_list = params[:event][:category].select { |i| i.present? }
+        @location = params[:event][:location]
+        q2 = "%#{@location}%"
+        @events = Event.where("category ILIKE ? AND location ILIKE ?",tags_list[0], q2)
+    elsif
 
     # if category
     unless params[:event].nil? || params[:event][:category].blank?
@@ -130,18 +139,28 @@ end
 
     # if location
     unless params[:event].nil? || params[:event][:location].blank?
-      @category = params[:event][:category]
       @location = params[:event][:location]
-
       q2 = "%#{@location}%"
-
       @events = Event.where("location ILIKE ?", q2)
-
         # if @location == ""
         #   @events = Event.where(location: @location)
         # else
         #   @events = Event.where(category: @category)
         # end
+    end
+
+
+    end
+
+    @hash = Gmaps4rails.build_markers(@events) do |event, marker|
+      if event.latitude
+        marker.lat event.latitude
+        marker.lng event.longitude
+      else
+        marker.lat '29.978'
+        marker.lng '31.1320'
+        # CHANGE!
+      end
     end
 
     render :index
