@@ -1,11 +1,18 @@
 Rails.application.routes.draw do
 
+
+  get 'contacts/index'
+
+  get 'contacts/show'
+
+  get 'contacts/destroy'
+
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
   resources :events, except: [:index] do
 
     get 'attend', to: "events#attend"
-    get 'checkin', to: "events#checkin"
+    get 'addcontactbook', to: "events#addcontactbook"
   end
 
   get 'events', to: "events#search", as: 'search'
