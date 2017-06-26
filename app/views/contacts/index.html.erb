@@ -1,21 +1,21 @@
-
 <% current_user.contacts.each do |contact| %>
-              <% user_id = contact.user_contact_id %>
-              <% user = User.find(user_id) %>
-              <div class="user-list">
-                <% avatar_url = user.picture || "https://timeforgeography.co.uk/static/img/avatar-placeholder.png" %>
-                <%= image_tag avatar_url, class: "user-list-avatar" %>
-                <div class='user-list-body'>
+  <% user_id = contact.user_contact_id %>
+  <% user = User.find(user_id) %>
+  <div class="user-list">
+    <% avatar_url = user.picture || "https://timeforgeography.co.uk/static/img/avatar-placeholder.png" %>
+    <%= image_tag avatar_url, class: "user-list-avatar" %>
+    <div class='user-list-body'>
 
-                  <a href="<%= user_path(user.id) %>" style="text-decoration: none; color: #333333;"> <h5> <%= user.first_name %> <%= user.last_name  %> </h5> </a>
-                  <p> <%= user.headline %> </p>
-                </div>
-                <ul class="list-inline user-list-controls hidden-sm hidden-xs">
-                  <% unless user.url.nil? %>
-                    <li><a href="<%= user.url %>" target="_blank"><i class="fa fa-linkedin"></i></a></li>
-                  <% end %>
-                  <li><a href="#"><i class="fa fa-comments"></i></a></li>
-                  <li><%= link_to "destroy", contacts_destroy_path(user_contact_id: user_id), :class => "fa fa-address-book" %></li>
-                </ul>
-              </div>
-  <% end %>
+      <a href="<%= user_path(user.id) %>" style="text-decoration: none; color: #333333;"> <h5> <%= user.first_name %> <%= user.last_name  %> </h5> </a>
+      <p> <%= user.headline %> </p>
+    </div>
+    <ul class="list-inline user-list-controls hidden-sm hidden-xs">
+      <% unless user.url.nil? %>
+      <li><a href="<%= user.url %>" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+      <% end %>
+      <li><a href="#"><i class="fa fa-comments"></i></a></li>
+
+      <li><%= link_to "destroy", contact_path(user_id), method: :delete,class: "fa fa-address-book" %></li>
+    </ul>
+  </div>
+<% end %>

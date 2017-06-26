@@ -1,12 +1,6 @@
 Rails.application.routes.draw do
 
-
-  get 'contacts/index'
-
-  get 'contacts/show'
-
-  get 'contacts/destroy'
-  get 'contacts/edit'
+  resources :contacts, except: [:new, :create, :show]
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
