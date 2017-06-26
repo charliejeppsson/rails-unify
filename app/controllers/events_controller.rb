@@ -6,8 +6,6 @@ class EventsController < ApplicationController
   #   @events = Event.all
   #   end
 
-
-
     @hash1 = Gmaps4rails.build_markers(@events) do |event, marker|
       if event.latitude
         marker.lat event.latitude
@@ -18,7 +16,7 @@ class EventsController < ApplicationController
         # CHANGE!
       end
     end
-  end
+
 
 
   def show
@@ -108,8 +106,7 @@ class EventsController < ApplicationController
   else  Contact.create(user_id: @user_id, user_contact_id: @user_contact_id, event_id: @event.id)
         redirect_to event_path(@event)
         flash[:notice] = "You have successfully added a contact"
-end
-
+  end
 
 end
 
@@ -149,8 +146,8 @@ end
         # end
     end
 
+   end
 
-    end
 
     @hash = Gmaps4rails.build_markers(@events) do |event, marker|
       if event.latitude
@@ -169,6 +166,7 @@ end
   end
 
 
+
   private
 
   def set_event
@@ -184,4 +182,5 @@ end
        flash[:alert] = "You need to sign in to do this action"
       redirect_to new_user_session_path
     end
+  end
 end
