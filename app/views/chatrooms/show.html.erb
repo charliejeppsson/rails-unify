@@ -2,14 +2,28 @@
   <h1 class="text-center" style="margin: 50px 0;">Inbox</h1>
   <div class="row">
     <div class="col-md-6">
-      <% if current_user.chatrooms.any? %>
-        <% current_user.chatrooms.order("created_at DESC").each do |chatroom| %>
-          <div class="panel-body">
-              <div class="container-fluid bubble">
-                <p><%= chatroom.topic %></p>
-              </div>
-          </div>
+      <% my_chats = current_user.chatroomusers %>
+      <% unless my_chats.nil? %>
+        <% my_chats.order("created_at DESC").each do |chat| %>
+              <% chatter_1 = chat.chatroom.chatroomusers[0].user %>
+              <% chatter_2 = chat.chatroom.chatroomusers[1].user %>
+              <% chatters = [chatter_1, chatter_2] %>
+              <% chatters.each do |chatter| %>
+                <% unless chatter.email == current_user.email %>
+                  <div class="user-list">
+                    <% avatar_url =chatter.picture || "https://timeforgeography.co.uk/static/img/avatar-placeholder.png" %>
+                    <%= image_tag avatar_url, class: "user-list-avatar" %>
+                    <div class='user-list-body'>
+                      <% @target_chat = chat.chatroom %>
+                      <a href="<%= chatroom_path(@target_chat.id) %>" style="text-decoration: none; color: #333333;"><h5> <%= chatter.first_name %> </h5> </a>
+                      <p> <%= chatter.headline %> </p>
+                    </div>
+                  </div>
+                <% end %>
+              <% end %>
         <% end %>
+      <% else %>
+        <h2 class="text-center">No chats started yet! Remember, you're only as strong as your network.</h2>
       <% end %>
     </div>
     <div class="col-md-6">
