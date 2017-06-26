@@ -26,9 +26,9 @@
       <% if @event.past? %>
         <h3>This event is no longer open for check-ins.</h3>
       <% end %>
+     </div>
 
-    </div>
-  </div>
+</div>
 
 <div class="container">
   <div class="row">
@@ -85,7 +85,12 @@
                   <li><a href="#"><i class="fa fa-comments"></i></a></li>
                   <li><%= link_to "", event_addcontactbook_path(@event,:user_id => user_id), :class => "fa fa-address-book" %></li>
                 </ul>
-
+              </div>
+            <% end %>
+ <% else %>
+              <div class="hidden-list">
+                <h2> <%= pluralize @event.attendances.count, "checked-in attendant" %></h2>
+                <p>Head over to the event and check in to see who they are!</p>
               </div>
             <% end %>
           <% else %>

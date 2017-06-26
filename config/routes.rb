@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get 'contacts/show'
 
   get 'contacts/destroy'
+  get 'contacts/edit'
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
