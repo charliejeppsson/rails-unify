@@ -8,7 +8,10 @@
 
         <div class="form-inputs">
           <%= f.input :email, required: true, autofocus: true %>
+          <%= f.input :headline, required: true, autofocus: true %>
           <%= f.input :industry, required: true, autofocus: true %>
+          <%= f.input :location, required: true, autofocus: true %>
+          <%= f.input :description, required: true, autofocus: true %>
 
 
           <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
