@@ -5,22 +5,37 @@
       <div class="col-xs-12">
 
           <!-- Title -->
-            <h1 class= "title-home">Unify</h1>
-            <p class="slogan">Network made easy</p>
+            <div class="title">
+              <h1>Unify</h1>
+            </div>
+
+            <div class="slogan">
+              <p>Network made easy</p>
+            </div>
 
           <!-- Discover events near you - link with event_path -->
-
-          <div class="btn-event">
-            <h3> <%= link_to "Discover events around you", events_path%> </h3>
+          <div class="discover">
+            <div class="btn-event">
+              <h3> <%= link_to "Discover events around you", events_path%> </h3>
+            </div>
           </div>
 
           <!-- Or -->
-          <p>or</p>
+          <div class="or">
+            <p>or</p>
+          </div>
 
           <!-- Sign In & Sign Up -->
           <!-- <i class="fa fa-linkedin-square fa-2x" aria-hidden="true"></i> -->
-          <p><%= link_to "Join us now", new_user_registration_path, class:"join" %></p>
-          <p style="font-size: 10px" class="already-member">Already a member? <%= link_to "Log in", new_user_session_path %></p>
+          <div class="join">
+            <div class="btn-join">
+              <p><%= link_to "Join us now", new_user_registration_path %></p>
+            </div>
+          </div>
+
+          <div class="already-member">
+            <p style="font-size: 10px" class="already-member">Already a member? <%= link_to "Log in", new_user_session_path %></p>
+          </div>
 
           <!-- Terms and conditions -->
           <!-- <p>Terms and conditions</p> -->
