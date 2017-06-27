@@ -6,7 +6,8 @@ class MessagesController < ApplicationController
     if message.save
       ActionCable.server.broadcast 'messages',
         message: message.to_json,
-        user: message.user.to_json
+        user: message.user.to_json,
+        current_user: current_user
       head :ok
     end
   end

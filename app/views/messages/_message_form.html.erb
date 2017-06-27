@@ -4,5 +4,6 @@
   <%= f.text_area :content, class: "form-control js-message", data: {textarea: "message"} %>
 
   <%= f.hidden_field :chatroom_id, value: chatroom.id %>
-  <%= f.submit "send", class: "btn btn-primary", data: {send: "message"} %>
+  <p></p>
+  <%= f.submit "send", class: "btn btn-basic btn-block send-btn-hover", data: {send: "message"} %>
 <% end %>

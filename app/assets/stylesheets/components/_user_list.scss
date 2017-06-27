@@ -4,7 +4,7 @@
   padding: 20px;
   border-radius: 3px;
   transition: all 0.15s ease;
-  width: 500px;
+  width: 100%;
   margin: 10px auto;
 }
 
@@ -41,6 +41,10 @@
   padding: 0 20px;
   font-size: 17px;
   color: #E6E6E6;
+}
+.user-list-controls-big a {
+  font-size: 30px;
+  color: #42264B;
 }
 .user-list-controls a:hover {
   color: #42264B !important

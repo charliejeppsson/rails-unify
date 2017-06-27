@@ -34,6 +34,13 @@
             <li>
               <div class="fa fa-sign-out">  <%= link_to "Log Out", destroy_user_session_path, method: :delete %></div>
             </li>
+            <li>
+              <!-- Find the chatrooms that belong to me to redirect to the first one -->
+              <% my_chats = current_user.chatroomusers %>
+              <% unless my_chats.empty? %>
+                <div class="fa fa-inbox">  <%= link_to "Inbox", chatroom_path(my_chats[-1].chatroom_id) %></div>
+              <% end %>
+            </li>
           </ul>
         <% end %>
       </div>
