@@ -1,20 +1,20 @@
 <div class="navbar-wagon">
   <!-- Logo -->
-  <a href="/" class="logo">
-    <h1>Unify</h1>
-  </a>
+  <div class="navbar-wagon-left">
+    <%= link_to search_path do %>
+    <%= image_tag("Unify-logo.png", class:"logo-uni") %>
+    <% end %>
+    <a href="/events" class="logo">
+      <h1>Unify</h1>
+    </a>
+  </div>
 
   <!-- Right Navigation -->
   <div class="navbar-wagon-right">
-
-
-    <!-- Button (call-to-action) -->
-    <!-- <div style="margin: 0 20px 0 0;">
-      <%#= link_to "+", new_event_path, class: "navbar-wagon-item navbar-wagon-button btn" %>
-    </div> -->
-
-    <div class="add-event-wrapper">
-      <%= link_to "", new_event_path, class: "add-event fa fa-plus-circle fa-lg" %>
+    <div class="search-event-wrapper">
+      <%= link_to search_path do  %>
+      <%= image_tag("Icones/Search.png", class:"search-icon") %>
+      <% end %>
     </div>
 
 
@@ -26,23 +26,26 @@
     <!-- Profile picture and dropdown -->
     <div class="navbar-wagon-item">
       <div class="dropdown">
-        <% if user_signed_in? %>
-          <% avatar_url = current_user.picture || "https://timeforgeography.co.uk/static/img/avatar-placeholder.png" %>
-          <%= image_tag avatar_url, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
-          <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-            <li>
-              <div class="fa fa-user">  <%= link_to "Profile", user_path(current_user.id) %></div>
-            </li>
-            <li>
-              <div class="fa fa-home">  <%= link_to "Dashboard", dashboard_attendances_path %></div>
-            </li>
-            <li>
-              <div class="fa fa-address-book">  <%= link_to "Contact book", contacts_path %></div>
-            </li>
-            <li>
-              <div class="fa fa-sign-out">  <%= link_to "Log Out", destroy_user_session_path, method: :delete %></div>
-            </li>
-          </ul>
+          <% if user_signed_in? %>
+            <% avatar_url = current_user.picture || "https://timeforgeography.co.uk/static/img/avatar-placeholder.png" %>
+            <%= image_tag avatar_url, class: "vatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+            <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
+              <li>
+                <%= link_to user_path(current_user.id) do  %>
+                 <%= image_tag("Icones/profile.png", class:"profile-icon") %> Profile
+                 <% end %>
+              </li>
+              <li>
+                 <%= link_to new_event_path do  %>
+                 <%= image_tag("Icones/bulb.png", class:"bulb-icon") %>Create event
+                 <% end %>
+              </li>
+              <li>
+                <%= link_to destroy_user_session_path, method: :delete do  %>
+                 <%= image_tag("Icones/logout.png", class:"logout-icon") %>Log out
+                 <% end %>
+              </li>
+            </ul>
         <% end %>
       </div>
     </div>
