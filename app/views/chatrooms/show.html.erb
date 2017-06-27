@@ -1,7 +1,10 @@
 <div class="container" style="padding-bottom: 50px;">
   <h1 class="text-center" style="margin: 50px 0;">Inbox</h1>
   <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-4">
+      <%# chat.users.each do |user| %>
+        <%#= user.to_json %>
+      <%# end %>
       <% my_chats = current_user.chatroomusers %>
       <% unless my_chats.nil? %>
         <% my_chats.order("created_at DESC").each do |chat| %>
@@ -26,7 +29,7 @@
         <h2 class="text-center">No chats started yet! Remember, you're only as strong as your network.</h2>
       <% end %>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-8">
 
       <div class="panel panel-default">
         <% if @chatroom.messages.any? %>

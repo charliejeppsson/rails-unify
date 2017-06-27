@@ -4,8 +4,8 @@ Rails.application.routes.draw do
   # Serve websocket cable requests in-process
   mount ActionCable.server => '/cable'
 
-  resources :messages
   resources :chatrooms
+  resources :messages
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
