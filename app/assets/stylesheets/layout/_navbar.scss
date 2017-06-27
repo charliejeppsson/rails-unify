@@ -13,8 +13,13 @@
 .logo h1 {
   font-family: "Raleway";
   font-weight: 300;
-  font-size: 27px;
+  font-size: 23px;
   color: #1A2930;
+  // opacity: 0.9;
+}
+
+.navbar-wagon a:hover {
+  text-decoration: none;
 }
 
 /* Optional class to fix the navbar on top */
@@ -24,6 +29,13 @@
   top: 0px;
   z-index: 1;
   width: 100%;
+}
+
+.navbar-wagon-left {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  opacity: 0.8;
 }
 
 /* Navbar right section (with form, links, button) */
@@ -38,6 +50,7 @@
   flex: 0 1 auto;
   cursor: pointer;
   padding: 0 20px;
+  padding-right: 0px;
 }
 
 /* Navbar standard link */
@@ -46,60 +59,63 @@
   font-size: 14px;
 }
 .navbar-wagon-link:hover {
-  color: #da552f;
   text-decoration: none;
 }
 
-/* Navbar right button */
-.navbar-wagon-button {
-  margin-left: 10px;
-  padding: 0 20px;
-  border-radius: 20em;
-  line-height: 40px;
-  background-color: #D23333;
-  color: white;
-  font-size: 14px;
-  border: 2px solid #D23333;
-}
-.navbar-wagon-button:hover {
-  color: white;
-  background: #D23333;
-  border-color: #ac2626;
+#caret {
+  color: #8A8A8A;
 }
 
+/* Navbar right button */
+// .navbar-wagon-button {
+//   margin-left: 10px;
+//   padding: 0 20px;
+//   border-radius: 20em;
+//   line-height: 40px;
+//   background-color: #D23333;
+//   color: white;
+//   font-size: 14px;
+//   border: 2px solid #D23333;
+// }
+// .navbar-wagon-button:hover {
+//   color: white;
+//   background: #D23333;
+//   border-color: #ac2626;
+// }
+
 /* Navbar search form */
-.navbar-wagon-search {
-  flex: 0 1 300px;
-  display: flex;
-  justify-content: flex-end;
-  padding: 0 10px;
-  position: relative;
-}
-.navbar-wagon-search-btn {
-  line-height: 40px;
-  color: #E6E6E6;
-  border: none;
-  background: transparent;
-  position: absolute;
-  right: 14px;
-  top: -2px;
-  z-index: 1;
-}
-.navbar-wagon-search-input {
-  flex: 0 1 300px;
-  transition: all 0.15s ease;
-  line-height: 40px;
-  font-weight: lighter;
-  color: #666666;
-  border: 1px solid #E6E6E6;
-  border-radius: 5px;
-  padding: 0 10px;
-  font-size: 14px;
-  outline: none;
-}
-.navbar-wagon-search-input:focus  {
-  border: 1px solid #CCCCCC;
-}
+// .navbar-wagon-search {
+//   flex: 0 1 300px;
+//   display: flex;
+//   justify-content: flex-end;
+//   padding: 0 10px;
+//   position: relative;
+// }
+// .navbar-wagon-search-btn {
+//   line-height: 40px;
+//   color: #E6E6E6;
+//   border: none;
+//   background: transparent;
+//   position: absolute;
+//   right: 14px;
+//   top: -2px;
+//   z-index: 1;
+// }
+// .navbar-wagon-search-input {
+//   flex: 0 1 300px;
+//   transition: all 0.15s ease;
+//   line-height: 40px;
+//   font-weight: lighter;
+//   color: #666666;
+//   border: 1px solid #E6E6E6;
+//   border-radius: 5px;
+//   padding: 0 10px;
+//   font-size: 14px;
+//   outline: none;
+// }
+// .navbar-wagon-search-input:focus  {
+//   border: 1px solid #CCCCCC;
+// }
 
 /* Navbar dropdown menu */
 .navbar-wagon-dropdown-menu {
@@ -130,4 +146,13 @@
   transform: rotate(45deg);
   border-left: 1px solid #E6E6E6;
   border-top: 1px solid #E6E6E6;
+}
+
+.logo-uni {
+  height: 40px;
+  opacity: 0.8;
+}
+
+.search-event-wrapper {
+  opacity: 0.6;
 }
