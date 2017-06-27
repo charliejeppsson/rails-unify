@@ -2,6 +2,8 @@ Rails.application.routes.draw do
 
   resources :contacts, except: [:new, :create, :show]
 
+  get "contacts/search", to: "contacts#search"
+
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
   resources :events, except: [:index] do

@@ -184,6 +184,10 @@ GEM
       omniauth (~> 1.2)
     orm_adapter (0.5.0)
     pg (0.21.0)
+    pg_search (2.0.1)
+      activerecord (>= 4.2)
+      activesupport (>= 4.2)
+      arel (>= 6)
     pry (0.10.4)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -313,6 +317,7 @@ DEPENDENCIES
   momentjs-rails (>= 2.9.0)
   omniauth-linkedin-oauth2!
   pg
+  pg_search
   pry-byebug
   pry-rails
   puma

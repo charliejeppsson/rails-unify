@@ -23,6 +23,7 @@ gem 'uglifier'
 gem 'geocoder'
 gem "gmaps4rails"
 gem "coffee-rails"
+gem 'pg_search'
 source 'https://rails-assets.org' do
   gem "rails-assets-underscore"
 end
