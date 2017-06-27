@@ -1,29 +1,41 @@
 <% content_for :full_page do %>
 <div class="banner">
-
-
   <div class="container text-center">
     <div class="row">
       <div class="col-xs-12">
 
           <!-- Title -->
+            <div class="title">
+              <h1>Unify</h1>
+            </div>
 
-          <h1>Unify</h1>
-          <p>Make networking great again</p>
+            <div class="slogan">
+              <p>Network made easy</p>
+            </div>
 
           <!-- Discover events near you - link with event_path -->
-
-          <div class="discover-wrapper">
-            <h3>&#8212; <%= link_to "Discover events around you", events_path%> &#8212;</h3>
+          <div class="discover">
+            <div class="btn-event">
+              <h3> <%= link_to "Discover events around you", events_path%> </h3>
+            </div>
           </div>
 
           <!-- Or -->
-          <p>or</p>
+          <div class="or">
+            <p>or</p>
+          </div>
 
           <!-- Sign In & Sign Up -->
           <!-- <i class="fa fa-linkedin-square fa-2x" aria-hidden="true"></i> -->
-          <p><%= link_to "Join us now", new_user_registration_path %></p>
-          <p style="font-size: 15px">Already a member? <%= link_to "Log in", new_user_session_path %></p>
+          <div class="join">
+            <div class="btn-join">
+              <p><%= link_to "Join us now", new_user_registration_path %></p>
+            </div>
+          </div>
+
+          <div class="already-member">
+            <p style="font-size: 10px" class="already-member">Already a member? <%= link_to "Log in", new_user_session_path %></p>
+          </div>
 
           <!-- Terms and conditions -->
           <!-- <p>Terms and conditions</p> -->
