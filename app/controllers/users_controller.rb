@@ -5,5 +5,4 @@ class UsersController < ApplicationController
     @contact =  Contact.where(user_id: current_user.id, user_contact_id: @user.id).first
   end
 
-
 end
