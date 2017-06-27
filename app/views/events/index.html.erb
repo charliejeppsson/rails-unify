@@ -1,6 +1,6 @@
 
-<div class="wrapper">
-  <div class="container home-page">
+<!-- <div class="wrapper"> -->
+  <div class="container-fluid home-page"> <!-- class home-page -->
     <div class="row">
 <!-- Search bar -->
 
@@ -12,13 +12,14 @@
           </div>
 
           <div class="col-xs-12">
-            <%=  f.input :category, input_html: { value: @category }, label_html: { class: 'shortTerm'}, placeholder: "What type of event are you looking for?", label: false, include_blank: false, as: :check_boxes, collection: Event::CATEGORIES %>
+            <%#=  f.input :category, input_html: { value: @category }, label_html: { class: 'shortTerm'}, placeholder: "What type of event are you looking for?", label: false, include_blank: false, as: :check_boxes, collection: Event::CATEGORIES %>
+            <%=  f.input :category, input_html: { value: @category }, label_html: { class: 'shortTerm'}, placeholder: "What type of event are you looking for?", label: false, include_blank: false, as: :check_boxes, item_label_class: "radio-inline", item_wrapper_tag: false, collection: Event::CATEGORIES %>
           </div>
 <!--
           <button type="submit" class="searchButton">
             <i class="fa fa-search"></i>
           </button> -->
-          <%= f.submit "Search", :class => 'btn btn-default' %>
+          <%= f.submit "Search", :class => 'btn btn-primary search-btn' %>
           <% end %>
         </div>
 
@@ -33,7 +34,7 @@
               $(document).ready(function() {
                 var handler = Gmaps.build('Google');
                 handler.buildMap({ internal: { id: 'map' } }, function() {
-                  markers = handler.addMarkers(<%= raw @hash.to_json %>);
+                  markers = handler.addMarkers(<%= raw @hash1.to_json %>);
                   handler.bounds.extendWith(markers);
                   handler.fitMapToBounds();
                   if (markers.length == 0) {
@@ -48,27 +49,49 @@
           <% end %>
   </div>
 
-      <div class="col-xs-12">
+<div class="event-list-wrapper">
+  <div class="container">
+    <div class="row">
+      <!-- <div class="col-xs-12"> -->
 
-        <ul class="list-unstyled">
-        <% if @events.empty? %>
-        No events correspond to your research !
+        <div class="event-list">
+          <ul class="list-unstyled">
+            <% if @events.empty? %>
+            No events correspond to your research !
 
-      <% end %>
+            <% end %>
 
-          <%  @events.each do |event| %>
-            <li>
-              <div class="event-index-title-description">
-                <h2><%= link_to event.title, event_path(event) %></h2>
-                <p><%= event.description %></p>
+            <%  @events.each do |event| %>
+            <div class="col-xs-12 col-md-6">
+              <li>
+                <div class="event-li">
+                  <div class="event-category rounded-btn"><%= event.category %></div>
+                  <h3><%= link_to event.title, event_path(event) %></h3>
+
+                  <!-- <i class="fa fa-arrow-circle-right arrow" aria-hidden="true"></i> -->
+                  <!-- <i class="fa fa-long-arrow-right arrow" aria-hidden="true"></i> -->
+                  <!-- <img src='app/assets/images/background-image.jpg' class="arrow" /> -->
+                  <p class="arrow"> &#x3e; </p>
+
+                  <p class="li-time"></p>
+                  <p class="event-li-data">
+                    <i class="fa fa-calendar" aria-hidden="true"></i>
+                    <%= event.start_time.strftime('%a, %d %b %Y %H:%M:%S') %><br>
+                    <i class="fa fa-map-marker" aria-hidden="true"></i>
+                    <%= event.location %>
+                  </p>
+                </div>
+              </li>
               </div>
-            </li>
-          <% end %>
-        </ul>
+            <% end %>
+          </ul>
+        </div>
+    </div>
+  </div>
+</div>
 
-      </div>
 
 
     </div>
   </div>
-</div>
+<!-- </div> -->

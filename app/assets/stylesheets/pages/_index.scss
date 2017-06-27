@@ -3,15 +3,39 @@
 @import "profile_page";
 @import "message";
 
-.wrapper-map {
-  padding-top: 40px;
-  padding-bottom: 40px;
+.home-page {
+  padding-top: 0px;
 }
 
-.event-index-title-description {
-  padding-bottom: 20px;
+.wrapper {
+  margin: 0;
+  // background-color: #1A2930;
+}
+
+.wrapper-map {
+  // padding-top: 10px;
+  // padding-bottom: 40px;
 }
 
 .wrapper h2 {
   padding: 0px;
+}
+
+.search {
+  background-color: #9BBFAB;
+  margin: 0;
+  padding: 20px;
+}
+
+.search-btn {
+  color: black;
+}
+
+.event-list-wrapper {
+  background-color: #F2F5F8;
+  padding-bottom: 60px;
+}
+
+.radio-inline {
+  color: rgba(255,255,255,0.9);
 }

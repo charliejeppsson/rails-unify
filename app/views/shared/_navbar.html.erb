@@ -1,17 +1,22 @@
 <div class="navbar-wagon">
   <!-- Logo -->
-  <a href="/" style="color: #42264B;">
-    <h1>Unify</h1>
-  </a>
+  <div class="navbar-wagon-left">
+    <%= link_to search_path do %>
+    <%= image_tag("Unify-logo.png", class:"logo-uni") %>
+    <% end %>
+    <a href="/events" class="logo">
+      <h1>Unify</h1>
+    </a>
+  </div>
 
   <!-- Right Navigation -->
   <div class="navbar-wagon-right">
-
-
-    <!-- Button (call-to-action) -->
-    <div style="margin: 0 20px 0 0;">
-      <%= link_to "+", new_event_path, class: "navbar-wagon-item navbar-wagon-button btn" %>
+    <div class="search-event-wrapper">
+      <%= link_to search_path do  %>
+      <%= image_tag("Icones/Search.png", class:"search-icon") %>
+      <% end %>
     </div>
+
 
     <!-- Different navigation if login or not -->
     <% unless user_signed_in? %>
@@ -26,25 +31,30 @@
           <%= image_tag avatar_url, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
           <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
             <li>
-              <div class="fa fa-user">  <%= link_to "Profile", user_path(current_user.id) %></div>
-            </li>
-            <li>
-              <div class="fa fa-home">  <%= link_to "Dashboard", dashboard_attendances_path %></div>
-            </li>
-            <li>
-              <div class="fa fa-sign-out">  <%= link_to "Log Out", destroy_user_session_path, method: :delete %></div>
-            </li>
-            <li>
-              <!-- Find the chatrooms that belong to me to redirect to the first one -->
-              <% my_chats = current_user.chatroomusers %>
-              <% unless my_chats.empty? %>
-                <div class="fa fa-inbox">  <%= link_to "Inbox", chatroom_path(my_chats[-1].chatroom_id) %></div>
+              <%= link_to user_path(current_user.id) do  %>
+                <%= image_tag("Icones/profile.png", class:"profile-icon") %> Profile
               <% end %>
             </li>
+            <li>
+              <%= link_to new_event_path do  %>
+                <%= image_tag("Icones/bulb.png", class:"bulb-icon") %>Create event
+              <% end %>
+            </li>
+            <li>
+              <%= link_to destroy_user_session_path, method: :delete do  %>
+               <%= image_tag("Icones/logout.png", class:"logout-icon") %>Log out
+               <% end %>
+            </li>
+            <!-- If current user has any chats, an inbox link will be added to the list -->
+            <% my_chats = current_user.chatroomusers %>
+            <% unless my_chats.empty? %>
+              <li>
+                <div class="fa fa-inbox">  <%= link_to "Inbox", chatroom_path(my_chats[-1].chatroom_id) %></div>
+              </li>
+            <% end %>
           </ul>
         <% end %>
       </div>
     </div>
   </div>
 </div>
-

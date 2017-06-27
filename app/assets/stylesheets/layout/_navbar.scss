@@ -1,13 +1,28 @@
 /* Main class */
 .navbar-wagon {
-  box-shadow: 0 1px 5px 0 rgba(0,0,0,0.07),0 1px 0 0 rgba(0,0,0,0.03);
+  // box-shadow: 0 1px 5px 0 rgba(0,0,0,0.07),0 1px 0 0 rgba(0,0,0,0.03);
   background: white;
   transition: all 0.3s ease;
   display: flex;
-  height: 70px;
+  height: 55px;
   padding: 0px 30px;
   align-items: center;
   justify-content: space-between;
+}
+
+.logo h1 {
+  font-family: "Raleway";
+  font-weight: 300;
+  font-size: 23px;
+  color: #1A2930;
+  margin-bottom: 20px;
+  // opacity: 0.9;
+}
+
+
+.navbar-wagon a:hover {
+  text-decoration: none;
+  opacity: 1;
 }
 
 /* Optional class to fix the navbar on top */
@@ -19,9 +34,11 @@
   width: 100%;
 }
 
-/* Navbar logo */
-.navbar-wagon-brand img {
-  width: 50px;
+.navbar-wagon-left {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  opacity: 0.8;
 }
 
 /* Navbar right section (with form, links, button) */
@@ -36,6 +53,7 @@
   flex: 0 1 auto;
   cursor: pointer;
   padding: 0 20px;
+  padding-right: 0px;
 }
 
 /* Navbar standard link */
@@ -44,59 +62,67 @@
   font-size: 14px;
 }
 .navbar-wagon-link:hover {
-  color: #da552f;
   text-decoration: none;
 }
 
-/* Navbar right button */
-.navbar-wagon-button {
-  margin-left: 10px;
-  padding: 0 20px;
-  border-radius: 20em;
-  line-height: 40px;
-  background-color: #D23333;
-  color: white;
-  font-size: 14px;
-  border: 2px solid #D23333;
-}
-.navbar-wagon-button:hover {
-  color: white;
-  background: #D23333;
-  border-color: #ac2626;
+#caret {
+  color: #8A8A8A;
 }
 
+/* Navbar right button */
+// .navbar-wagon-button {
+//   margin-left: 10px;
+//   padding: 0 20px;
+//   border-radius: 20em;
+//   line-height: 40px;
+//   background-color: #D23333;
+//   color: white;
+//   font-size: 14px;
+//   border: 2px solid #D23333;
+// }
+// .navbar-wagon-button:hover {
+//   color: white;
+//   background: #D23333;
+//   border-color: #ac2626;
+// }
+
 /* Navbar search form */
-.navbar-wagon-search {
-  flex: 0 1 300px;
-  display: flex;
-  justify-content: flex-end;
-  padding: 0 10px;
-  position: relative;
-}
-.navbar-wagon-search-btn {
-  line-height: 40px;
-  color: #E6E6E6;
-  border: none;
-  background: transparent;
-  position: absolute;
-  right: 14px;
-  top: -2px;
-  z-index: 1;
-}
-.navbar-wagon-search-input {
-  flex: 0 1 300px;
-  transition: all 0.15s ease;
-  line-height: 40px;
-  font-weight: lighter;
-  color: #666666;
-  border: 1px solid #E6E6E6;
-  border-radius: 5px;
-  padding: 0 10px;
-  font-size: 14px;
-  outline: none;
-}
-.navbar-wagon-search-input:focus  {
-  border: 1px solid #CCCCCC;
+// .navbar-wagon-search {
+//   flex: 0 1 300px;
+//   display: flex;
+//   justify-content: flex-end;
+//   padding: 0 10px;
+//   position: relative;
+// }
+// .navbar-wagon-search-btn {
+//   line-height: 40px;
+//   color: #E6E6E6;
+//   border: none;
+//   background: transparent;
+//   position: absolute;
+//   right: 14px;
+//   top: -2px;
+//   z-index: 1;
+// }
+// .navbar-wagon-search-input {
+//   flex: 0 1 300px;
+//   transition: all 0.15s ease;
+//   line-height: 40px;
+//   font-weight: lighter;
+//   color: #666666;
+//   border: 1px solid #E6E6E6;
+//   border-radius: 5px;
+//   padding: 0 10px;
+//   font-size: 14px;
+//   outline: none;
+// }
+// .navbar-wagon-search-input:focus  {
+//   border: 1px solid #CCCCCC;
+// }
+
+.vatar {
+  height: 40px;
+  width: 40px;
 }
 
 /* Navbar dropdown menu */
@@ -104,14 +130,23 @@
   margin-top: 15px;
   box-shadow: 1px 1px 4px #E6E6E6;
   border-color: #E6E6E6;
+  border-radius: 7px !important;
+  margin: 6px 0 0 !important;
+  padding: 5px 0 !important;
 }
+
+.navbar-wagon-dropdown-menu-right {
+  right: 3px !important;
+}
+
 .navbar-wagon-dropdown-menu li > a {
   transition: color 0.3s ease;
-  font-weight: lighter !important;
-  color: #999999 !important;
+  // font-weight: lighter !important;
+  color: #474646 !important;
   font-size: 15px !important;
   line-height: 22px !important;
   padding: 10px 20px;
+  opacity: 0.8;
 }
 .navbar-wagon-dropdown-menu li > a:hover {
   background: transparent !important;
@@ -128,4 +163,53 @@
   transform: rotate(45deg);
   border-left: 1px solid #E6E6E6;
   border-top: 1px solid #E6E6E6;
+}
+
+.logo-uni {
+  height: 40px;
+  opacity: 0.8;
+}
+
+.search-icon {
+  height: 26px;
+  opacity: 0.8;
+}
+
+.search-icon:hover {
+  color: #272822;
+  height: 30px;
+}
+
+.search-event-wrapper {
+  opacity: 0.8;
+  padding-bottom: 0px;
+}
+
+.logout-icon {
+  height: 25px;
+  padding-right: 7px;
+  opacity: 0.7;
+}
+
+.logout-icon:hover {
+  opacity: 1;
+}
+
+.profile-icon {
+  height: 28px;
+  opacity: 0.7;
+}
+
+.profile-icon:hover {
+  opacity: 1;
+}
+
+.bulb-icon {
+  height: 29px;
+  padding-right: 2px;
+  opacity: 0.7;
+}
+
+.bulb-icon:hover {
+  opacity: 1;
 }

@@ -2,13 +2,15 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable,
-         :omniauthable, omniauth_providers: [:linkedin]
+  :recoverable, :rememberable, :trackable, :validatable,
+  :omniauthable, omniauth_providers: [:linkedin]
 
   has_many :events, dependent: :destroy
   has_many :attendances, dependent: :destroy
   has_many :experiences, dependent: :destroy
   has_many :educations, dependent: :destroy
+  has_many :contacts, dependent: :destroy
+
   has_many :events_to_attend, through: :attendances, source: :event
   has_many :messages, dependent: :destroy
   has_many :chatrooms, dependent: :destroy
@@ -38,5 +40,4 @@ class User < ApplicationRecord
 
     return user
   end
-
 end

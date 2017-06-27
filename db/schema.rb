@@ -41,6 +41,16 @@ ActiveRecord::Schema.define(version: 20170626200527) do
     t.index ["user_id"], name: "index_chatroomusers_on_user_id"
   end
 
+  create_table "contacts", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "user_contact_id"
+    t.bigint "event_id"
+    t.string "notes"
+    t.string "category"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "educations", force: :cascade do |t|
     t.string "school_name"
     t.string "field"

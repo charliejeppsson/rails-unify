@@ -74,6 +74,15 @@
     <p style="margin-top: 30px;"> <%= link_to "See " + @user.first_name + "'s LinkedIn profile", @user.url %> </p>
     <% if current_user == @user %>
       <p style="margin-top: 30px;"> <%= link_to "Edit your profile", edit_user_registration_path %> </p>
+    <% elsif @contact %>
+        <div class="form-inputs">
+        <%= simple_form_for (@contact), :url => url_for(:action => 'update', :controller => 'contacts', contact_id: @contact.id), :method => 'patch' do |f|  %>
+          <%= f.text_area :notes, autofocus: true %>
+          <%= f.input :category, autofocus: true %>
+          <%= f.submit %>
+          <% end %>
+       </div>
     <% end %>
+
 
   </div>
