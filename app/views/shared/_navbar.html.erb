@@ -26,26 +26,33 @@
     <!-- Profile picture and dropdown -->
     <div class="navbar-wagon-item">
       <div class="dropdown">
-          <% if user_signed_in? %>
-            <% avatar_url = current_user.picture || "https://timeforgeography.co.uk/static/img/avatar-placeholder.png" %>
-            <%= image_tag avatar_url, class: "vatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
-            <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
+        <% if user_signed_in? %>
+          <% avatar_url = current_user.picture || "https://timeforgeography.co.uk/static/img/avatar-placeholder.png" %>
+          <%= image_tag avatar_url, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+          <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
+            <li>
+              <%= link_to user_path(current_user.id) do  %>
+                <%= image_tag("Icones/profile.png", class:"profile-icon") %> Profile
+              <% end %>
+            </li>
+            <li>
+              <%= link_to new_event_path do  %>
+                <%= image_tag("Icones/bulb.png", class:"bulb-icon") %>Create event
+              <% end %>
+            </li>
+            <li>
+              <%= link_to destroy_user_session_path, method: :delete do  %>
+               <%= image_tag("Icones/logout.png", class:"logout-icon") %>Log out
+               <% end %>
+            </li>
+            <!-- If current user has any chats, an inbox link will be added to the list -->
+            <% my_chats = current_user.chatroomusers %>
+            <% unless my_chats.empty? %>
               <li>
-                <%= link_to user_path(current_user.id) do  %>
-                 <%= image_tag("Icones/profile.png", class:"profile-icon") %> Profile
-                 <% end %>
+                <div class="fa fa-inbox">  <%= link_to "Inbox", chatroom_path(my_chats[-1].chatroom_id) %></div>
               </li>
-              <li>
-                 <%= link_to new_event_path do  %>
-                 <%= image_tag("Icones/bulb.png", class:"bulb-icon") %>Create event
-                 <% end %>
-              </li>
-              <li>
-                <%= link_to destroy_user_session_path, method: :delete do  %>
-                 <%= image_tag("Icones/logout.png", class:"logout-icon") %>Log out
-                 <% end %>
-              </li>
-            </ul>
+            <% end %>
+          </ul>
         <% end %>
       </div>
     </div>

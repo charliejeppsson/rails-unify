@@ -12,6 +12,9 @@ class User < ApplicationRecord
   has_many :contacts, dependent: :destroy
 
   has_many :events_to_attend, through: :attendances, source: :event
+  has_many :messages, dependent: :destroy
+  has_many :chatrooms, dependent: :destroy
+  has_many :chatroomusers, dependent: :destroy
 
   def self.find_for_linkedin_oauth(auth)
     user_params = auth.slice(:provider, :uid)

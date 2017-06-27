@@ -1,0 +1,56 @@
+
+.panel {
+  overflow: scroll;
+  height: 400px;
+  padding-top: 10px;
+}
+.panel-body {
+  padding: 0 15px;
+  margin: 10px;
+}
+.bubble-left {
+  background-color: lightgrey;
+  border-radius: 3px;
+  padding: 10px 10px;
+  width: 60%;
+}
+.bubble-right {
+  background-color: grey;
+  border-radius: 3px;
+  padding: 10px 10px;
+  width: 60%;
+  float: right;
+}
+.avatar-box {
+  align-items: center;
+  border-radius: 3px;
+  transition: all 0.15s ease;
+  width: 100%;
+  margin: 20px auto;
+}
+.content {
+  word-wrap: break-word;
+  color: #333333;
+}
+.name {
+  font-size: 15px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #333333;
+  word-wrap: break-word;
+}
+.headline {
+  word-wrap: break-word;
+}
+.name:hover {
+  text-decoration: none;
+  color: #333333;
+}
+.created-at {
+  font-size: 12px;
+  font-style: italic;
+  margin-bottom: 30px;
+}
+.send-btn-hover:hover {
+  background-color: lightgrey;
+}

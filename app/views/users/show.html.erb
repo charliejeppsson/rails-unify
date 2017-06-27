@@ -7,6 +7,27 @@
 
     <h3 style="margin-bottom: 30px;"> <%= @user.first_name %> <%= @user.last_name %> </h3>
 
+    <!-- ICON BUTTONS -->
+    <ul class="list-inline user-list-controls user-list-controls-big" style="justify-content: center; margin-bottom: 30px;">
+      <% unless @user.url.nil? %>
+        <li><a href="<%= user.url %>" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+      <% end %>
+      <!-- Check if user already has a chat with this guy -->
+      <% already_chatting = false %>
+      <% current_user.chatrooms.each do |chat| %>
+        <% if chat.users.include?(@user) %>
+          <% @our_chatroom = chat %>
+          <% already_chatting = true %>
+        <% end %>
+      <% end %>
+      <% unless already_chatting %>
+        <li><a href="<%= new_chatroom_path(with_user_id: user_id) %>"><i class="fa fa-comments"></i></a></li>
+      <% else %>
+        <li><a href="<%= chatroom_path(@our_chatroom.id) %>"><i class="fa fa-comments"></i></a></li>
+      <% end %>
+      <li><a href="#"><i class="fa fa-address-book"></i></a></li>
+    </ul>
+
     <div class="container-fluid">
       <div class="row">
         <div class="col-xs-6 col-sm-3 col-sm-offset-3">

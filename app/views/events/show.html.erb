@@ -84,23 +84,43 @@
         </div>
       </div>
 
-    <!-- List with attendants and links to their profiles -->
-    <div class="col-xs-6">
-      <div>
-        <% if user_signed_in? %>
-          <% attended = current_user.attendances.select { |attendance| attendance.event_id == @event.id } %>
-          <% if attended.empty? == false %>
-            <h2 class="text-center"> <%= pluralize @event.attendances.count, "checked-in attendant" %> </h2>
-            <% @event.attendances.each do |attendance| %>
-              <% user_id = attendance.user_id %>
-              <% user = User.find(user_id) %>
-              <div class="user-list">
-                <% avatar_url = user.picture || "https://timeforgeography.co.uk/static/img/avatar-placeholder.png" %>
-                <%= image_tag avatar_url, class: "user-list-avatar" %>
-                <div class='user-list-body'>
+      <!-- List with attendants and links to their profiles -->
 
-                  <a href="<%= user_path(user.id) %>" style="text-decoration: none; color: #333333;"> <h5> <%= user.first_name %> <%= user.last_name  %> </h5> </a>
-                  <p> <%= user.headline %> </p>
+      <div class="col-xs-6">
+        <div>
+          <% if user_signed_in? %>
+            <% attended = current_user.attendances.select { |attendance| attendance.event_id == @event.id } %>
+            <% if attended.empty? == false %>
+              <h2 class="text-center"> <%= pluralize @event.attendances.count, "checked-in attendant" %> </h2>
+              <% @event.attendances.each do |attendance| %>
+                <% user_id = attendance.user_id %>
+                <% user = User.find(user_id) %>
+                <div class="user-list">
+                  <% avatar_url = user.picture || "https://timeforgeography.co.uk/static/img/avatar-placeholder.png" %>
+                  <%= image_tag avatar_url, class: "user-list-avatar" %>
+                  <div class='user-list-body'>
+                    <a href="<%= user_path(user.id) %>" style="text-decoration: none; color: #333333;"> <h5> <%= user.first_name + " " + user.last_name %> </h5> </a>
+                    <p> <%= user.headline %> </p>
+                  </div>
+                  <ul class="list-inline user-list-controls hidden-sm hidden-xs">
+                    <% unless user.url.nil? %>
+                      <li><a href="<%= user.url %>" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+                    <% end %>
+                      <!-- Check if user already has a chat with this guy -->
+                      <% already_chatting = false %>
+                      <% current_user.chatrooms.each do |chat| %>
+                        <% if chat.users.include?(user) %>
+                          <% @our_chatroom = chat %>
+                          <% already_chatting = true %>
+                        <% end %>
+                      <% end %>
+                      <% unless already_chatting %>
+                        <li><a href="<%= new_chatroom_path(with_user_id: user_id) %>"><i class="fa fa-comments"></i></a></li>
+                      <% else %>
+                        <li><a href="<%= chatroom_path(@our_chatroom.id) %>"><i class="fa fa-comments"></i></a></li>
+                      <% end %>
+                    <li><a href="#"><i class="fa fa-address-book"></i></a></li>
+                  </ul>
                 </div>
                 <ul class="list-inline user-list-controls hidden-sm hidden-xs">
                   <% unless user.url.nil? %>
