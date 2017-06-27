@@ -1,14 +1,17 @@
 .rounded-btn {
-  border: 1px solid rgba(247,206,62,0.1);
+  // border: 1px solid rgba(247,206,62,0.1);
+  border: 1px solid rgba(255,255,255,0.1);
   border-radius: 25px;
   padding: 6px;
   min-width: 30px;
   // color: rgba(247,206,62, 0.9);
   color: white;
   font-size: 11px;
-  background-color: rgba(247,206,62,0.7);
+  // background-color: rgba(247,206,62,0.7);
+  background-color: #413659;
 }
 
 .rounded-btn:hover {
-  border: 1px solid #f4d97f;
+  // border: 1px solid #f4d97f;
+  border: 1px solid rgba(255,255,255,0.5);
 }
