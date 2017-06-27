@@ -2,7 +2,14 @@ class ContactsController < ApplicationController
 
 
   def index
-    @user = current_user
+
+    if params.has_key?(:search_value) and params[:search_value] !=""
+      search = params[:search_value]
+      @result = Contact.global_search(search)
+    else
+
+      @user = current_user
+    end
   end
 
   def show
@@ -27,6 +34,11 @@ class ContactsController < ApplicationController
     @contact.update(contact_details)
     redirect_to user_path(@user)
   end
+
+  def search
+  puts "Hello"
+  end
+
 
   private
 
