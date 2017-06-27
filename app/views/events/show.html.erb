@@ -1,3 +1,21 @@
+<% content_for(:after_js) do %>
+  <script>
+  $(document).ready(function () {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function(position) {
+          var lat = position.coords.latitude;
+          var long = position.coords.longitude;
+
+          var previous_href = $(".js-location").attr("href");
+          previous_href = previous_href + "?latitude=" + lat + "&longitude=" + long;
+
+          $(".js-location").attr("href", previous_href);
+
+        });
+    }
+  });
+  </script>
+  <% end %>
 
 <% if @event.photo? %>
   <div class="banner-event" style="background-image: linear-gradient(135deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.5) 50%), url('<%= cl_image_path @event.photo %>')">
@@ -16,8 +34,14 @@
         <% if user_signed_in?%>
           <% attended = current_user.attendances.select { |attendance| attendance.event_id == @event.id } %>
           <% if attended.empty? %>
-            <%= link_to "Check-in to this event", event_attend_path(@event), method: :get, class: "navbar-wagon-item navbar-wagon-button btn" %>
+
+
+            <%= link_to "Check-in to this event", event_attend_path(@event), method: :get, class: "navbar-wagon-item navbar-wagon-button btn js-location" %>
+
+
+
           <% elsif attended.empty? == false %>
+
             <h3>You are checked-in.</h3>
           <% end %>
         <% end %>
@@ -124,6 +148,7 @@
                 });
 
               <% end %>
+
             <% end %>
           </div>
         </div>
