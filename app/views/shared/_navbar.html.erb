@@ -1,7 +1,9 @@
 <div class="navbar-wagon">
   <!-- Logo -->
   <div class="navbar-wagon-left">
+    <%= link_to search_path do %>
     <%= image_tag("Unify-logo.png", class:"logo-uni") %>
+    <% end %>
     <a href="/events" class="logo">
       <h1>Unify</h1>
     </a>
@@ -11,7 +13,7 @@
   <div class="navbar-wagon-right">
     <div class="search-event-wrapper">
       <%= link_to search_path do  %>
-      <i class="material-icons">search</i>
+      <%= image_tag("Icones/Search.png", class:"search-icon") %>
       <% end %>
     </div>
 
@@ -26,21 +28,21 @@
       <div class="dropdown">
           <% if user_signed_in? %>
             <% avatar_url = current_user.picture || "https://timeforgeography.co.uk/static/img/avatar-placeholder.png" %>
-            <%= image_tag avatar_url, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+            <%= image_tag avatar_url, class: "vatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
             <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
               <li>
                 <%= link_to user_path(current_user.id) do  %>
-                 <i style="line-height: 2px" class="material-icons">perm_identity</i>Profile
+                 <%= image_tag("Icones/profile.png", class:"profile-icon") %> Profile
                  <% end %>
               </li>
               <li>
                  <%= link_to new_event_path do  %>
-                 <i class="material-icons">lightbulb_outline</i>Create event
+                 <%= image_tag("Icones/bulb.png", class:"bulb-icon") %>Create event
                  <% end %>
               </li>
               <li>
                 <%= link_to destroy_user_session_path, method: :delete do  %>
-                 <i class="material-icons">label_outline</i>Log out
+                 <%= image_tag("Icones/logout.png", class:"logout-icon") %>Log out
                  <% end %>
               </li>
             </ul>
