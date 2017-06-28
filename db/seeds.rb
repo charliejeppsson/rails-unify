@@ -62,20 +62,20 @@ end
 puts 'Creating events...'
 
 Event.create(
-  title: "Chatbot Lover",
-  description: "Come to discover what's behind a chatbot and about machine learning", # Faker::Matz.quote
+  title: "Le Wagon Barcelona Demo Day",
+  description: "Come to what 23 outstanding people was able to build after only 9 weeks of coding.", # Faker::Matz.quote
   start_time: "2017-06-24 13:00:00",
-  end_time: "2017-06-24 18:00:00",
-  organization: "Pocket Confident",
+  end_time: "2017-07-05 18:00:00",
+  organization: "Le Wagon",
   category: "Tech",
-  location: "Carrer de Corsega, 95, 08036 Barcelona",
+  location: "Travessera de Dalt, 33 08024 Barcelona",
   user_id: User.all.ids.sample,
 )
 
 Event.create(
   title: "Create a community",
   description: "Learn how to create a genuine sense of belonging in a community", # Faker::Matz.quote
-  start_time: "2017-07-24 13:00:00",
+  start_time: "2017-06-24 13:00:00",
   end_time: "2017-07-24 18:00:00",
   organization: "Nova",
   category: "Human Resources",
@@ -148,8 +148,6 @@ Event.create(
   location: "Carrer de Valencia, 125, 08009 Barcelona",
   user_id: User.all.ids.sample,
 )
-
-
 
 
 # events

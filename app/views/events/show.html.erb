@@ -17,6 +17,7 @@
   </script>
 <% end %>
 
+<!-- BANNER WITH CHECK-IN BUTTON -->
 <% if @event.photo? %>
   <div class="banner-event" style="background-image: linear-gradient(135deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.5) 50%), url('<%= cl_image_path @event.photo %>')">
 <% else %>
@@ -24,35 +25,25 @@
 <% end %>
     <div class="banner-event-text">
       <h1><%= @event.title %></h1>
-
       <% if @event.upcomming? %>
-       <h3>This event is to come. At the event, you will be able to check-in to enable the chat and view the other attendees</h3>
-      <% end %>
-
-      <% if @event.now? %>
+        <h3>This event is to come. At the event, you will be able to check in to enable the chat and view the other attendees</h3>
+      <% elsif @event.now? %>
         <h3>This event is NOW</h3>
         <% if user_signed_in?%>
           <% attended = current_user.attendances.select { |attendance| attendance.event_id == @event.id } %>
           <% if attended.empty? %>
-
-
-            <%= link_to "Check-in to this event", event_attend_path(@event), method: :get, class: "navbar-wagon-item navbar-wagon-button btn js-location" %>
-
-
-
-          <% elsif attended.empty? == false %>
-
-            <h3>You are checked-in.</h3>
+            <%= link_to "Check in to this event", event_attend_path(@event), method: :get, class: "navbar-wagon-item navbar-wagon-button btn js-location" %>
+          <% else %>
+            <h3>You are checked in.</h3>
           <% end %>
+        <% else %>
+          <%= link_to "Check in to this event", event_attend_path(@event), method: :get, class: "navbar-wagon-item navbar-wagon-button btn js-location"  %>
         <% end %>
-      <% end %>
-
-      <% if @event.past? %>
+      <% elsif @event.past? %>
         <h3>This event is no longer open for check-ins.</h3>
       <% end %>
-     </div>
-
-</div>
+    </div>
+  </div>
 
 <div class="container" style="margin-bottom: 100px; margin-top: 50px;">
   <div class="row">
@@ -100,26 +91,32 @@
                   <% avatar_url = user.picture || "https://timeforgeography.co.uk/static/img/avatar-placeholder.png" %>
                   <%= image_tag avatar_url, class: "user-list-avatar" %>
                   <div class='user-list-body'>
-                    <a href="<%= user_path(user.id) %>" style="text-decoration: none; color: #333333;"> <h5> <%= user.first_name + " " + user.last_name %> </h5> </a>
+                    <a href="<%= user_path(user.id) %>" style="text-decoration: none; color: #333333;"><h5> <%= user.first_name + " " + user.last_name %> </h5> </a>
                     <p> <%= user.headline %> </p>
                   </div>
                   <ul class="list-inline user-list-controls">
                     <% unless user.url.nil? %>
                       <li><a href="<%= user.url %>" target="_blank"><i class="fa fa-linkedin"></i></a></li>
                     <% end %>
-                      <!-- Check if user already has a chat with this guy -->
+                    <!-- Check if user already has a chat with this guy -->
+                    <% my_chats = current_user.chatroomusers %>
+                    <% unless my_chats.empty? %>
                       <% already_chatting = false %>
-                      <% current_user.chatrooms.each do |chat| %>
-                        <% if chat.users.include?(user) %>
-                          <% @our_chatroom = chat %>
+                      <% my_chats.each do |chat| %>
+                        <% chatter_1 = chat.chatroom.chatroomusers[0].user %>
+                        <% chatter_2 = chat.chatroom.chatroomusers[1].user %>
+                        <% chatters = [chatter_1, chatter_2] %>
+                        <% if chatters.include?(user) %>
                           <% already_chatting = true %>
+                          <% @our_chatroom = chat.chatroom %>
                         <% end %>
                       <% end %>
-                      <% unless already_chatting %>
-                        <li><a href="<%= new_chatroom_path(with_user_id: user_id) %>"><i class="fa fa-comments"></i></a></li>
-                      <% else %>
-                        <li><a href="<%= chatroom_path(@our_chatroom.id) %>"><i class="fa fa-comments"></i></a></li>
-                      <% end %>
+                    <% end %>
+                    <% unless already_chatting %>
+                      <li><a href="<%= new_chatroom_path(with_user_id: user_id) %>"><i class="fa fa-comments"></i></a></li>
+                    <% else %>
+                      <li><a href="<%= chatroom_path(@our_chatroom.id) %>"><i class="fa fa-comments"></i></a></li>
+                    <% end %>
                     <li><%= link_to "", event_addcontactbook_path(@event,:user_id => user_id), :class => "fa fa-address-book" %></li>
                   </ul>
                 </div>

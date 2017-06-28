@@ -6,8 +6,6 @@ class EventsController < ApplicationController
   #   @events = Event.all
   #   end
 
-
-
   def show
 
     @alert_message = "You are viewing #{@event.title}"
@@ -17,8 +15,8 @@ class EventsController < ApplicationController
         marker.lat event.latitude
         marker.lng event.longitude
       else
-        marker.lat '29.978'
-        marker.lng '31.1320'
+        marker.lat '41.4089506'
+        marker.lng '2.1523962'
         # CHANGE!
       end
     end
@@ -68,18 +66,25 @@ class EventsController < ApplicationController
     @user = current_user
     # @event_nearby = Event.near([@event.latitude, @event.longitude], 0.1).first
 
+    # Check if user already has an attendance to the event clicked
+    attended = current_user.attendances.select { |attendance| attendance.event_id == @event.id }
 
-    current_location_latitude = current_location["latitude"].to_f
-    current_location_longitude = current_location["longitude"].to_f
-    center_point = [current_location_latitude, current_location_longitude]
-    box = Geocoder::Calculations.bounding_box(center_point, 1)
-    #center_point_event = [@event.longitude, @event.latitude]
-    if Event.within_bounding_box(box).map(&:id).include? @event.id
-      Attendance.create(user_id: @user.id, event_id: @event.id)
+    if attended.empty?
+      current_location_latitude = current_location["latitude"].to_f
+      current_location_longitude = current_location["longitude"].to_f
+      center_point = [current_location_latitude, current_location_longitude]
+      box = Geocoder::Calculations.bounding_box(center_point, 1)
+      #center_point_event = [@event.longitude, @event.latitude]
+      if Event.within_bounding_box(box).map(&:id).include? @event.id
+        Attendance.create(user_id: @user.id, event_id: @event.id)
+        redirect_to event_path(@event)
+        flash[:notice] = "You have successfully checked in to this event."
+      else  redirect_to event_path(@event)
+        flash[:alert] = "You can't check in as you are not at the event location."
+      end
+    else
+      flash[:alert] = "You are already checked in to this event."
       redirect_to event_path(@event)
-      flash[:notice] = "You have successfully checkin this event"
-    else  redirect_to event_path(@event)
-      flash[:alert] = "You can't check in as you are not in the zone"
     end
 
   end
@@ -100,64 +105,37 @@ class EventsController < ApplicationController
 
 end
 
-  def search
+ def search
 
-      @hash = Gmaps4rails.build_markers(@events) do |event, marker|
+    if params.has_key?(:search_value) and params[:search_value] != ""
+      search = params[:search_value]
+      @result = Event.global_search(search)
+
+      @hash = Gmaps4rails.build_markers(@result) do |event, marker|
+          marker.lat event.latitude
+          marker.lng event.longitude
+      end
+
+    else
+      @events =  Event.all
+       @hash = Gmaps4rails.build_markers(@events) do |event, marker|
       if event.latitude
         marker.lat event.latitude
         marker.lng event.longitude
       else
-        marker.lat '29.978'
-        marker.lng '31.1320'
+        marker.lat '41.4089506'
+        marker.lng '2.1523962'
         # CHANGE!
       end
     end
-
-    @event = Event.new
-    # if there is no search parameter
-    # if params[:event].nil?
-    #   @events = Event.all
-    # end
-    if params[:event].nil?
-      @events = Event.all
-    elsif params[:event][:location].blank? && params[:event][:category].reject { |c| c.empty?}.blank?
-      @events = Event.all
-
-    elsif (params[:event][:category].reject { |c| c.empty?}.present? && params[:event][:location].present?)
-        tags_list = params[:event][:category].select { |i| i.present? }
-        @location = params[:event][:location]
-        q2 = "%#{@location}%"
-        @events = Event.where("category ILIKE ? AND location ILIKE ?",tags_list[0], q2)
-    elsif
-
-    # if category
-    unless params[:event].nil? || params[:event][:category].blank?
-      tags_list = params[:event][:category].select { |i| i.present? }
-      @events = Event.where("category ILIKE ?",tags_list[0])
-    end
-
-    # if location
-    unless params[:event].nil? || params[:event][:location].blank?
-      @location = params[:event][:location]
-      q2 = "%#{@location}%"
-      @events = Event.where("location ILIKE ?", q2)
-        # if @location == ""
-        #   @events = Event.where(location: @location)
-        # else
-        #   @events = Event.where(category: @category)
-        # end
-    end
-
-   end
+  end
+ render :index
+end
 
 
 
-
-
-    render :index
 
       # if a parameter doesn't correspond to anything - add a note
-  end
 
 
 
