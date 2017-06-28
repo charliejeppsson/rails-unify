@@ -162,10 +162,11 @@ puts 'Creating attendances...'
   )
 end
 
+event_1 = Event.where(organization: "Le Wagon")
+
 Attendance.create(
-  user_id: User.all.ids.sample,
-  event = Event.where(organization: "Le Wagon"),
-  event_id: event.id,
+  user_id: User.all.ids.sample
+  event_id: event_1.id,
 )
 
 puts 'Finished!'
