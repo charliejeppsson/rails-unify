@@ -44,6 +44,8 @@
 
             <h3>You are checked-in.</h3>
           <% end %>
+          <% else %>
+          <%= link_to "Check-in to this event", event_attend_path(@event), method: :get, class: "navbar-wagon-item navbar-wagon-button btn js-location"  %>
         <% end %>
       <% end %>
 
