@@ -26,12 +26,19 @@
       <% end %>
     </div>
 
+
+
+
+
+
+
+
     <div class="col-xs-10 hidden-md hidden-lg">
 
       <div class="panel panel-default">
         <% if @chatroom.messages.any? %>
-          <div user_id="<%= current_user.id %>" id="messages">
-          <% @chatroom.messages.order("created_at DESC").each do |message| %>
+          <div data-userid="<%= current_user.id %>" class="messages-wrap">
+          <% @chatroom.messages.order("created_at ASC").each do |message| %>
               <div class="panel-body">
                 <div class="<%= current_user.id == message.user.id ? "bubble-right" : "bubble-left" %>" >
                   <a href="<%= user_path(message.user) %>";"><h5 class="message name"> <%= message.user.first_name %>: </h5> </a>
@@ -42,7 +49,7 @@
           </div>
 
         <%else%>
-          <div class="panel-body hidden" id="messages">
+          <div class="panel-body hidden messages-wrap">
           </div>
         <%end%>
       </div>
@@ -52,6 +59,13 @@
         <%= render partial: 'messages/message_form', locals: {message: @message, chatroom: @chatroom}%>
       </div>
     </div>
+
+
+
+
+
+
+
 
 
     <!-- LAPTOP AND DESKTOP VIEW HERE -->
@@ -86,8 +100,8 @@
 
       <div class="panel panel-default">
         <% if @chatroom.messages.any? %>
-          <div user_id="<%= current_user.id %>" id="messages">
-          <% @chatroom.messages.order("created_at DESC").each do |message| %>
+          <div data-userid="<%= current_user.id %>" class="messages-wrap">
+          <% @chatroom.messages.order("created_at ASC").each do |message| %>
               <div class="panel-body">
                 <div class="<%= current_user.id == message.user.id ? "bubble-right" : "bubble-left" %>" >
                   <a href="<%= user_path(message.user) %>";"><h5 class="message name"> <%= message.user.first_name %>: </h5> </a>
@@ -98,7 +112,7 @@
           </div>
 
         <%else%>
-          <div class="panel-body hidden" id="messages">
+          <div class="panel-body hidden messages-wrap">
           </div>
         <%end%>
       </div>
