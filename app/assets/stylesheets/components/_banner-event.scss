@@ -1,19 +1,49 @@
-
 .banner-event {
   position: relative;
-  height: 600px;
+  height: 223px;
   background-size: cover;
 }
 
 .banner-event-text {
   color: rgba(255, 255, 255, 0.75);
-  padding-top: 20%;
-  margin-top: 0 auto;
-  margin-bottom: 230px;
+  padding-top: 22px;
+  margin: 0 auto;
+  // margin-bottom: 230px;
   text-align: center;
 }
 
 .banner-event-text h1 {
-  font-weight: bold;
-  text-transform: uppercase;
+  // font-weight: bold;
+  font-size: 30px;
+  font-family: Raleway;
 }
+
+.banner-event-text h3 {
+  font-size: 18px;
+}
+
+
+.btn-show {
+  color: white !important;
+  border: 1px solid #999999;
+  padding: 10px 15px;
+  border-radius: 28px;
+  font-weight: lighter;
+  opacity: 0.9;
+  margin-left: 140px;
+  margin-right: 136px;
+  padding: 3px;
+}
+
+.btn-show:hover {
+  opacity: 1;
+  text-decoration: none;
+  color: #CAE7A0;
+}
+
+.btn {
+  color: white;
+  opacity: 0.8;
+}
+
+

@@ -17,7 +17,7 @@
             <%= javascript_tag do %>
               $(document).ready(function() {
                 var handler = Gmaps.build('Google');
-                handler.buildMap({ internal: { id: 'map' } }, function() {
+                handler.buildMap({ internal: { id: 'map' }, provider:{ scrollwheel: false } }, function() {
                   markers = handler.addMarkers(<%= raw @hash.to_json %>);
                   handler.bounds.extendWith(markers);
                   handler.fitMapToBounds();

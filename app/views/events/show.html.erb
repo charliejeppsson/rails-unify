@@ -1,3 +1,4 @@
+<!-- Javascript for check-in -->
 <% content_for(:after_js) do %>
   <script>
   $(document).ready(function () {
@@ -32,12 +33,16 @@
         <% if user_signed_in?%>
           <% attended = current_user.attendances.select { |attendance| attendance.event_id == @event.id } %>
           <% if attended.empty? %>
-            <%= link_to "Check in to this event", event_attend_path(@event), method: :get, class: "navbar-wagon-item navbar-wagon-button btn js-location" %>
+            <div class="btn-show">
+              <%= link_to "Check in", event_attend_path(@event), method: :get, class: "navbar-wagon-item navbar-wagon-button btn js-location" %>
+            </div>
           <% else %>
             <h3>You are checked in.</h3>
           <% end %>
         <% else %>
-          <%= link_to "Check in to this event", event_attend_path(@event), method: :get, class: "navbar-wagon-item navbar-wagon-button btn js-location"  %>
+          <div class="btn-show">
+            <%= link_to "Check in", event_attend_path(@event), method: :get, class: "navbar-wagon-item navbar-wagon-button btn js-location"  %>
+          </div>
         <% end %>
       <% elsif @event.past? %>
         <h3>This event is no longer open for check-ins.</h3>
@@ -48,16 +53,14 @@
 <div class="container" style="margin-bottom: 100px; margin-top: 50px;">
   <div class="row">
     <% if @event.now? %>
-      <div class="col-xs-12 col-md-6">
-        <div class="wrapper">
           <div class="wrapper-map">
-            <div id="map" style="width: 100%; height: 320px;"></div>
+            <div id="map" style="width: 100%; height: 145px;"></div>
 
             <% content_for(:after_js) do %>
               <%= javascript_tag do %>
                 $(document).ready(function() {
                   var handler = Gmaps.build('Google');
-                  handler.buildMap({ internal: { id: 'map' } }, function() {
+                  handler.buildMap({ internal: { id: 'map' }, provider:{ scrollwheel: false } }, function() {
                     markers = handler.addMarkers(<%= raw @hash.to_json %>);
                     handler.bounds.extendWith(markers);
                     handler.fitMapToBounds();
@@ -71,9 +74,24 @@
 
               <% end %>
             <% end %>
-          </div>
+      </div>
+
+      <div class="event-infos">
+        <div class="col-md-6">
+          <br>
+          <p><i class="fa fa-calendar" aria-hidden="true"></i> <%= @event.start_time %> </p>
+          <hr>
+          <p><i class="fa fa-map-marker lg" aria-hidden="true"></i> <%= @event.location %> </p>
+          <hr>
+          <p><i class="fa fa-briefcase" aria-hidden="true"></i> <%= @event.organization %> </p>
+          <hr>
+          <p><i class="fa fa-tags" aria-hidden="true"></i> <%= @event.category %> </p>
+          <hr>
+          <p><i class="fa fa-bolt" aria-hidden="true"></i> <%= @event.description %>
+
         </div>
       </div>
+
 
       <!-- List with attendants and links to their profiles -->
 
@@ -135,16 +153,14 @@
         </div>
       </div>
     <% else %>
-      <div class="col-xs-12">
-        <div class="wrapper">
           <div class="wrapper-map">
-            <div id="map" style="width: 100%; height: 320px;"></div>
+            <div id="map" style="width: 100%; height: 145px;"></div>
 
             <% content_for(:after_js) do %>
               <%= javascript_tag do %>
                 $(document).ready(function() {
                   var handler = Gmaps.build('Google');
-                  handler.buildMap({ internal: { id: 'map' } }, function() {
+                  handler.buildMap({ internal: { id: 'map' }, provider:{ scrollwheel: false } }, function() {
                     markers = handler.addMarkers(<%= raw @hash.to_json %>);
                     handler.bounds.extendWith(markers);
                     handler.fitMapToBounds();
@@ -155,16 +171,32 @@
                     }
                   });
                 });
-
               <% end %>
 
             <% end %>
           </div>
-        </div>
-      </div>
+
+          <div class="event-infos">
+            <div class="col-md-6">
+              <br>
+              <p><i class="fa fa-calendar" aria-hidden="true"></i> <%= @event.start_time %> </p>
+              <hr>
+              <p><i class="fa fa-map-marker lg" aria-hidden="true"></i> <%= @event.location %> </p>
+              <hr>
+              <p><i class="fa fa-briefcase" aria-hidden="true"></i> <%= @event.organization %> </p>
+              <hr>
+              <p><i class="fa fa-tags" aria-hidden="true"></i> <%= @event.category %> </p>
+              <hr>
+              <p><i class="fa fa-bolt" aria-hidden="true"></i> <%= @event.description %>
+
+            </div>
+          </div>
+
     <% end %>
   </div>
 </div>
+
+
 
 
 <!-- NOTE: Create banner with image, logo, slogan and randomized quotes, including:
