@@ -120,7 +120,7 @@
                       <% else %>
                         <li><a href="<%= chatroom_path(@our_chatroom.id) %>"><i class="fa fa-comments"></i></a></li>
                       <% end %>
-                    <li><a href="#"><i class="fa fa-address-book"></i></a></li>
+                    <li><%= link_to "", event_addcontactbook_path(@event,:user_id => user_id), :class => "fa fa-address-book" %></li>
                   </ul>
                 </div>
               <% end %>

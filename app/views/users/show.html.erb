@@ -21,7 +21,7 @@
         <% end %>
       <% end %>
       <% unless already_chatting %>
-        <li><a href="<%= new_chatroom_path(with_user_id: user_id) %>"><i class="fa fa-comments"></i></a></li>
+        <li><a href="<%= new_chatroom_path(with_user_id: @user_id) %>"><i class="fa fa-comments"></i></a></li>
       <% else %>
         <li><a href="<%= chatroom_path(@our_chatroom.id) %>"><i class="fa fa-comments"></i></a></li>
       <% end %>
