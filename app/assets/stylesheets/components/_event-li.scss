@@ -21,7 +21,7 @@
   text-transform: uppercase;
   letter-spacing: 1.1px;
   text-decoration: none;
-  color: #7a726f;
+  color: $dark-gray;
   position: relative;
   left: 5px;
   top: 10px;
@@ -44,7 +44,7 @@
 }
 
 .event-li-data {
-  color: #7a726f;
+  color: $dark-gray;
   font-size: 15px;
   font-family: "Raleway";
   position: absolute;
