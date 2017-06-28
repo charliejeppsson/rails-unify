@@ -75,7 +75,7 @@ Event.create(
 Event.create(
   title: "Create a community",
   description: "Learn how to create a genuine sense of belonging in a community", # Faker::Matz.quote
-  start_time: "2017-07-24 13:00:00",
+  start_time: "2017-06-24 13:00:00",
   end_time: "2017-07-24 18:00:00",
   organization: "Nova",
   category: "Human Resources",
@@ -150,8 +150,6 @@ Event.create(
 )
 
 
-
-
 # events
 puts 'Creating attendances...'
 
@@ -161,10 +159,5 @@ puts 'Creating attendances...'
     event_id: Event.all.ids.sample,
   )
 end
-
-Attendance.create(
-  user_id: User.all.ids.sample,
-  event_id: Event.where(title: "Le Wagon Barcelona Demo Day").id,
-)
 
 puts 'Finished!'
