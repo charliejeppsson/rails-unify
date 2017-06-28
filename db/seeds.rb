@@ -165,7 +165,7 @@ end
 event_1 = Event.where(organization: "Le Wagon")
 
 Attendance.create(
-  user_id: User.all.ids.sample
+  user_id: User.all.ids.sample,
   event_id: event_1.id,
 )
 
