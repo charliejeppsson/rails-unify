@@ -6,17 +6,6 @@ class EventsController < ApplicationController
   #   @events = Event.all
   #   end
 
-    @hash1 = Gmaps4rails.build_markers(@events) do |event, marker|
-      if event.latitude
-        marker.lat event.latitude
-        marker.lng event.longitude
-      else
-        marker.lat '29.978'
-        marker.lng '31.1320'
-        # CHANGE!
-      end
-    end
-
 
 
   def show
@@ -112,6 +101,18 @@ class EventsController < ApplicationController
 end
 
   def search
+
+      @hash = Gmaps4rails.build_markers(@events) do |event, marker|
+      if event.latitude
+        marker.lat event.latitude
+        marker.lng event.longitude
+      else
+        marker.lat '29.978'
+        marker.lng '31.1320'
+        # CHANGE!
+      end
+    end
+
     @event = Event.new
     # if there is no search parameter
     # if params[:event].nil?
@@ -150,16 +151,8 @@ end
    end
 
 
-    @hash = Gmaps4rails.build_markers(@events) do |event, marker|
-      if event.latitude
-        marker.lat event.latitude
-        marker.lng event.longitude
-      else
-        marker.lat '29.978'
-        marker.lng '31.1320'
-        # CHANGE!
-      end
-    end
+
+
 
     render :index
 
