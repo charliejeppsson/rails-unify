@@ -6,8 +6,6 @@ class EventsController < ApplicationController
   #   @events = Event.all
   #   end
 
-
-
   def show
 
     @alert_message = "You are viewing #{@event.title}"
@@ -17,8 +15,8 @@ class EventsController < ApplicationController
         marker.lat event.latitude
         marker.lng event.longitude
       else
-        marker.lat '29.978'
-        marker.lng '31.1320'
+        marker.lat '41.4089506'
+        marker.lng '2.1523962'
         # CHANGE!
       end
     end
@@ -100,64 +98,37 @@ class EventsController < ApplicationController
 
 end
 
-  def search
+ def search
 
-      @hash = Gmaps4rails.build_markers(@events) do |event, marker|
+    if params.has_key?(:search_value) and params[:search_value] != ""
+      search = params[:search_value]
+      @result = Event.global_search(search)
+
+      @hash = Gmaps4rails.build_markers(@result) do |event, marker|
+          marker.lat event.latitude
+          marker.lng event.longitude
+      end
+
+    else
+      @events =  Event.all
+       @hash = Gmaps4rails.build_markers(@events) do |event, marker|
       if event.latitude
         marker.lat event.latitude
         marker.lng event.longitude
       else
-        marker.lat '29.978'
-        marker.lng '31.1320'
+        marker.lat '41.4089506'
+        marker.lng '2.1523962'
         # CHANGE!
       end
     end
-
-    @event = Event.new
-    # if there is no search parameter
-    # if params[:event].nil?
-    #   @events = Event.all
-    # end
-    if params[:event].nil?
-      @events = Event.all
-    elsif params[:event][:location].blank? && params[:event][:category].reject { |c| c.empty?}.blank?
-      @events = Event.all
-
-    elsif (params[:event][:category].reject { |c| c.empty?}.present? && params[:event][:location].present?)
-        tags_list = params[:event][:category].select { |i| i.present? }
-        @location = params[:event][:location]
-        q2 = "%#{@location}%"
-        @events = Event.where("category ILIKE ? AND location ILIKE ?",tags_list[0], q2)
-    elsif
-
-    # if category
-    unless params[:event].nil? || params[:event][:category].blank?
-      tags_list = params[:event][:category].select { |i| i.present? }
-      @events = Event.where("category ILIKE ?",tags_list[0])
-    end
-
-    # if location
-    unless params[:event].nil? || params[:event][:location].blank?
-      @location = params[:event][:location]
-      q2 = "%#{@location}%"
-      @events = Event.where("location ILIKE ?", q2)
-        # if @location == ""
-        #   @events = Event.where(location: @location)
-        # else
-        #   @events = Event.where(category: @category)
-        # end
-    end
-
-   end
+  end
+ render :index
+end
 
 
 
-
-
-    render :index
 
       # if a parameter doesn't correspond to anything - add a note
-  end
 
 
 

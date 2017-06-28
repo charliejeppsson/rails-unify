@@ -35,9 +35,6 @@ class ContactsController < ApplicationController
     redirect_to user_path(@user)
   end
 
-  def search
-  puts "Hello"
-  end
 
 
   private
