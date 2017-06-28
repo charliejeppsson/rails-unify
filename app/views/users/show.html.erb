@@ -10,18 +10,22 @@
     <!-- ICON BUTTONS -->
     <ul class="list-inline user-list-controls user-list-controls-big" style="justify-content: center; margin-bottom: 30px;">
       <% unless @user.url.nil? %>
-        <li><a href="<%= user.url %>" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+        <li><a href="<%= @user.url %>" target="_blank"><i class="fa fa-linkedin"></i></a></li>
       <% end %>
       <!-- Check if user already has a chat with this guy -->
       <% already_chatting = false %>
-      <% current_user.chatrooms.each do |chat| %>
-        <% if chat.users.include?(@user) %>
-          <% @our_chatroom = chat %>
+      <% my_chats = current_user.chatroomusers %>
+      <% my_chats.each do |chat| %>
+        <% chatter_1 = chat.chatroom.chatroomusers[0].user %>
+        <% chatter_2 = chat.chatroom.chatroomusers[1].user %>
+        <% chatters = [chatter_1, chatter_2] %>
+        <% if chatters.include?(@user) %>
           <% already_chatting = true %>
+          <% @our_chatroom = chat.chatroom %>
         <% end %>
       <% end %>
       <% unless already_chatting %>
-        <li><a href="<%= new_chatroom_path(with_user_id: user_id) %>"><i class="fa fa-comments"></i></a></li>
+        <li><a href="<%= new_chatroom_path(with_user_id: @user_id) %>"><i class="fa fa-comments"></i></a></li>
       <% else %>
         <li><a href="<%= chatroom_path(@our_chatroom.id) %>"><i class="fa fa-comments"></i></a></li>
       <% end %>
@@ -71,7 +75,6 @@
       </div>
     </div>
 
-    <p style="margin-top: 30px;"> <%= link_to "See " + @user.first_name + "'s LinkedIn profile", @user.url %> </p>
     <% if current_user == @user %>
       <p style="margin-top: 30px;"> <%= link_to "Edit your profile", edit_user_registration_path %> </p>
     <% elsif @contact %>

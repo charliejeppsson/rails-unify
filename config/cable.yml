@@ -6,5 +6,5 @@ test:
 
 production:
   adapter: redis
-  url: redis://localhost:6379/1
+  url: redis://redistogo:6a03642af61da1c9ca6c6b27b835174b@jack.redistogo.com:10553/
   channel_prefix: rails-unify_production
