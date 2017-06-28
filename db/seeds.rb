@@ -164,7 +164,8 @@ end
 
 Attendance.create(
   user_id: User.all.ids.sample,
-  event_id: Event.where(title: "Le Wagon Barcelona Demo Day").id,
+  event = Event.where(organization: "Le Wagon"),
+  event_id: event.id,
 )
 
 puts 'Finished!'
