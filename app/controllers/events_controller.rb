@@ -66,18 +66,25 @@ class EventsController < ApplicationController
     @user = current_user
     # @event_nearby = Event.near([@event.latitude, @event.longitude], 0.1).first
 
+    # Check if user already has an attendance to the event clicked
+    attended = current_user.attendances.select { |attendance| attendance.event_id == @event.id }
 
-    current_location_latitude = current_location["latitude"].to_f
-    current_location_longitude = current_location["longitude"].to_f
-    center_point = [current_location_latitude, current_location_longitude]
-    box = Geocoder::Calculations.bounding_box(center_point, 1)
-    #center_point_event = [@event.longitude, @event.latitude]
-    if Event.within_bounding_box(box).map(&:id).include? @event.id
-      Attendance.create(user_id: @user.id, event_id: @event.id)
+    if attended.empty?
+      current_location_latitude = current_location["latitude"].to_f
+      current_location_longitude = current_location["longitude"].to_f
+      center_point = [current_location_latitude, current_location_longitude]
+      box = Geocoder::Calculations.bounding_box(center_point, 1)
+      #center_point_event = [@event.longitude, @event.latitude]
+      if Event.within_bounding_box(box).map(&:id).include? @event.id
+        Attendance.create(user_id: @user.id, event_id: @event.id)
+        redirect_to event_path(@event)
+        flash[:notice] = "You have successfully checked in to this event."
+      else  redirect_to event_path(@event)
+        flash[:alert] = "You can't check in as you are not at the event location."
+      end
+    else
+      flash[:alert] = "You are already checked in to this event."
       redirect_to event_path(@event)
-      flash[:notice] = "You have successfully checkin this event"
-    else  redirect_to event_path(@event)
-      flash[:alert] = "You can't check in as you are not in the zone"
     end
 
   end
