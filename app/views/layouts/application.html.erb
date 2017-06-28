@@ -20,7 +20,7 @@
   <% if content_for :full_page %>
     <%= yield :full_page %>
   <% elsif current_user.nil? %>
-    
+
     <%= render 'shared/navbar' %>
     <%= render 'shared/flashes' %>
     <%= yield %>
@@ -30,6 +30,7 @@
     <%= render 'shared/flashes' %>
     <%= yield %>
     <%= render "shared/footer" %>
+  <% end %>
 
     <%= javascript_include_tag "https://maps.google.com/maps/api/js?libraries=places&key=#{ENV['GOOGLE_API_SERVER_KEY']}" %>
 
@@ -38,8 +39,6 @@
 
   <%= javascript_include_tag "application" %>
   <%= yield(:after_js) %>
-
-  <% end %>
 
   </body>
 </html>

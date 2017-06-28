@@ -65,7 +65,7 @@ Event.create(
   title: "Chatbot Lover",
   description: "Come to discover what's behind a chatbot and about machine learning", # Faker::Matz.quote
   start_time: "2017-06-24 13:00:00",
-  end_time: "2017-06-24 18:00:00",
+  end_time: "2017-07-05 18:00:00",
   organization: "Pocket Confident",
   category: "Tech",
   location: "Carrer de Corsega, 95, 08036 Barcelona",
@@ -161,5 +161,10 @@ puts 'Creating attendances...'
     event_id: Event.all.ids.sample,
   )
 end
+
+Attendance.create(
+  user_id: User.all.ids.sample,
+  event_id: Event.where(title: "Chatbot Lover").id,
+)
 
 puts 'Finished!'
