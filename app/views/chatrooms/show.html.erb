@@ -8,18 +8,18 @@
       <% my_chats = current_user.chatroomusers %>
       <% unless my_chats.nil? %>
         <% my_chats.order("created_at DESC").each do |chat| %>
-              <% chatter_1 = chat.chatroom.chatroomusers[0].user %>
-              <% chatter_2 = chat.chatroom.chatroomusers[1].user %>
-              <% chatters = [chatter_1, chatter_2] %>
-              <% chatters.each do |chatter| %>
-                <% unless chatter.email == current_user.email %>
-                  <div class="avatar-box">
-                    <% @target_chat = chat.chatroom %>
-                    <% avatar_url = chatter.picture || "https://timeforgeography.co.uk/static/img/avatar-placeholder.png" %>
-                    <%= link_to image_tag(avatar_url, class: "user-list-avatar"), chatroom_path(@target_chat.id) %>
-                  </div>
-                <% end %>
-              <% end %>
+          <% chatter_1 = chat.chatroom.chatroomusers[0].user %>
+          <% chatter_2 = chat.chatroom.chatroomusers[1].user %>
+          <% chatters = [chatter_1, chatter_2] %>
+          <% chatters.each do |chatter| %>
+            <% unless chatter.email == current_user.email %>
+              <div class="avatar-box">
+                <% @target_chat = chat.chatroom %>
+                <% avatar_url = chatter.picture || "https://timeforgeography.co.uk/static/img/avatar-placeholder.png" %>
+                <%= link_to image_tag(avatar_url, class: "user-list-avatar"), chatroom_path(@target_chat.id) %>
+              </div>
+            <% end %>
+          <% end %>
         <% end %>
       <% else %>
         <h2 class="text-center">No chats started yet! Remember, you're only as strong as your network.</h2>
