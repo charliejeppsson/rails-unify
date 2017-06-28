@@ -18,8 +18,12 @@
 
   <!-- To have the navbar everywhere except the home page -->
   <% if content_for :full_page %>
-  <%= yield :full_page %>
-
+    <%= yield :full_page %>
+  <% elsif current_user.nil? %>
+    
+    <%= render 'shared/navbar' %>
+    <%= render 'shared/flashes' %>
+    <%= yield %>
   <% else %>
 
     <%= render 'shared/navbar' %>
