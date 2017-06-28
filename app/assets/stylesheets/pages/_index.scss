@@ -27,9 +27,6 @@
   padding: 20px;
 }
 
-.search-btn {
-  color: black;
-}
 
 .event-list-wrapper {
   background-color: #F2F5F8;
@@ -38,4 +35,18 @@
 
 .radio-inline {
   color: rgba(255,255,255,0.9);
+}
+
+// input rectangle for location
+.form-control.string.required {
+  border-radius: 7px;
+}
+
+// search button
+.btn.btn-primary.search-btn {
+  font-size: 15px;
+}
+
+.search-button {
+  padding-left: 16px;
 }
