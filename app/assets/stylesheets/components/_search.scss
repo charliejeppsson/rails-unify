@@ -1,0 +1,13 @@
+.navbar-wagon-search {
+      display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .navbar-wagon-search-input {
+    flex: 1 0 auto;
+    margin: 0 10px;
+    padding: 6px;
+    border: none;
+    border-radius: 4px;
+    box-shadow: none;
+    }
+}
