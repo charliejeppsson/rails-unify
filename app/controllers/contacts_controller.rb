@@ -13,12 +13,15 @@ class ContactsController < ApplicationController
   end
 
   def show
-
+    @contact = Contact.find(params[:contact_id])
+    @user = User.find(params[:id])
   end
 
 
   def edit
-
+respond_to do |format|
+  format.js {render layout: false} # Add this line to you respond_to block
+end
   end
 
   def destroy
@@ -32,7 +35,10 @@ class ContactsController < ApplicationController
     @contact = Contact.find(params[:contact_id])
     @user = User.find(params[:id])
     @contact.update(contact_details)
-    redirect_to user_path(@user)
+     respond_to do |format|
+          format.html { redirect_to user_path(@user) }
+          format.js { @contact }  # <-- will render `app/views/reviews/create.js.erb`
+        end
   end
 
 
