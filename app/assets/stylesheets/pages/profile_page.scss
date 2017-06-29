@@ -19,6 +19,27 @@
 // .alignright {
 //   float: right;
 // }
+input, select, textarea{
+    color: $navigation;
+    border-radius: 3px;
+    padding: 4px;
+    border: 1px solid $dark-gray;
+    width: 60%;
+}
+
+textarea:focus, input:focus {
+    color: $navigation;
+    border-radius: 3px;
+}
+
+.profile-category {
+  border-radius: 10px;
+  width: 30px;
+}
+
+#edit-contact-button {
+  color: $dark-gray;
+}
 
 .profile-header {
   background-color: $white;

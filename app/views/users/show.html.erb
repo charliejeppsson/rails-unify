@@ -87,6 +87,8 @@
       <p style="margin-top: 30px;"> <%= link_to "Edit your profile", edit_user_registration_path %> </p>
     <% elsif @contact %>
 
+
+    <hr>
     <div class="mycontactinfo">
 
      <div class="row">
@@ -99,25 +101,27 @@
       </div>
     <div class="row">
         <div class="col-xs-6 col-sm-3 col-sm-offset-3">
-          <p class="text-left"> He is a: </p>
+          <p class="text-left"> Category: </p>
         </div>
         <div class="col-xs-6 col-sm-3">
           <p class="text-right contact-category"> <%= @contact.category %> </p>
         </div>
       </div>
        </div>
-      <td><div id="edit-contact-button" class="btn"> Show Edit</div></td>
+
+      <td><div id="edit-contact-button" class="btn">Add a note</div></td>
 
       <div class="updatecontactinfo">
 
-       </div>
+      </div>
 
      <div id="edit-form">
+
       <%= render 'contacts/edit' %>
     </div>
       <% else %>
        <%   @event = Event.find(params[:event])%>
-     <li><%= link_to "", event_addcontactbook_path(@event, :user_id => @user.id), :class => "fa fa-address-book" %></li>
+     <li class="list-unstyled"><%= link_to "Add to contact book", event_addcontactbook_path(@event, :user_id => @user.id), :class => "btn btn-primary" %></li>
     <% end %>
 
   </div>
@@ -134,14 +138,13 @@
     $('#edit-contact-button').click(function(){
       if ($(this).hasClass('off')) {
         $('#edit-form').slideDown();
-        $('#edit-contact-button').text("Hide Edit Form");
+        $('#edit-contact-button').text("Add a note"); <!-- .text("Hide Edit Form"); -->
         $(this).removeClass('off')
       } else {
         $('#edit-form').slideUp();
-        $('#edit-contact-button').text("Show Edit Form");
+        $('#edit-contact-button').text("Add a note"); <!-- .text("Hide Edit Form"); -->
         $(this).addClass('off')
       };
     });
   <% end %>
 <% end %>
-
