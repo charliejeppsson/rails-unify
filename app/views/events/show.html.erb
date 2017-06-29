@@ -18,37 +18,38 @@
   </script>
 <% end %>
 
+<div class="show-wrapper">
 <!-- BANNER WITH CHECK-IN BUTTON -->
-<% if @event.photo? %>
-  <div class="banner-event" style="background-image: linear-gradient(135deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.5) 50%), url('<%= cl_image_path @event.photo %>')">
-<% else %>
-  <div class="banner-event" style="background-image: linear-gradient(135deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.5) 50%), url('https://images.unsplash.com/photo-1478812954026-9c750f0e89fc?dpr=1&auto=format&fit=crop&w=1500&h=1000&q=80&cs=tinysrgb&crop=&bg=')">
-<% end %>
-    <div class="banner-event-text">
-      <h1><%= @event.title %></h1>
-      <% if @event.upcomming? %>
-        <h3>This event is to come. At the event, you will be able to check in to enable the chat and view the other attendees</h3>
-      <% elsif @event.now? %>
-        <h3>This event is NOW</h3>
-        <% if user_signed_in?%>
-          <% attended = current_user.attendances.select { |attendance| attendance.event_id == @event.id } %>
-          <% if attended.empty? %>
-            <div class="btn-show">
-              <%= link_to "Check in", event_attend_path(@event), method: :get, class: "navbar-wagon-item navbar-wagon-button btn js-location" %>
-            </div>
+  <% if @event.photo? %>
+    <div class="banner-event" style="background-image: linear-gradient(135deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.5) 50%), url('<%= cl_image_path @event.photo %>')">
+  <% else %>
+    <div class="banner-event" style="background-image: linear-gradient(135deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.5) 50%), url('https://images.unsplash.com/photo-1478812954026-9c750f0e89fc?dpr=1&auto=format&fit=crop&w=1500&h=1000&q=80&cs=tinysrgb&crop=&bg=')">
+  <% end %>
+      <div class="banner-event-text">
+        <h1><%= @event.title %></h1>
+        <% if @event.upcomming? %>
+          <h3>This event is to come. At the event, you will be able to check in to enable the chat and view the other attendees</h3>
+        <% elsif @event.now? %>
+          <h3>This event is NOW</h3>
+          <% if user_signed_in?%>
+            <% attended = current_user.attendances.select { |attendance| attendance.event_id == @event.id } %>
+            <% if attended.empty? %>
+              <div class="btn-show">
+                <%= link_to "Check in", event_attend_path(@event), method: :get, class: "navbar-wagon-item navbar-wagon-button btn js-location" %>
+              </div>
+            <% else %>
+              <h3>You are checked in.</h3>
+            <% end %>
           <% else %>
-            <h3>You are checked in.</h3>
+            <div class="btn-show">
+              <%= link_to "Check in", event_attend_path(@event), method: :get, class: "navbar-wagon-item navbar-wagon-button btn js-location"  %>
+            </div>
           <% end %>
-        <% else %>
-          <div class="btn-show">
-            <%= link_to "Check in", event_attend_path(@event), method: :get, class: "navbar-wagon-item navbar-wagon-button btn js-location"  %>
-          </div>
+        <% elsif @event.past? %>
+          <h3>This event is no longer open for check-ins.</h3>
         <% end %>
-      <% elsif @event.past? %>
-        <h3>This event is no longer open for check-ins.</h3>
-      <% end %>
+      </div>
     </div>
-  </div>
   <!-- end of banner -->
 
   <div class="container show-box" >
@@ -161,7 +162,7 @@
       </div>
     </div>
   <% end %>
-
+</div>
 
 
 
