@@ -26,9 +26,12 @@ $base-height: 1.4;
 // Scheme
 $brand-color: #D23333;
 
-$purple: #656F8C;
-$green: #9BBFAB;
-$light-gray: #F2F5F8;
+// btn-primary is our button, uses $blue (change blue to change the button)
+
+$purple: #656F8C; // two dominant colors
+$green: #9BBFAB; // two dominants colors
+$white: white; // background color for containers
+$light-gray: #F2F5F8; // background
 $dark-gray: #a39f9f; // text on cards mostly
 
 $red: #EE5F5B;

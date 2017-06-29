@@ -49,7 +49,14 @@
             <%  @events.each do |event| %>
             <div class="col-xs-12 col-md-6">
               <li>
-                <div class="event-li">
+
+                <% if event.photo? %>
+                  <% picture = event.photo %>
+                <% else %>
+                  <% picture = 'https://images.unsplash.com/photo-1478812954026-9c750f0e89fc?dpr=2&auto=format&fit=crop&w=1500&h=1000&q=80&cs=tinysrgb&crop=&bg=' %>
+                <% end %>
+                <div class="event-li" style="background-image: linear-gradient(135deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.2) 50%), url('<%= cl_image_path picture %>'); background-size: cover;">
+
                   <div class="event-category rounded-btn"><%= event.category %></div>
                   <h3><%= link_to event.title, event_path(event) %></h3>
 
@@ -67,8 +74,10 @@
                   </p>
                 </div>
               </li>
-              </div>
+            </div>
             <% end %>
+
+
 
             <% elsif params[:search_value] != nil %>
             <%@result.each do |event| %>
