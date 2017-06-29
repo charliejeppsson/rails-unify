@@ -3,13 +3,13 @@ body {
 }
 
 .dashboard {
-  background-color: #F2F5F8;
+  background-color: $light-gray;
   min-height: 85vh;
   padding-bottom: 70px;
 }
 
 .dashboard-body {
-  background-color: white;
+  background-color: $white;
   min-height: 60vh;
   border: 1px solid rgba(0,0,0,0.1);
   padding: 0 5px 0 5px;
@@ -24,7 +24,7 @@ body {
 .blank-dashboard {
   padding-top: auto;
   font-size: 16px;
-  color: #7a726f;
+  color: $dark-gray;
 }
 
 .dashboard-page a:hover {
@@ -37,7 +37,7 @@ body {
 }
 
 .event-time {
-  color: #656F8C;
+  color: $purple;
   letter-spacing: 1.1px;
   font-size: 17px;
 }
@@ -71,7 +71,7 @@ body {
   margin-bottom: 0;
 }
 .tab {
-  background: #656F8C;
+  background: $purple;
   flex: 1 1 auto;
   text-align: center;
   padding: 15px 0;
@@ -85,8 +85,8 @@ body {
   border-radius: 0 10px 0 0;
 }
 .tab.active {
-  background: #9BBFAB;
-  color: white;
+  background: $green;
+  color: $white;
 }
 .tab-content {
   padding-top: 10px;

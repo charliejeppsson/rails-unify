@@ -1,0 +1,7 @@
+    <div class="form-inputs">
+     <%= simple_form_for (@contact), remote: true,  :url => url_for(:action => 'update', :controller => 'contacts', contact_id: @contact.id), :method => 'patch' do |f|  %>
+     <%= f.text_area :notes, autofocus: true %>
+     <%= f.input :category, autofocus: true %>
+     <%= f.submit %>
+     <% end %>
+   </div>

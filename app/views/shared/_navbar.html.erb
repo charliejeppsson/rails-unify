@@ -45,13 +45,6 @@
                <%= image_tag("Icones/logout.png", class:"logout-icon") %>Log out
                <% end %>
             </li>
-            <!-- If current user has any chats, an inbox link will be added to the list -->
-            <% my_chats = current_user.chatroomusers %>
-            <% unless my_chats.empty? %>
-              <li>
-                <div class="fa fa-inbox">  <%= link_to "Inbox", chatroom_path(my_chats[-1].chatroom_id) %></div>
-              </li>
-            <% end %>
           </ul>
         <% end %>
       </div>

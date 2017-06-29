@@ -2,6 +2,7 @@
 @import "dashboard";
 @import "profile_page";
 @import "message";
+@import "contacts";
 @import "create_event";
 @import "show_event";
 
@@ -11,7 +12,6 @@
 
 .wrapper {
   margin: 0;
-  // background-color: #1A2930;
 }
 
 .wrapper-map {
@@ -24,20 +24,17 @@
 }
 
 .search {
-  background-color: #9BBFAB;
+  background-color: $green;
   margin: 0;
   padding: 20px;
 }
 
 
 .event-list-wrapper {
-  background-color: #F2F5F8;
+  background-color: $light-gray;
   padding-bottom: 60px;
 }
 
-.radio-inline {
-  color: rgba(255,255,255,0.9);
-}
 
 // input rectangle for location
 .form-control.string.required {

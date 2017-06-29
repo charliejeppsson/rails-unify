@@ -10,15 +10,25 @@ class ChatroomsController < ApplicationController
   end
 
   def new
-    @chatroom = Chatroom.new
-    @chatroom.user = current_user
-    @chatroom.save
+    my_chats = current_user.chatrooms.map(&:id) + User.find(params[:with_user_id]).chatrooms.map(&:id)
+    my_chats = my_chats.flatten.uniq
 
-    Chatroomuser.create(user: current_user, chatroom: @chatroom)
-    Chatroomuser.create(user_id: params[:with_user_id], chatroom: @chatroom)
+    chatroomuser = Chatroomuser.where(user_id: params[:with_user_id], chatroom_id: my_chats).first
+
+    if chatroomuser
+      @chatroom = chatroomuser.chatroom
+    else
+      # PREVIOUS CODE
+      @chatroom = Chatroom.new
+      @chatroom.user = current_user
+      @chatroom.save
+
+      Chatroomuser.create(user: current_user, chatroom: @chatroom)
+      Chatroomuser.create(user_id: params[:with_user_id], chatroom: @chatroom)
+      # / PREVIOUS CODE
+    end
 
     redirect_to chatroom_path(@chatroom)
-
   end
 
   def create

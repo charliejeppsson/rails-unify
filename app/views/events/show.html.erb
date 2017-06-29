@@ -97,18 +97,26 @@
                     <% unless user.url.nil? %>
                       <li><a href="<%= user.url %>" target="_blank"><i class="fa fa-linkedin"></i></a></li>
                     <% end %>
+
                     <!-- Check if user already has a chat with this guy -->
-                    <% already_chatting = false %>
                     <% my_chats = current_user.chatroomusers %>
-                    <% my_chats.each do |chat| %>
-                      <% chatter_1 = chat.chatroom.chatroomusers[0].user %>
-                      <% chatter_2 = chat.chatroom.chatroomusers[1].user %>
-                      <% chatters = [chatter_1, chatter_2] %>
-                      <% if chatters.include?(user) %>
-                        <% already_chatting = true %>
-                        <% @our_chatroom = chat.chatroom %>
+                    <% unless my_chats.empty? %>
+                      <% already_chatting = false %>
+                      <% my_chats.each do |chat| %>
+                        <% if chat.chatroom.chatroomusers.size < 2 %>
+                          <% next %>
+                        <% end %>
+
+                        <% chatter_1 = chat.chatroom.chatroomusers[0].user %>
+                        <% chatter_2 = chat.chatroom.chatroomusers[1].user %>
+                        <% chatters = [chatter_1, chatter_2] %>
+                        <% if chatters.include?(user) %>
+                          <% already_chatting = true %>
+                          <% @our_chatroom = chat.chatroom %>
+                        <% end %>
                       <% end %>
                     <% end %>
+
                     <% unless already_chatting %>
                       <li><a href="<%= new_chatroom_path(with_user_id: user_id) %>"><i class="fa fa-comments"></i></a></li>
                     <% else %>

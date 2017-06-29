@@ -1,0 +1,33 @@
+.contacts-wrapper {
+  background-color: $light-gray;
+  min-height: 85vh;
+}
+
+.contacts-wrapper h4 {
+  padding-top: 8px;
+  color: $dark-gray;
+  text-transform: uppercase;
+}
+
+.contact-search-form {
+  display: flex;
+  align-items: baseline;
+  margin: 20px 0;
+  // flex: 1 0 auto;
+  box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.1);
+}
+
+.contact-search-btn {
+  margin-left: -4px;
+  margin-top: -2px;
+}
+
+.contact-input {
+  border-bottom-right-radius: 0;
+  border-top-right-radius: 0;
+  border-radius: 2px 0 0 2px;
+}
+
+.user-list {
+  background-color: white;
+}

@@ -1,64 +1,86 @@
-  <%= form_tag('/contacts', method: 'get',  class:'navbar-wagon-search' ) do  %>
-    <%= text_field_tag :search_value, params[:search_value], placeholder: 'Enter search term...' , class: "navbar-wagon-search-input" %>
-    <%= submit_tag 'search', class: 'btn btn-primary search-btn' %>
-    <%end  %>
+<!-- <div class="contact-search-wrapper">
+  <%#= form_tag('/contacts', method: 'get',  class:'navbar-wagon-search' ) do  %>
+    <%#= text_field_tag :search_value, params[:search_value], placeholder: 'Enter search term...' , class: "navbar-wagon-search-input" %>
+    <%#= submit_tag 'search', class: 'btn btn-primary search-btn' %>
+  <%# end %>
+</div> -->
 
-
-<%if params[:search_value] == nil or params[:search_value] == ""  %>
-
-<% current_user.contacts.each do |contact| %>
-  <% user_id = contact.user_contact_id %>
-  <% user = User.find(user_id) %>
-
-
-
-  <div class="user-list">
-    <% avatar_url = user.picture || "https://timeforgeography.co.uk/static/img/avatar-placeholder.png" %>
-    <%= image_tag avatar_url, class: "user-list-avatar" %>
-    <div class='user-list-body'>
-
-      <a href="<%= user_path(user.id) %>" style="text-decoration: none; color: #333333;"> <h5> <%= user.first_name %> <%= user.last_name  %> </h5> </a>
-      <p> <%= user.headline %> </p>
+<div class="contacts-wrapper">
+  <div class="container-fluid search-wrapper">
+    <div class="row">
+      <div class="col-xs-12">
+        <h4 class="text-center">Contact book</h4>
+        <%= form_tag('/contacts', method: 'get',  class:'contact-search-form ', role: "search" ) do  %>
+            <%= text_field_tag :search_value, params[:search_value], placeholder: 'Enter search term...' , class: "navbar-wagon-search-input form-control contact-input" %>
+          <%= button_tag '', class: 'btn btn-primary contact-search-btn glyphicon' do %>
+            <span class="glyphicon glyphicon-search"></span>
+          <% end %>
+        <% end %>
+      </div>
     </div>
-    <ul class="list-inline user-list-controls hidden-sm hidden-xs">
-      <% unless user.url.nil? %>
-      <li><a href="<%= user.url %>" target="_blank"><i class="fa fa-linkedin"></i></a></li>
-      <% end %>
-      <li><a href="#"><i class="fa fa-comments"></i></a></li>
-
-      <li><%= link_to "destroy", contact_path(user_id), method: :delete,class: "fa fa-address-book" %></li>
-    </ul>
   </div>
-<% end %>
-
-<%elsif params[:search_value] != nil  %>
-
-<% @result.each do |contact| %>
-  <% user_id = contact.user_contact_id %>
-  <% user = User.find(user_id) %>
 
 
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <!-- if no params or you can't match, display a whole list -->
+        <%if params[:search_value] == nil or params[:search_value] == ""  %>
 
-  <div class="user-list">
-    <% avatar_url = user.picture || "https://timeforgeography.co.uk/static/img/avatar-placeholder.png" %>
-    <%= image_tag avatar_url, class: "user-list-avatar" %>
-    <div class='user-list-body'>
+        <% current_user.contacts.each do |contact| %>
+          <% user_id = contact.user_contact_id %>
+          <% user = User.find(user_id) %>
 
-      <a href="<%= user_path(user.id) %>" style="text-decoration: none; color: #333333;"> <h5> <%= user.first_name %> <%= user.last_name  %> </h5> </a>
-      <p> <%= user.headline %> </p>
+
+
+          <div class="user-list">
+            <% avatar_url = user.picture || "https://timeforgeography.co.uk/static/img/avatar-placeholder.png" %>
+            <%= image_tag avatar_url, class: "user-list-avatar" %>
+            <div class='user-list-body'>
+
+              <a href="<%= user_path(user.id) %>" style="text-decoration: none; color: #333333;"> <h5> <%= user.first_name %> <%= user.last_name  %> </h5> </a>
+              <p> <%= user.headline %> </p>
+            </div>
+            <ul class="list-inline user-list-controls"> <!-- hidden-sm hidden-xs -->
+              <% unless user.url.nil? %>
+              <li><a href="<%= user.url %>" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+              <% end %>
+              <li><a href="#"><i class="fa fa-comments"></i></a></li>
+
+              <li><%= link_to "", contact_path(user_id), method: :delete,class: "fa fa-trash" %></li>
+            </ul>
+          </div>
+        <% end %>
+
+        <%elsif params[:search_value] != nil  %>
+
+        <% @result.each do |contact| %>
+          <% user_id = contact.user_contact_id %>
+          <% user = User.find(user_id) %>
+
+
+
+          <div class="user-list">
+            <% avatar_url = user.picture || "https://timeforgeography.co.uk/static/img/avatar-placeholder.png" %>
+            <%= image_tag avatar_url, class: "user-list-avatar" %>
+            <div class='user-list-body'>
+
+              <a href="<%= user_path(user.id) %>" style="text-decoration: none; color: #333333;"> <h5> <%= user.first_name %> <%= user.last_name  %> </h5> </a>
+              <p> <%= user.headline %> </p>
+            </div>
+            <ul class="list-inline user-list-controls"> <!-- hidden-sm hidden-xs -->
+              <% unless user.url.nil? %>
+              <li><a href="<%= user.url %>" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+              <% end %>
+              <li><a href="#"><i class="fa fa-comments"></i></a></li>
+
+              <li><%= link_to "", contact_path(user_id), method: :delete,class: "fa fa-trash" %></li>
+            </ul>
+          </div>
+        <% end %>
+
+        <% end  %>
+      </div>
     </div>
-    <ul class="list-inline user-list-controls hidden-sm hidden-xs">
-      <% unless user.url.nil? %>
-      <li><a href="<%= user.url %>" target="_blank"><i class="fa fa-linkedin"></i></a></li>
-      <% end %>
-      <li><a href="#"><i class="fa fa-comments"></i></a></li>
-
-      <li><%= link_to "destroy", contact_path(user_id), method: :delete,class: "fa fa-address-book" %></li>
-    </ul>
   </div>
-<% end %>
-
-
-
-
-<%end  %>
+</div>

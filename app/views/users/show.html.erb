@@ -1,27 +1,31 @@
 <!-- Profile page, still only viewable for current user - must be fixed -->
 
-  <div class="profile-wrapper">
-
+<div class="profile-wrapper">
+  <div class="profile-header">
     <% avatar_url = @user.picture || "https://timeforgeography.co.uk/static/img/avatar-placeholder.png" %>
     <%= image_tag avatar_url, class: "profile_picture" %>
 
-    <h3 style="margin-bottom: 30px;"> <%= @user.first_name %> <%= @user.last_name %> </h3>
+    <h4> <%= @user.first_name %> <%= @user.last_name %> </h4>
+  </div>
 
+  <div class="profile-page-links">
     <!-- ICON BUTTONS -->
-    <ul class="list-inline user-list-controls user-list-controls-big" style="justify-content: center; margin-bottom: 30px;">
+    <ul class="list-inline user-list-controls user-list-controls-big" style="justify-content: center;">
       <% unless @user.url.nil? %>
         <li><a href="<%= @user.url %>" target="_blank"><i class="fa fa-linkedin"></i></a></li>
       <% end %>
       <!-- Check if user already has a chat with this guy -->
-      <% already_chatting = false %>
       <% my_chats = current_user.chatroomusers %>
-      <% my_chats.each do |chat| %>
-        <% chatter_1 = chat.chatroom.chatroomusers[0].user %>
-        <% chatter_2 = chat.chatroom.chatroomusers[1].user %>
-        <% chatters = [chatter_1, chatter_2] %>
-        <% if chatters.include?(@user) %>
-          <% already_chatting = true %>
-          <% @our_chatroom = chat.chatroom %>
+      <% unless my_chats.empty? %>
+        <% already_chatting = false %>
+        <% my_chats.each do |chat| %>
+          <% chatter_1 = chat.chatroom.chatroomusers[0].user %>
+          <% chatter_2 = chat.chatroom.chatroomusers[1].user %>
+          <% chatters = [chatter_1, chatter_2] %>
+          <% if chatters.include?(@user) %>
+            <% already_chatting = true %>
+            <% @our_chatroom = chat.chatroom %>
+          <% end %>
         <% end %>
       <% end %>
       <% unless already_chatting %>
@@ -31,7 +35,11 @@
       <% end %>
       <li><a href="#"><i class="fa fa-address-book"></i></a></li>
     </ul>
+  </div>
 
+
+
+  <div class="profile-data">
     <div class="container-fluid">
       <div class="row">
         <div class="col-xs-6 col-sm-3 col-sm-offset-3">
@@ -78,14 +86,59 @@
     <% if current_user == @user %>
       <p style="margin-top: 30px;"> <%= link_to "Edit your profile", edit_user_registration_path %> </p>
     <% elsif @contact %>
-        <div class="form-inputs">
-        <%= simple_form_for (@contact), :url => url_for(:action => 'update', :controller => 'contacts', contact_id: @contact.id), :method => 'patch' do |f|  %>
-          <%= f.text_area :notes, autofocus: true %>
-          <%= f.input :category, autofocus: true %>
-          <%= f.submit %>
-          <% end %>
-       </div>
-    <% end %>
 
+    <div class="mycontactinfo">
+
+     <div class="row">
+        <div class="col-xs-6 col-sm-3 col-sm-offset-3">
+          <p class="text-left"> My notes: </p>
+        </div>
+        <div class="col-xs-6 col-sm-3">
+          <p class="text-right contact-notes"> <%= @contact.notes %> </p>
+        </div>
+      </div>
+    <div class="row">
+        <div class="col-xs-6 col-sm-3 col-sm-offset-3">
+          <p class="text-left"> He is a: </p>
+        </div>
+        <div class="col-xs-6 col-sm-3">
+          <p class="text-right contact-category"> <%= @contact.category %> </p>
+        </div>
+      </div>
+       </div>
+      <td><div id="edit-contact-button" class="btn"> Show Edit</div></td>
+
+      <div class="updatecontactinfo">
+
+       </div>
+
+     <div id="edit-form">
+      <%= render 'contacts/edit' %>
+    </div>
+    <% end %>
+  </div>
 
   </div>
+
+<% content_for(:after_js) do %>
+  <% javascript_tag do %>
+    $(document).ready(function(){
+      $('#edit-form').hide();
+      $('#edit-contact-button').addClass('off');
+    });
+
+
+    $('#edit-contact-button').click(function(){
+      if ($(this).hasClass('off')) {
+        $('#edit-form').slideDown();
+        $('#edit-contact-button').text("Hide Edit Form");
+        $(this).removeClass('off')
+      } else {
+        $('#edit-form').slideUp();
+        $('#edit-contact-button').text("Show Edit Form");
+        $(this).addClass('off')
+      };
+    });
+  <% end %>
+<% end %>
+
