@@ -30,18 +30,15 @@ $brand-color: #D23333;
 // btn-primary is our button, uses $blue (change blue to change the button)
 $blue: #F7CE3E;
 
-// $purple: #656F8C; // two dominant colors
-// $green: #9BBFAB; // two dominants colors
-// $white: white; // background color for containers
-// $light-gray: #F2F5F8; // background
-// $dark-gray: #a39f9f; // text on cards mostly
+// Colors for navbar & footer, change it here!
+$navigation: #1A2930;
 
 // test
 $purple: #C5C1C0;
 $green: #1A2930; // two dominants colors
 $white: white; // background color for containers
-$light-gray: #F2F5F8; // background
-$dark-gray: #a39f9f; // text on cards mostly
+$light-gray: #F2F5F8; // background color
+$dark-gray: #a39f9f; // text, on cards mostly
 
 $link-color: $purple;
 // $link-hover-color:      darken($link-color, 15%);
