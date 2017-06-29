@@ -2,9 +2,19 @@
   <%= link_to contacts_path do %>
     <i class="material-icons footer-icon">perm_contact_calendar</i>
   <% end %>
-  <%= link_to dashboard_attendances_path do %>
-    <i class="material-icons footer-icon">question_answer</i>
+
+  <!-- If current user has any chats, direct to the last created, otherwise direct back to home page with flash message-->
+  <% my_chats = current_user.chatroomusers %>
+  <% unless my_chats.empty? %>
+    <%= link_to chatroom_path(my_chats[-1].chatroom_id) do %>
+      <i class="material-icons footer-icon">question_answer</i>
+    <% end %>
+  <% else %>
+    <%= link_to events_path do %>
+      <i class="material-icons footer-icon">question_answer</i>
+    <% end %>
   <% end %>
+
   <%= link_to dashboard_attendances_path do %>
     <i class="material-icons footer-icon">assignment</i>
   <% end %>
