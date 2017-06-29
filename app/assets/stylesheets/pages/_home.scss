@@ -18,10 +18,12 @@
 .searchTerm {
   width: 425px;
 }
-
+#banner-photo {
+  filter: greyscale(100%);
+}
 .banner {
-  background-image: linear-gradient(135deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.5) 50%), url('https://tctechcrunch2011.files.wordpress.com/2016/11/startup-alley.png?w=1024&quot');
-//   background: #606c88;  /* fallback for old browsers */
+  background-image: linear-gradient(135deg, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.5) 50%), url('https://tctechcrunch2011.files.wordpress.com/2016/11/startup-alley.png?w=1024&quot');
+// background: #606c88;  /* fallback for old browsers */
 // background: -webkit-linear-gradient(to top, #3f4c6b, #606c88);  /* Chrome 10-25, Safari 5.1-6 */
 // background: linear-gradient(to top, #3f4c6b, #606c88); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
@@ -52,7 +54,7 @@
 
 .slogan {
   padding: 17px;
-  padding-bottom: 98px;
+  padding-bottom: 40px;
 }
 
 .banner p {
@@ -73,7 +75,7 @@
   border-radius: 28px;
   font-weight: lighter;
   opacity: 0.9;
-  padding: 14px;
+  padding-bottom: 20px;
 }
 .btn-event:hover {
   opacity: 1;
@@ -119,7 +121,7 @@
 }
 
 .already-member {
-  padding-top: 39px;
+  padding-top: 60px;
 }
 
 .discover {
