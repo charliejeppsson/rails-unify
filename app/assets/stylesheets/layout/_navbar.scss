@@ -1,7 +1,22 @@
 /* Main class */
+.logo-uni {
+  height: 40px;
+  opacity: 0.8;
+  color: white;
+}
+
+.logo-uni a {
+  color: white;
+}
+
+.search-event-wrapper a {
+  color: white;
+}
+
 .navbar-wagon {
   // box-shadow: 0 1px 5px 0 rgba(0,0,0,0.07),0 1px 0 0 rgba(0,0,0,0.03);
-  background: white;
+  // background: white;
+  background-color: $navigation;
   transition: all 0.3s ease;
   display: flex;
   height: 55px;
@@ -14,7 +29,8 @@
   font-family: "Raleway";
   font-weight: 300;
   font-size: 23px;
-  color: #1A2930;
+  // color: #1A2930;
+  color: white;
   margin-bottom: 20px;
   // opacity: 0.9;
 }
@@ -165,18 +181,15 @@
   border-top: 1px solid #E6E6E6;
 }
 
-.logo-uni {
-  height: 40px;
-  opacity: 0.8;
-}
-
 .search-icon {
   height: 26px;
   opacity: 0.8;
+  color: white;
 }
 
 .search-icon:hover {
-  color: #272822;
+
+  color: white;
   height: 30px;
 }
 
