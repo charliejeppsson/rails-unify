@@ -1,6 +1,7 @@
 class ContactsController < ApplicationController
 
 
+
   def index
 
     if params.has_key?(:search_value) and params[:search_value] !=""
