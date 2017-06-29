@@ -49,54 +49,34 @@
       <% end %>
     </div>
   </div>
+  <!-- end of banner -->
 
-<div class="container" style="margin-bottom: 100px; margin-top: 50px;">
-  <div class="row">
-    <% if @event.now? %>
-          <div class="wrapper-map">
-            <div id="map" style="width: 100%; height: 145px;"></div>
+  <div class="container show-box" >
+    <div class="row">
 
-            <% content_for(:after_js) do %>
-              <%= javascript_tag do %>
-                $(document).ready(function() {
-                  var handler = Gmaps.build('Google');
-                  handler.buildMap({ internal: { id: 'map' }, provider:{ scrollwheel: false } }, function() {
-                    markers = handler.addMarkers(<%= raw @hash.to_json %>);
-                    handler.bounds.extendWith(markers);
-                    handler.fitMapToBounds();
-                    if (markers.length == 0) {
-                      handler.getMap().setZoom(2);
-                    } else if (markers.length == 1) {
-                      handler.getMap().setZoom(14);
-                    }
-                  });
-                });
-
-              <% end %>
-            <% end %>
-      </div>
-
+        <!-- Description -->
       <div class="event-infos">
         <div class="col-md-6">
-          <br>
-          <p><i class="fa fa-calendar" aria-hidden="true"></i> <%= @event.start_time %> </p>
+          <p><i class="fa fa-calendar icon-design" aria-hidden="true"></i> <%= l(@event.start_time, format: :long) %> </p>
           <hr>
-          <p><i class="fa fa-map-marker lg" aria-hidden="true"></i> <%= @event.location %> </p>
+          <p><i class="fa fa-map-marker lg icon-design" aria-hidden="true"></i> <%= @event.location %> </p>
           <hr>
-          <p><i class="fa fa-briefcase" aria-hidden="true"></i> <%= @event.organization %> </p>
+          <p><i class="fa fa-briefcase icon-design" aria-hidden="true"></i> <%= @event.organization %> </p>
           <hr>
-          <p><i class="fa fa-tags" aria-hidden="true"></i> <%= @event.category %> </p>
+          <p><i class="fa fa-tags icon-design" aria-hidden="true"></i> <%= @event.category %> </p>
           <hr>
-          <p><i class="fa fa-bolt" aria-hidden="true"></i> <%= @event.description %>
+          <p><i class="fa fa-bolt icon-design" aria-hidden="true"></i> <%= @event.description %>
 
         </div>
       </div>
 
 
-      <!-- List with attendants and links to their profiles -->
 
+    <% if !@event.upcomming? %>
+
+      <!-- List of attendances -->
       <div class="col-xs-12 col-md-6">
-        <div>
+        <div class= "attendances-wrapper">
           <% if user_signed_in? %>
             <% attended = current_user.attendances.select { |attendance| attendance.event_id == @event.id } %>
             <% if attended.empty? == false %>
@@ -150,11 +130,12 @@
               <p>Head over to the event and check in to see who they are!</p>
             </div>
           <% end %>
+          </div>
         </div>
-      </div>
-    <% else %>
-          <div class="wrapper-map">
-            <div id="map" style="width: 100%; height: 145px;"></div>
+
+        <!-- map -->
+      <div class="wrapper-map">
+          <div id="map" style="width: 100%; height: 145px;"></div>
 
             <% content_for(:after_js) do %>
               <%= javascript_tag do %>
@@ -171,30 +152,15 @@
                     }
                   });
                 });
+
               <% end %>
-
             <% end %>
-          </div>
+      </div>
+      <!-- end map -->
 
-          <div class="event-infos">
-            <div class="col-md-6">
-              <br>
-              <p><i class="fa fa-calendar" aria-hidden="true"></i> <%= @event.start_time %> </p>
-              <hr>
-              <p><i class="fa fa-map-marker lg" aria-hidden="true"></i> <%= @event.location %> </p>
-              <hr>
-              <p><i class="fa fa-briefcase" aria-hidden="true"></i> <%= @event.organization %> </p>
-              <hr>
-              <p><i class="fa fa-tags" aria-hidden="true"></i> <%= @event.category %> </p>
-              <hr>
-              <p><i class="fa fa-bolt" aria-hidden="true"></i> <%= @event.description %>
-
-            </div>
-          </div>
-
-    <% end %>
-  </div>
-</div>
+      </div>
+    </div>
+  <% end %>
 
 
 
