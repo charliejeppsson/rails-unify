@@ -9,7 +9,7 @@ body {
 }
 
 .dashboard-body {
-  background-color: white;
+  background-color: $white;
   min-height: 60vh;
   border: 1px solid rgba(0,0,0,0.1);
   padding: 0 5px 0 5px;
@@ -86,7 +86,7 @@ body {
 }
 .tab.active {
   background: $green;
-  color: white;
+  color: $white;
 }
 .tab-content {
   padding-top: 10px;

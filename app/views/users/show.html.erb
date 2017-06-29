@@ -1,14 +1,16 @@
 <!-- Profile page, still only viewable for current user - must be fixed -->
 
-  <div class="profile-wrapper">
-
+<div class="profile-wrapper">
+  <div class="profile-header">
     <% avatar_url = @user.picture || "https://timeforgeography.co.uk/static/img/avatar-placeholder.png" %>
     <%= image_tag avatar_url, class: "profile_picture" %>
 
-    <h3 style="margin-bottom: 30px;"> <%= @user.first_name %> <%= @user.last_name %> </h3>
+    <h4> <%= @user.first_name %> <%= @user.last_name %> </h4>
+  </div>
 
+  <div class="profile-page-links">
     <!-- ICON BUTTONS -->
-    <ul class="list-inline user-list-controls user-list-controls-big" style="justify-content: center; margin-bottom: 30px;">
+    <ul class="list-inline user-list-controls user-list-controls-big" style="justify-content: center;">
       <% unless @user.url.nil? %>
         <li><a href="<%= @user.url %>" target="_blank"><i class="fa fa-linkedin"></i></a></li>
       <% end %>
@@ -33,7 +35,11 @@
       <% end %>
       <li><a href="#"><i class="fa fa-address-book"></i></a></li>
     </ul>
+  </div>
 
+
+
+  <div class="profile-data">
     <div class="container-fluid">
       <div class="row">
         <div class="col-xs-6 col-sm-3 col-sm-offset-3">
@@ -88,6 +94,7 @@
           <% end %>
        </div>
     <% end %>
-
-
   </div>
+
+
+</div>
