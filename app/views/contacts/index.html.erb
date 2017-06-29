@@ -31,8 +31,6 @@
           <% user_id = contact.user_contact_id %>
           <% user = User.find(user_id) %>
 
-
-
           <div class="user-list">
             <% avatar_url = user.picture || "https://timeforgeography.co.uk/static/img/avatar-placeholder.png" %>
             <%= image_tag avatar_url, class: "user-list-avatar" %>

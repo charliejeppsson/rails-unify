@@ -1,35 +1,35 @@
 <% content_for :full_page do %>
-<div class="banner" style="height: 100vh;">
+<div class="banner" id="banner-photo" style="height: 100vh;">
   <div class="container text-center">
     <div class="row">
       <div class="col-xs-12">
 
           <!-- Title -->
             <div class="title">
-              <h1>Unify</h1>
+              <h1 style="font-size: 100px;">Unify</h1>
             </div>
 
             <div class="slogan">
-              <p>Networking Made Easy</p>
+              <p>Don't miss out on<br>valuable connections</p>
             </div>
 
           <!-- Discover events near you - link with event_path -->
           <div class="discover">
             <div class="btn-event">
-              <h3> <%= link_to "Find Your Event", events_path%> </h3>
+              <h3> <%= link_to "Find your event", events_path%> </h3>
             </div>
           </div>
 
           <!-- Or -->
-          <div class="or">
+          <!-- <div class="or">
             <p>or</p>
-          </div>
+          </div> -->
 
           <!-- Sign In & Sign Up -->
           <!-- <i class="fa fa-linkedin-square fa-2x" aria-hidden="true"></i> -->
           <div class="join">
-            <div class="btn-join">
-              <p><%= link_to "Join us now", new_user_registration_path %></p>
+            <div class="btn-join" style="margin-top: 50px;">
+              <p><%#= link_to "Join us now", new_user_registration_path %></p>
             </div>
           </div>
 
