@@ -29,11 +29,11 @@
         <% end %>
       <% end %>
       <% unless already_chatting %>
-        <li><a href="<%= new_chatroom_path(with_user_id: @user_id) %>"><i class="fa fa-comments"></i></a></li>
+        <li><a href="<%= new_chatroom_path(with_user_id: @user.id) %>"><i class="fa fa-comments"></i></a></li>
       <% else %>
         <li><a href="<%= chatroom_path(@our_chatroom.id) %>"><i class="fa fa-comments"></i></a></li>
       <% end %>
-      <li><a href="#"><i class="fa fa-address-book"></i></a></li>
+
     </ul>
   </div>
 
@@ -115,10 +115,13 @@
      <div id="edit-form">
       <%= render 'contacts/edit' %>
     </div>
+      <% else %>
+       <%   @event = Event.find(params[:event])%>
+     <li><%= link_to "", event_addcontactbook_path(@event, :user_id => @user.id), :class => "fa fa-address-book" %></li>
     <% end %>
-  </div>
 
   </div>
+
 
 <% content_for(:after_js) do %>
   <% javascript_tag do %>

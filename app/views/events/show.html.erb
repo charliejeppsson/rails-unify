@@ -90,7 +90,7 @@
                   <% avatar_url = user.picture || "https://timeforgeography.co.uk/static/img/avatar-placeholder.png" %>
                   <%= image_tag avatar_url, class: "user-list-avatar" %>
                   <div class='user-list-body'>
-                    <a href="<%= user_path(user.id) %>" style="text-decoration: none; color: #333333;"><h5> <%= user.first_name + " " + user.last_name %> </h5> </a>
+                    <a href="<%= user_path(user.id, :event => @event.id) %>" style="text-decoration: none; color: #333333;"><h5> <%= user.first_name + " " + user.last_name %> </h5> </a>
                     <p> <%= user.headline %> </p>
                   </div>
                   <ul class="list-inline user-list-controls">
