@@ -86,15 +86,59 @@
     <% if current_user == @user %>
       <p style="margin-top: 30px;"> <%= link_to "Edit your profile", edit_user_registration_path %> </p>
     <% elsif @contact %>
-        <div class="form-inputs">
-        <%= simple_form_for (@contact), :url => url_for(:action => 'update', :controller => 'contacts', contact_id: @contact.id), :method => 'patch' do |f|  %>
-          <%= f.text_area :notes, autofocus: true %>
-          <%= f.input :category, autofocus: true %>
-          <%= f.submit %>
-          <% end %>
+
+    <div class="mycontactinfo">
+
+     <div class="row">
+        <div class="col-xs-6 col-sm-3 col-sm-offset-3">
+          <p class="text-left"> My notes: </p>
+        </div>
+        <div class="col-xs-6 col-sm-3">
+          <p class="text-right contact-notes"> <%= @contact.notes %> </p>
+        </div>
+      </div>
+    <div class="row">
+        <div class="col-xs-6 col-sm-3 col-sm-offset-3">
+          <p class="text-left"> He is a: </p>
+        </div>
+        <div class="col-xs-6 col-sm-3">
+          <p class="text-right contact-category"> <%= @contact.category %> </p>
+        </div>
+      </div>
        </div>
+      <td><div id="edit-contact-button" class="btn"> Show Edit</div></td>
+
+      <div class="updatecontactinfo">
+
+       </div>
+
+     <div id="edit-form">
+      <%= render 'contacts/edit' %>
+    </div>
     <% end %>
   </div>
 
+  </div>
 
-</div>
+<% content_for(:after_js) do %>
+  <% javascript_tag do %>
+    $(document).ready(function(){
+      $('#edit-form').hide();
+      $('#edit-contact-button').addClass('off');
+    });
+
+
+    $('#edit-contact-button').click(function(){
+      if ($(this).hasClass('off')) {
+        $('#edit-form').slideDown();
+        $('#edit-contact-button').text("Hide Edit Form");
+        $(this).removeClass('off')
+      } else {
+        $('#edit-form').slideUp();
+        $('#edit-contact-button').text("Show Edit Form");
+        $(this).addClass('off')
+      };
+    });
+  <% end %>
+<% end %>
+
