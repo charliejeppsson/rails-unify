@@ -5,7 +5,7 @@
 <!-- Search bar -->
 <div class="search events">
 <%= form_tag('/events', method: 'get',  class:'navbar-wagon-search' ) do  %>
-    <%= text_field_tag :search_value, params[:search_value], placeholder: 'Search location, name of event' , class: "navbar-wagon-search-input" %>
+    <%= text_field_tag :search_value, params[:search_value], placeholder: 'Location, name, category...' , class: "navbar-wagon-search-input" %>
     <%= submit_tag 'search', class: 'btn btn-primary search-btn' %>
     <%end  %>
  </div>
@@ -66,7 +66,7 @@
                   <p class="li-time"></p>
                   <p class="event-li-data">
                     <i class="fa fa-calendar" aria-hidden="true"></i>
-                    <%= event.start_time.strftime('%a, %d %b %Y %H:%M:%S') %><br>
+                    <%= l(event.start_time, format: :long) %><br>
                     <i class="fa fa-map-marker" aria-hidden="true"></i>
                     <%= event.location %>
                   </p>
