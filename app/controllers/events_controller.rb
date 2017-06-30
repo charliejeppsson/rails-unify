@@ -73,7 +73,7 @@ class EventsController < ApplicationController
       current_location_latitude = current_location["latitude"].to_f
       current_location_longitude = current_location["longitude"].to_f
       center_point = [current_location_latitude, current_location_longitude]
-      box = Geocoder::Calculations.bounding_box(center_point, 1)
+      box = Geocoder::Calculations.bounding_box(center_point, 10)
       #center_point_event = [@event.longitude, @event.latitude]
       if Event.within_bounding_box(box).map(&:id).include? @event.id
         Attendance.create(user_id: @user.id, event_id: @event.id)
