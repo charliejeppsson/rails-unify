@@ -5,7 +5,7 @@
 <!-- Search bar -->
 <div class="search events">
 <%= form_tag('/events', method: 'get',  class:'navbar-wagon-search' ) do  %>
-    <%= text_field_tag :search_value, params[:search_value], placeholder: 'Search location, name of event' , class: "navbar-wagon-search-input" %>
+    <%= text_field_tag :search_value, params[:search_value], placeholder: 'Location, name, category...' , class: "navbar-wagon-search-input" %>
     <%= submit_tag 'search', class: 'btn btn-primary search-btn' %>
     <%end  %>
  </div>

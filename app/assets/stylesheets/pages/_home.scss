@@ -22,7 +22,7 @@
   filter: greyscale(100%);
 }
 .banner {
-  background-image: linear-gradient(135deg, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.5) 50%), url('https://tctechcrunch2011.files.wordpress.com/2016/11/startup-alley.png?w=1024&quot');
+  background-image: linear-gradient(36deg, rgba(77, 224, 14, 0.05) 38%, rgba(33, 35, 33, 0.65) 59%), url('https://tctechcrunch2011.files.wordpress.com/2016/11/startup-alley.png?w=1024&quot');
 // background: #606c88;  /* fallback for old browsers */
 // background: -webkit-linear-gradient(to top, #3f4c6b, #606c88);  /* Chrome 10-25, Safari 5.1-6 */
 // background: linear-gradient(to top, #3f4c6b, #606c88); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
@@ -49,12 +49,12 @@
 }
 
 .title {
-  padding: 20px;
+  padding: 10px;
 }
 
 .slogan {
   padding: 17px;
-  padding-bottom: 40px;
+  padding-bottom: 52px;
 }
 
 .banner p {
@@ -70,12 +70,13 @@
 
 .btn-event {
   color: #999999;
-  border: 1px solid #999999;
+  border: 2px solid rgba(183, 181, 181, 0.65);
   padding: 10px 15px;
   border-radius: 28px;
   font-weight: lighter;
   opacity: 0.9;
-  padding-bottom: 20px;
+  padding-top: 3px;
+  padding-bottom: 10px;
 }
 .btn-event:hover {
   opacity: 1;
@@ -90,9 +91,7 @@
 }
 
 .join {
-  padding-bottom: 17px;
-  padding-left: 98px;
-  padding-right: 100px;
+  padding-bottom: 47px;
   font-size: 25px;
 }
 
@@ -112,7 +111,7 @@
 }
 
 .or {
-  padding-top: 33px;
+  padding-top: 12px;
 }
 
 .or p {
@@ -121,11 +120,12 @@
 }
 
 .already-member {
-  padding-top: 60px;
+  padding-top: 0px;
 }
 
 
 .discover {
-  padding-left: 35px;
-  padding-right: 35px;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-bottom: 44px;
 }
