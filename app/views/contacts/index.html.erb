@@ -10,15 +10,16 @@
     <div class="row">
       <div class="col-xs-12">
         <h4 class="text-center">Contact book</h4>
-        <%= form_tag('/contacts', method: 'get',  class:'contact-search-form ', role: "search" ) do  %>
-            <%= text_field_tag :search_value, params[:search_value], placeholder: 'Enter search term...' , class: "navbar-wagon-search-input form-control contact-input" %>
-          <%= button_tag '', class: 'btn btn-primary contact-search-btn glyphicon' do %>
+        <%= form_tag('/contacts', method: 'get',  class:'navbar-wagon-search ', role: "search" ) do  %>
+          <%= text_field_tag :search_value, params[:search_value], placeholder: 'Enter search term...' , class: "navbar-wagon-search-input" %>
+          <%= button_tag '', class: 'btn btn-primary search-btn' do %>
             <span class="glyphicon glyphicon-search"></span>
           <% end %>
         <% end %>
       </div>
     </div>
   </div>
+
 
 
   <div class="container">
