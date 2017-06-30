@@ -54,7 +54,12 @@
 
 .slogan {
   padding: 17px;
-  padding-bottom: 52px;
+  padding-bottom: 66px;
+}
+
+.slogan p {
+  text-shadow: 2px 2px rgba(105, 97, 97, 0.9);
+  opacity: 0.9;
 }
 
 .banner p {
@@ -91,7 +96,7 @@
 }
 
 .join {
-  padding-bottom: 47px;
+  padding-bottom: 31px;
   font-size: 25px;
 }
 
