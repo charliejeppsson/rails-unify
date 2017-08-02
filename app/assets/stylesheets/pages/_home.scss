@@ -22,7 +22,7 @@
   filter: greyscale(100%);
 }
 .banner {
-  background-image: linear-gradient(36deg, rgba(77, 224, 14, 0.05) 38%, rgba(33, 35, 33, 0.65) 59%), url('https://tctechcrunch2011.files.wordpress.com/2016/11/startup-alley.png?w=1024&quot');
+  background-image: linear-gradient(20deg, rgba(0, 0, 0, 0.4) 58%, rgba(230, 180, 0, 0.2) 90%), image-url('fireside-black.jpg');
 // background: #606c88;  /* fallback for old browsers */
 // background: -webkit-linear-gradient(to top, #3f4c6b, #606c88);  /* Chrome 10-25, Safari 5.1-6 */
 // background: linear-gradient(to top, #3f4c6b, #606c88); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
@@ -40,12 +40,15 @@
   // justify-content: center;
   font-family: Arvo;
   // padding-top: 220px;
+  display: flex;
+  align-items: center;
 }
 .banner h1 {
-  font-family: Raleway;
-  font-weight: lighter;
-  font-size: 58px;
-  text-shadow: 0px 1px rgba(0, 0, 0, 0.2);
+  font-family: Arvo;
+  // font-weight: lighter;
+  font-size: 70px;
+  text-shadow: 3px 3px rgba(0, 0, 0, 0.5);
+  color: rgb(230, 180, 0);
 }
 
 .title {
@@ -63,7 +66,7 @@
 }
 
 .banner p {
-  font-size: 20px;
+  font-size: 26px;
   font-weight: lighter;
   // color: rgba(255, 255, 255, 0.7);
 }
