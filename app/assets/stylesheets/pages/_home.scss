@@ -52,12 +52,11 @@
 }
 
 .title {
-  padding: 10px;
+  padding: 0 10px;
 }
 
 .slogan {
-  padding: 17px;
-  padding-bottom: 66px;
+  padding: 20px;
 }
 
 .slogan p {
@@ -99,7 +98,6 @@
 }
 
 .join {
-  padding-bottom: 31px;
   font-size: 25px;
 }
 
@@ -118,9 +116,9 @@
   color: #999999;
 }
 
-.or {
+/* .or {
   padding-top: 12px;
-}
+} */
 
 .or p {
   color: rgba(255, 255, 255, 0.7);
