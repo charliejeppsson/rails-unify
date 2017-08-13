@@ -17,6 +17,7 @@
   <li>Image uploading with CarrierWave and Cloudinary</li>
   <li>Real-time chat with ActionCable, ActiveJob and Redis</li>
   <li>Front-end design with Sketch and Figma</li>
+  <li>Animations with JavaScript and jQuery</li>
   <li>Mobile-responsiveness with Bootstrap and FlexBox</li>
   <li>Admin interface with RailsAdmin</li>
   <li>Domain registered with Gandi</li>
