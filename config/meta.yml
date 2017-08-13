@@ -1,5 +1,5 @@
 
 meta_product_name: "Unify"
 meta_title: "Unify - Don't miss out on valuable connections"
-meta_description: "Unify is a location-based event platform, aimed at helping you network more effectively. First, we offer organizations a digital platform for where they can create pages for events with networking potential. Second, we enable other users to attend, check in, see other attendants along with information collected from their LinkedIn account, connect and chat with other checked-in users."
-meta_image: "unify-home-page-normal.png"                       # should exist in `app/assets/images/`
+meta_description: "Unify is a location-based event platform, aimed at helping you network more effectively. First, we offer organizations a digital platform where they can create pages for networking events such as conferences and keynotes. Second, we enable other users to attend, check in, see other attendants along with information collected from their LinkedIn account, and connect and chat with other checked-in users."
+meta_image: "unify-home-page-normal.png"
