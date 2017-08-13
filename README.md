@@ -12,6 +12,7 @@
   <li>MVC web app built with Ruby on Rails</li>
   <li>System architecture with 50+ routes</li>
   <li>Database schema with 9 models and 7 controllers</li>
+  <li>Object-relational mapping with ActiveRecord and PostgreSQL</li>
   <li>User authentication with Devise and Auth0</li>
   <li>APIs integrated: LinkedIn, Google Maps JavaScript API, Google Places API</li>
   <li>Image uploading with CarrierWave and Cloudinary</li>
