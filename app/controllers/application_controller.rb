@@ -28,8 +28,6 @@ class ApplicationController < ActionController::Base
 
   end
 
-
-
   def store_location
   # store last url - this is needed for post-login redirect to whatever the user last visited.
     return unless request.get?
@@ -39,6 +37,11 @@ class ApplicationController < ActionController::Base
         !request.xhr?) # don't store ajax calls
       session[:previous_url] = request.fullpath
     end
+  end
+
+  # Meta tag configuration
+  def default_url_options
+    { host: ENV["HOST"] || "localhost:3000" }
   end
 
 end
